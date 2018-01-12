@@ -1,5 +1,5 @@
-@extends('admin.layout')
-
+@extends('layouts.admin')
+ @section('title','后台管理')
 @section('content')
 
     <div class="tpl-content-wrapper">
