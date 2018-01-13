@@ -109,7 +109,7 @@ class LoginController extends Controller
         }
 
         //验证码
-        if($input['code'] != session('code')){
+        if(strtolower($input['code']) != strtolower(session('code'))){
             return back()->with('errors','验证码错误');
         }
        
