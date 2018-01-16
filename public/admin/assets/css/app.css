@@ -507,7 +507,16 @@ ul.tpl-dropdown-content .tpl-dropdown-menu-messages-item .menu-messages-content 
   padding: 5px 6px;
   font-size: 12px;
   line-height: 12px;
+  
 }
+
+.tpl-table-black-operation #a1 {
+   float:right;
+   margin-right:33%;
+   margin-right:33%;
+}
+
+
 .tpl-switch input[type="checkbox"] {
   position: absolute;
   opacity: 0;
@@ -734,6 +743,7 @@ ul.tpl-dropdown-content .tpl-dropdown-menu-messages-item .menu-messages-content 
 }
 .theme-white .tpl-table-line-img {
   border: 1px solid #ddd;
+  
 }
 .theme-white .tpl-pagination .am-disabled a,
 .theme-white .tpl-pagination li a {

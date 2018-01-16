@@ -24,5 +24,16 @@ Route::post('admin/dologin','Admin\LoginController@dologin');
 //加密演示
 // Route::get('admin/crypt','Admin\LoginController@crypt');
 
-//加载主页
-Route::get('admin/index','Admin\AdminController@index');
+
+
+
+//用户模块
+Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'islogin'],function(){
+//用户添加页
+Route::resource('user','UserController');
+//后台首页
+Route::get('index', 'LoginController@index');
+//退出登录
+Route::get('logout/','LoginController@logout');
+
+});

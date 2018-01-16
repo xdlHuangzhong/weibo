@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+//验证码
 use Gregwar\Captcha\CaptchaBuilder;
 use Gregwar\Captcha\PhraseBuilder;
 
@@ -58,21 +59,10 @@ class LoginController extends Controller
 //获取加密密码
 // public function crypt()
 //     {
-      
-
-
-
-
 //       //crypt加密
 //      $str = '123456';
 //       $input= Crypt::encrypt($str);
 //       dd($input);
-      
-        
-
-
-
-
 //     }
 
     //处理登录逻辑的
@@ -86,14 +76,14 @@ class LoginController extends Controller
         //2. 验证数据的有效性
         //Validator::make('要验证的数据','验证规则','提示信息')
         $rule = [
-            'name'=>'required|between:5,18',
+            'name'=>'required|between:2,18',
             'password'=>'required|between:5,18|alpha_dash',
         ];
 
         //提示信息
         $mess = [
             'name.required'=>'用户名不能为空',
-            'name.between'=>'用户名的长度必须在5-18位',
+            'name.between'=>'用户名的长度必须在2-18位',
             'password.required'=>'密码不能为空',
             'password.between'=>'密码的长度必须在5-18位',
             'password.alpha_dash'=>'密码必须是数字字母下划线',
@@ -119,7 +109,7 @@ class LoginController extends Controller
           // dd($admin);
            
           //如果没有此用户，返回没有此用户的错误提示
-          if (! $admin) {
+          if (!$admin) {
               return back()->with('errors','无此用户');
           }
 
@@ -131,15 +121,25 @@ class LoginController extends Controller
 
           //4. 如果有效就登录到后台，验证失败就返回到添加页面
           //将用户的登录状态保存到session
-
-          Session::put('admin',$admin);
+          // dd($admin);
+           Session::put('admin',$admin);
+          // dd(session('admin'));
 
           return redirect('admin/index');
 
          
      }
-
-
+     //返回后台首页
+     public function index()
+     {
+      return view('admin.index');
+     }
+     //退出登录
+     public function logout()
+     {
+        session()->forget('admin');
+        return redirect('admin/login');
+     }
       
 
 
