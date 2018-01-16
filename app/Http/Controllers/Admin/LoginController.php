@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+//验证码
 use Gregwar\Captcha\CaptchaBuilder;
 use Gregwar\Captcha\PhraseBuilder;
 
@@ -27,6 +28,7 @@ class LoginController extends Controller
     public function login()
     {
         return view('admin.login');
+        
     }
 
     // 验证码生成
@@ -109,7 +111,7 @@ class LoginController extends Controller
         }
 
         //验证码
-        if($input['code'] != session('code')){
+        if(strtolower($input['code']) != strtolower(session('code'))){
             return back()->with('errors','验证码错误');
         }
        
@@ -119,7 +121,7 @@ class LoginController extends Controller
           // dd($admin);
            
           //如果没有此用户，返回没有此用户的错误提示
-          if (! $admin) {
+          if (!$admin) {
               return back()->with('errors','无此用户');
           }
 

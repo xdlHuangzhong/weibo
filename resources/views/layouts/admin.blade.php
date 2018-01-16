@@ -13,12 +13,12 @@
     <link rel="icon" type="image/png" href="/admin/assets/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="/admin/assets/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <script type="text/javascript" src="{{'/admin/assets/js/jquery.js'}}"></script>
     <script src="/admin/assets/js/echarts.min.js"></script>
     <link rel="stylesheet" href="/admin/assets/css/amazeui.min.css" />
     <link rel="stylesheet" href="/admin/assets/css/amazeui.datatables.min.css" />
     <link rel="stylesheet" href="/admin/assets/css/app.css">
-    <script src="/admin/assets/js/jquery.min.js"></script>
-
+    <script src="{{'/admin/assets/js/jquery.min.js'}}"></script>
 </head>
 
 <body data-type="index">
@@ -223,14 +223,30 @@
                         </li>
                     </ul>
                 </li>
-               
+               <li class="sidebar-nav-link">
+                    <a href="javaquery:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 友情链接
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="{{ url('/admin/friends/create') }}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 添加链接
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-link">
+                            <a href="{{ url('/admin/friends') }}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 浏览链接
+                            </a>
+                        </li>
+                         </ul>
                 <li class="sidebar-nav-link">
                     <a href="login.html">
                         <i class="am-icon-key sidebar-nav-link-logo"></i> 登录
                     </a>
                 </li>
-
-            </ul>
+                
+                   
         </div>
 
 
@@ -245,6 +261,8 @@
     <script src="/admin/assets/js/dataTables.responsive.min.js"></script>
     <script src="/admin/assets/js/app.js"></script>
 
+    <script type="text/javascript" src="{{'/admin/assets/js/ch-ui.admin.js'}}"></script>
+    <script type="text/javascript" src="{{'/layer/layer.js'}}"></script>
 </body>
 
 </html>
