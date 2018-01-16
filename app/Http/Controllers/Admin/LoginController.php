@@ -28,6 +28,7 @@ class LoginController extends Controller
     public function login()
     {
         return view('admin.login');
+        
     }
 
     // 验证码生成

@@ -30,6 +30,7 @@ Route::post('admin/dologin','Admin\LoginController@dologin');
 
 
 
+
 //用户模块
 Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'islogin'],function(){
 //用户添加页
@@ -45,5 +46,15 @@ Route::post('notice/upload','NoticeController@upload');
 //公告资源路由
 Route::resource('notice', 'NoticeController');
 
+//友情链接页面
+Route::resource('friends','FriendsController');
+
 });
+
+
+//加载主页
+Route::get('admin/index','Admin\AdminController@index');
+
+
+
 
