@@ -4,13 +4,18 @@ namespace App\model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Admin extends Model
+class Notice extends Model
 {
     //让当前admin模型跟admin表产生关联
-    public $table = 'admin';
+    public $table = 'notice';
 
     //定义关联的主键
     public $primaryKey = 'id';
 
-    public $timestamps = 'false';
+//     public $guarded = ['_token'];
+
+    public $guarded = [];
+
+//    public $timestamps = 'false';
+
 }

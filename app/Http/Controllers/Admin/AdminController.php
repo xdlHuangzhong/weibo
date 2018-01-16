@@ -16,7 +16,7 @@ class AdminController extends Controller
     //到添加管理员页面
     public function add()
     {
-    	return view('admin/add');
+    	return view('admin/user/add');
     }
 
     //将用户提交的添加用户数据保存到数据库的user表中，添加用户

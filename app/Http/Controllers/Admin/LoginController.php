@@ -58,21 +58,21 @@ class LoginController extends Controller
 //获取加密密码
 // public function crypt()
 //     {
-      
-
-
-
-
+//
+//
+//
+//
+//
 //       //crypt加密
 //      $str = '123456';
 //       $input= Crypt::encrypt($str);
 //       dd($input);
-      
-        
-
-
-
-
+//
+//
+//
+//
+//
+//
 //     }
 
     //处理登录逻辑的
@@ -109,7 +109,7 @@ class LoginController extends Controller
         }
 
         //验证码
-        if($input['code'] != session('code')){
+        if(strtolower($input['code']) != strtolower(session('code'))){
             return back()->with('errors','验证码错误');
         }
        

@@ -17,7 +17,12 @@
     <link rel="stylesheet" href="/admin/assets/css/amazeui.min.css" />
     <link rel="stylesheet" href="/admin/assets/css/amazeui.datatables.min.css" />
     <link rel="stylesheet" href="/admin/assets/css/app.css">
+    <link rel="stylesheet" type="text/css" href="/admin/upload/Huploadify.css"/>
     <script src="/admin/assets/js/jquery.min.js"></script>
+    <style>
+        table{table-layout:fixed;}
+        tbody tr td{width:30em;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+    </style>
 
 </head>
 
@@ -91,7 +96,7 @@
                                         <div class="menu-messages-content">
                                             <div class="menu-messages-content-title">
                                                 <i class="am-icon-circle-o am-text-warning"></i>
-                                                <span>禁言小张</span>
+                                                <span>{{ session('admin')->name }}</span>
                                             </div>
                                             <div class="am-text-truncate"> 为了能最准确的传达所描述的问题， 建议你在反馈时附上演示，方便我们理解。 </div>
                                             <div class="menu-messages-content-time">2016-09-16 上午 09:23</div>
@@ -193,7 +198,7 @@
                     </div>
                     <span class="user-panel-logged-in-text">
               <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
-              禁言小张
+                        {{ session('admin')->name }}
           </span>
                     <a href="javascript:;" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
                 </div>
@@ -211,7 +216,7 @@
                     </a>
                     <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
-                            <a href="{{ url('/admin/add') }}">
+                            <a href="{{ url('/admin/useradd') }}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 管理员添加
                             </a>
                         </li>
@@ -223,7 +228,25 @@
                         </li>
                     </ul>
                 </li>
-               
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 公告管理
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="{{ url('/admin/notice/create') }}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 公告添加
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="{{ url('/admin/notice') }}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 公告列表
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="sidebar-nav-link">
                     <a href="login.html">
                         <i class="am-icon-key sidebar-nav-link-logo"></i> 登录
@@ -244,6 +267,8 @@
     <script src="/admin/assets/js/amazeui.datatables.min.js"></script>
     <script src="/admin/assets/js/dataTables.responsive.min.js"></script>
     <script src="/admin/assets/js/app.js"></script>
+    <script src="/layer/layer.js"></script>
+    <script src="/upload/jquery.Huploadify.js"></script>
 
 </body>
 

@@ -11,7 +11,7 @@
 |
 */
 
-
+//后台登录模块
 //登录页面路由		
 Route::get('admin/login','Admin\LoginController@login');
 
@@ -26,3 +26,12 @@ Route::post('admin/dologin','Admin\LoginController@dologin');
 
 //加载主页
 Route::get('admin/index','Admin\AdminController@index');
+
+//用户管理模块
+Route::get('admin/useradd','Admin\AdminController@add');
+
+//系统公告模块
+//图片上传路由
+Route::post('admin/notice/upload','Admin\NoticeController@upload');
+//公告资源路由
+Route::resource('admin/notice', 'Admin\NoticeController');
