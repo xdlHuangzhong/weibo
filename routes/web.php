@@ -52,8 +52,6 @@ Route::resource('friends','FriendsController');
 });
 
 
-//加载主页
-Route::get('admin/index','Admin\AdminController@index');
 
 
 

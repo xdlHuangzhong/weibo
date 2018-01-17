@@ -86,11 +86,16 @@
                                     </table>
                                 </div>
                                 <div class="am-u-lg-12 " >
-                                @if($input)
-                                        {{ $data->appends(['keywords' => $input['keywords']])->render() }}
-                                @else
-                                        {{ $data->render() }}
-                                @endif
+                                    <div class="am-fr">
+                                        <div class="page_list" id="fy">
+                                            @if($input)
+                                                    {{ $data->appends(['keywords' => $input['keywords']])->render() }}
+                                            @else
+                                                    {{ $data->render() }}
+                                            @endif
+                                        </div>
+
+                                    </div>
                                 </div>
 
 

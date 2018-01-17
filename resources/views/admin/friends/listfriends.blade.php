@@ -66,11 +66,13 @@
                                 <div class="am-u-lg-12 am-cf">
 
                                     <div class="am-fr">
-                                    @if($input)
-                                            {!! $data->appends(['keywords'=>$input['keywords']])->render() !!}
-                                    @else
-                                            {!! $data->render() !!}
-                                    @endif
+                                        <div class="page_list" id="fy">
+                                            @if($input)
+                                                    {!! $data->appends(['keywords'=>$input['keywords']])->render() !!}
+                                            @else
+                                                    {!! $data->render() !!}
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             </div>

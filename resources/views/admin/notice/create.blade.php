@@ -46,10 +46,10 @@
                     <div class="am-u-sm-9">
                         <div class="am-form-group am-form-file">
                             <div class="tpl-form-file-img">
-                                <p><img src="/noticepic/1.jpg" id="img1" alt="上传后显示图片"  style="max-width:350px;max-height:100px;" /></p>
+                                <p><img src="" id="img1" alt="上传后显示图片"  style="max-width:350px;max-height:100px;" /></p>
                             </div>
 
-                            {{--<input type="text" size="50" name="art_thumb" id="art_thumb" >--}}
+                            <input type="text" size="50" name="art_thumb" id="art_thumb" >
                             <!-- multiple多文件上传开关 -->
                             <input id="file_upload" name="logo" type="file" multiple="false" >
                             <script type="text/javascript">

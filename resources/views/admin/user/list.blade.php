@@ -104,10 +104,9 @@
                                 <div class="am-u-lg-12 am-cf">
 
                                     <div class="am-fr">
-                                    <div class="page_list" id="fy">
-                                        {!! $data->appends($request->all())->render() !!}
-                                       </div>
-
+                                        <div class="page_list" id="fy">
+                                            {!! $data->appends($request->all())->render() !!}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
