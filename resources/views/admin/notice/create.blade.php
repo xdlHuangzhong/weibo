@@ -1,14 +1,32 @@
 @extends('layouts.admin')
 @section('title','后台管理')
 @section('content')
+    <div class="tpl-content-wrapper">
+        <div class="row-content am-cf">
 <div class="row">
 
     <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
         <div class="widget am-cf">
+
             <div class="widget-head am-cf">
-                <div class="widget-title am-fl"></div>
+                <div class="widget-title am-fl">公告添加</div><br>
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @if(is_object($errors))
+                                @foreach ($errors->all() as $error)
+                                    <li style="color:red">{{ $error }}</li>
+                                @endforeach
+                            @else
+                                <li style="color:red">{{ $errors }}</li>
+                            @endif
+                        </ul>
+                    </div>
+                @endif
+
                 <div class="widget-function am-fr">
-                    <a href="javascript:;" class="am-icon-cog"></a>
+
+
                 </div>
             </div>
             <div class="widget-body am-fr">
@@ -49,7 +67,7 @@
                                 <p><img src="" id="img1" alt="上传后显示图片"  style="max-width:350px;max-height:100px;" /></p>
                             </div>
 
-                            <input type="text" size="50" name="art_thumb" id="art_thumb" >
+                            <input type="hidden" size="50" name="art_thumb" id="art_thumb" >
                             <!-- multiple多文件上传开关 -->
                             <input id="file_upload" name="logo" type="file" multiple="false" >
                             <script type="text/javascript">
@@ -114,9 +132,11 @@
                         </div>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>
 </div>
-
+</div>
+</div>
 @stop

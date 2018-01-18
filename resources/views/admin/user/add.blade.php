@@ -13,18 +13,18 @@
                             <div class="widget-head am-cf">
                                 <div class="widget-title am-fl">管理员添加</div><br>
                                 @if (count($errors) > 0)
-                                                                                        <div class="alert alert-danger">
-                                                                                            <ul>
-                                                                                                @if(is_object($errors))
-                                                                                                    @foreach ($errors->all() as $error)
-                                                                                                        <li style="color:red">{{ $error }}</li>
-                                                                                                    @endforeach
-                                                                                                @else
-                                                                                                        <li style="color:red">{{ $errors }}</li>
-                                                                                                @endif
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                    @endif
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @if(is_object($errors))
+                                                @foreach ($errors->all() as $error)
+                                                    <li style="color:red">{{ $error }}</li>
+                                                @endforeach
+                                            @else
+                                                <li style="color:red">{{ $errors }}</li>
+                                            @endif
+                                        </ul>
+                                    </div>
+                                @endif
                                 <div class="widget-function am-fr">
                                     <a href="javascript:;" class="am-icon-cog"></a>
                                 </div>
@@ -98,6 +98,7 @@
                                                 <button type="button" class="am-btn am-btn-danger am-btn-sm">
     				<i class="am-icon-cloud-upload"></i> 添加头像</button>
                                                 <input id="doc-form-file" type="file" name="pic">
+`
                                             </div>
 
                                         </div>

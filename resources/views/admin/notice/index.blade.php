@@ -46,11 +46,11 @@
                                     </form>
                                 </div>
 
-                                <div class="am-u-sm-12">
-                                    <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black ">
+                                <div id="tab" class="am-u-sm-12 tab">
+                                    <table  width="100%" class="am-table am-table-compact am-table-striped tpl-table-black ">
                                         <thead>
                                             <tr>
-                                                <th>文章缩略图</th>
+                                                <th>公告缩略图</th>
                                                 <th>公告标题</th>
                                                 <th>公告作者</th>
                                                 <th>公告内容</th>
@@ -63,7 +63,9 @@
 
                                             @foreach($data as $k=>$v)
                                                 <td>
-                                                    <img src="assets/img/k.jpg" class="tpl-table-line-img" alt="">
+                                                    @if($v->logo)
+                                                    <img src="/noticepic/{{ $v->logo }}" class="tpl-table-line-img" alt="">
+                                                    @endif
                                                 </td>
                                                 <td class="am-text-middle">{{ $v->name }}</td>
                                                 <td class="am-text-middle">{{ $v->bank }}</td>

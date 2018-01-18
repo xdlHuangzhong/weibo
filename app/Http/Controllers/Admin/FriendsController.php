@@ -58,7 +58,7 @@ class FriendsController extends Controller
         $mess = [
             'link.required'=>'链接名称不能为空！',
             'link.between'=>'链接名称必须在9-20位之间！',
-            'name.required'=>'发布人不能为空！',
+            'name.required'=>'连接名称不能为空！',
             'name.between'=>'发布人名称不能超过十八位',
         ];
         $validator = Validator::make($input,$rule,$mess);
@@ -114,6 +114,25 @@ class FriendsController extends Controller
     {
         //1获取信息
         $input = $request->all();
+        $rule = [
+            'link'=>'required|between:9,20',
+            'name'=>'required|between:1,18|alpha_dash',
+        ];
+        //提示信息
+        $mess = [
+            'link.required'=>'链接名称不能为空！',
+            'link.between'=>'链接名称必须在9-20位之间！',
+            'name.required'=>'发布人不能为空！',
+            'name.between'=>'发布人名称不能超过十八位',
+        ];
+        $validator = Validator::make($input,$rule,$mess);
+        // dd($validator);
+        //判断验证信息失败
+        if ($validator->fails()){
+            return redirect('admin/friends/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
         // dd($input);
         $friends = Friends::find($id);
 

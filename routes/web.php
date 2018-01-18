@@ -43,11 +43,15 @@ Route::get('logout/','LoginController@logout');
 //系统公告模块
 //图片上传路由
 Route::post('notice/upload','NoticeController@upload');
+//图片修改路由
+Route::post('notice/reupload','NoticeController@upload');
 //公告资源路由
 Route::resource('notice', 'NoticeController');
 
 //友情链接页面
 Route::resource('friends','FriendsController');
+//友情链接页面
+Route::resource('cate','CateController');
 
 });
 

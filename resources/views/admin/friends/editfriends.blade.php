@@ -11,18 +11,18 @@
                             <div class="widget-head am-cf">
                                 <div class="widget-title am-fl">修改链接</div><br>
                                 @if (count($errors) > 0)
-                                                                                        <div class="alert alert-danger">
-                                                                                            <ul>
-                                                                                                @if(is_object($errors))
-                                                                                                    @foreach ($errors->all() as $error)
-                                                                                                        <li style="color:red">{{ $error }}</li>
-                                                                                                    @endforeach
-                                                                                                @else
-                                                                                                        <li style="color:red">{{ $errors }}</li>
-                                                                                                @endif
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                    @endif
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @if(is_object($errors))
+                                                @foreach ($errors->all() as $error)
+                                                    <li style="color:red">{{ $error }}</li>
+                                                @endforeach
+                                            @else
+                                                <li style="color:red">{{ $errors }}</li>
+                                            @endif
+                                        </ul>
+                                    </div>
+                                @endif
                                 <div class="widget-function am-fr">
                                     <a href="javascript:;" class="am-icon-cog"></a>
                                     @if(session('msg'))

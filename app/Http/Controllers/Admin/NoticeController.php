@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Support\Facades\Validator;
 use App\model\Notice;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -52,13 +52,44 @@ class NoticeController extends Controller
     public function store(Request $request)
     {
         //接收表单提交
-        $input = $request->except('_token','updated_at','created_at');
-        dd($input);
-        //修改公告
+        $input = $request->except('_token','updated_at','created_at','logo');
+
+//        dd($input);
+
+        $rule = [
+            'name'=>'required',
+            'content'=>'required',
+//            'art_thumb'=>'required',
+        ];
+        //提示信息
+        $mess = [
+            'name.required'=>'公告标题不能为空！',
+            'content.required'=>'公告内容不能为空！',
+//            'art_thumb.required'=>'公告图片不能为空！',
+
+        ];
+        $validator = Validator::make($input,$rule,$mess);
+        // dd($validator);
+        //判断验证信息失败
+        if ($validator->fails()){
+            return redirect('admin/notice/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+        //添加公告
+
+//
+        $logo = substr($input['art_thumb'],10);
         $notice = new Notice();
         $notice -> name = $input['name'];
         $notice -> bank = $input['bank'];
         $notice -> time = $input['time'];
+        if($logo){
+            $notice -> logo = $logo;
+        }else{
+            $notice -> logo = '';
+        }
+
         $notice -> content = $input['content'];
         $res = $notice->save();
         //判断是否添加成功
@@ -95,6 +126,8 @@ class NoticeController extends Controller
         }
 
     }
+
+
 
     /**
      * Display the specified resource.
@@ -133,10 +166,42 @@ class NoticeController extends Controller
     public function update(Request $request, $id)
     {
         //修改公告业务
-        $input = $request->only('name','content');
+        $input = $request->except('_token','updated_at','created_at','logo');
+//        dd($input);
 
+        $rule = [
+            'name'=>'required',
+            'content'=>'required',
+        ];
+        //提示信息
+        $mess = [
+            'name.required'=>'公告修改标题不能为空！',
+            'content.required'=>'公告修改内容不能为空！',
+
+        ];
+        $validator = Validator::make($input,$rule,$mess);
+        // dd($validator);
+        //判断验证信息失败
+        if ($validator->fails()){
+            return redirect('admin/notice/'.$id.'/edit')
+                ->withErrors($validator)
+                ->withInput();
+        }
         //执行修改
+
         $notice = Notice::find($id);
+        $oldlogo = 'noticepic/'.$notice->logo;
+//        dd($oldlogo);
+
+
+        $logo = substr($input['art_thumb'],10);
+        if($logo){
+            $notice->logo = $logo;
+            if($oldlogo != 'noticepic/'){
+                unlink($oldlogo);
+            }
+
+        }
         $notice->name = $input['name'];
         $notice->content = $input['content'];
         $res = $notice->save();
