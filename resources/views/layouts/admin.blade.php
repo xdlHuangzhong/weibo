@@ -183,6 +183,26 @@
                             </a>
                         </li>
                          </ul>
+                </li>
+
+                <li class="sidebar-nav-link">
+                    <a href="javaquery:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 轮播图片
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="{{ url('/admin/img/create') }}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 添加图片
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-link">
+                            <a href="{{ url('/admin/img') }}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 图片列表
+                            </a>
+                        </li>
+                         </ul>
+                </li>
                 <li class="sidebar-nav-link">
                     <a href="login.html">
                         <i class="am-icon-key sidebar-nav-link-logo"></i> 登录

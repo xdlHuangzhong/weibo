@@ -23,14 +23,6 @@ Route::post('admin/dologin','Admin\LoginController@dologin');
 
 
 
-
-
-
-
-
-
-
-
 //用户模块
 Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'islogin'],function(){
 //用户添加页
@@ -51,7 +43,13 @@ Route::resource('friends','FriendsController');
 
 });
 
-
+//路由模块
+//修改路由
+Route::post('admin/reimg','Admin\ImgController@update');
+//上传路由
+Route::post('admin/img/upload','Admin\ImgController@upload');
+//热图添加
+Route::resource('admin/img','Admin\ImgController');
 
 
 
