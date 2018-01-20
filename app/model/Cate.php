@@ -14,8 +14,45 @@ class Cate extends Model
 
 //     public $guarded = ['_token'];
 
-    public $guarded = [];
+    public $guarded = ['updated_at', 'created_at'];
 
-    public $timestamps = 'false';
+    public $timestamps = false;
+    //处理分类排序
+
+    //格式化数据(排序,缩进)
+    public function getCate()
+    {
+        $cates = $this->orderBy('order','asc')->get();
+
+        return $this->Cate($cates);
+    }
+
+
+    public function Cate($category)
+    {
+
+        $arr = [];
+
+        foreach($category as $k=>$v){
+            //排序
+            if($v->pid == 0){
+                $v['setname'] = $v['name'];
+                $arr[] = $v;
+                //获取二级类
+                foreach($category as $m=>$n)
+                {
+                    if($n->pid == $v->id)
+                    {
+                        $n['setname'] = '|--'.$n['name'];
+                        $arr[] = $n;
+                    }
+                }
+
+            }
+        }
+
+
+        return $arr;
+    }
 
 }

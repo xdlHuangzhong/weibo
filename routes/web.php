@@ -48,14 +48,15 @@ Route::post('notice/reupload','NoticeController@upload');
 //公告资源路由
 Route::resource('notice', 'NoticeController');
 
-//友情链接页面
+//友情链接路由
 Route::resource('friends','FriendsController');
-//友情链接页面
+//文章分类路由
+Route::post('cate/changeorder','CateController@changeorder');
 Route::resource('cate','CateController');
 
 });
 
-
+//@if($cate['order'] == $cate['id']){ echo "selected"; }@endif
 
 
 
