@@ -43,6 +43,7 @@ Route::resource('friends','FriendsController');
 
 });
 
+
 //路由模块
 //修改路由
 Route::post('admin/reimg','Admin\ImgController@update');
@@ -50,6 +51,18 @@ Route::post('admin/reimg','Admin\ImgController@update');
 Route::post('admin/img/upload','Admin\ImgController@upload');
 //热图添加
 Route::resource('admin/img','Admin\ImgController');
+
+//发帖模块
+Route::get('admin/content/index','Admin\ContentController@index');
+Route::get('admin/content/info','Admin\ContentController@info');
+Route::resource('admin/content','Admin\ContentController');
+
+
+//后天结束
+// ------------------------------------------------------------------------------------------------------------------------------------------------------
+//前台开始
+//前台个人中心模块
+Route::resource('home/info','Home\InfoController');
 
 
 
