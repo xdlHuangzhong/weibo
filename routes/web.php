@@ -31,17 +31,28 @@ Route::post('admin/dologin','Admin\LoginController@dologin');
 
 
 
-//用户模块
-Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'islogin'],function(){
-//用户添加页
+
+Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
+	Route::resource('users','UsersController');
+//管理员添加管理
+Route::post('user/upload','UserController@upload');
 Route::resource('user','UserController');
+
+
 //后台首页
 Route::get('index', 'LoginController@index');
+
+
 //退出登录
 Route::get('logout/','LoginController@logout');
 
+
+
+
+
 //系统公告模块
 //图片上传路由
+
 Route::post('notice/upload','NoticeController@upload');
 //图片修改路由
 Route::post('notice/reupload','NoticeController@upload');

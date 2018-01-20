@@ -52,6 +52,7 @@ class NoticeController extends Controller
     public function store(Request $request)
     {
         //接收表单提交
+
         $input = $request->except('_token','updated_at','created_at','logo');
 
 //        dd($input);
@@ -80,6 +81,11 @@ class NoticeController extends Controller
 
 //
         $logo = substr($input['art_thumb'],10);
+
+        $input = $request->except('_token','updated_at','created_at');
+        // dd($input);
+        //修改公告
+
         $notice = new Notice();
         $notice -> name = $input['name'];
         $notice -> bank = $input['bank'];

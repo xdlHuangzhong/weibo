@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','管理员列表')
+@section('title','用户列表')
 @section('content')
         <div class="tpl-content-wrapper">
             <div class="row-content am-cf">
@@ -7,7 +7,7 @@
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
-                                <div class="widget-title  am-cf">管理员列表</div>
+                                <div class="widget-title  am-cf">用户列表</div>
 
 
                             </div>
@@ -17,7 +17,7 @@
                                    <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p" style="width:100%">
 			
 
-                                    <form  action="{{ url('admin/user') }}" method="get">
+                                    <form  action="{{ url('admin/users') }}" method="get">
                                         <table >
                                             
                                             

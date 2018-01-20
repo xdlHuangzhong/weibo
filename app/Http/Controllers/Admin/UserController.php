@@ -18,13 +18,6 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-       
-         // 1. 获取所有的数据，显示到列表中
-       // $data = Admin::get();
-       // dd($data);
-
-       // return view('admin.user.list',compact('data'));
-//        4 多条件
         $data = Admin::orderBy('id','asc')
             ->where(function($query) use($request){
                 //检测关键字
@@ -65,38 +58,39 @@ class UserController extends Controller
     {
         
         // 1.接收表单传过来的参数
-       $input = $request->except('_token','repassword');
-       
+       $input = $request->except('_token','repassword','picc');
 
-        // dd($input);
         //2. 验证数据的有效性
         //Validator::make('要验证的数据','验证规则','提示信息')
+         $rule = [
+           
 
-        $rule = [
-            'name'=>'required|between:2,18',
-            'password'=>'required|between:5,18|alpha_dash',
-            'repassword'=>'same:password',
-             'phone'=>'required|size:11',
+            'name' => 'required|regex:/^\w{4,12}$/',
+            'password' => 'required|regex:/^\w{6,12}$/',
+            'repassword' => 'required|regex:/^\w{6,12}$/',
+            'repassword' => 'same:password',
+            'phone' => 'required|regex:/^1[34578]\d{9}$/',
             'email'=>'required|email',
-            'pic'=>'image',
+            'pic'=>'required'
         ];
 
         //提示信息
         $mess = [
-           'name.required'=>'用户名不能为空',
-            'name.between'=>'用户名必须在2~18位之间',
-            'password.required'=>'密码不能为空',
-            'password.between'=>'密码必须在5~18位之间',
-            'repassword.required'=>'确认密码不能为空',
-            'repassword.same'=>'确认密码不不一致',
-            'phone.required'=>'手机号不能为空',
-            'phone.size'=>'手机号必须是11位',
-            'email.required'=>'邮箱不能为空',
-            'email.email'=>'邮箱不合法',
-            'pic.image'=>'请上传一张正确的图片'
+           
+
+            'name.required' => '*用户名不能为空*',
+            'name.regex' => '*请输入4~12位用户名*',
+            'password.required' => '*密码不能为空*',
+            'password.regex' => '*请输入6~12位密码*',
+            'repassword.same' => '*两次密码不一致*',
+            'phone.required' => '*手机号码不能为空*',
+            'phone.regex' => '*手机号码格式不正确*',
+            'email.required'=>'*邮箱不能为空*',
+            'email.email'=>'*邮箱不合法*',
+            'pic.required' => '*头像不能为空*'
         ];
         $validator = Validator::make($input, $rule,$mess);
-        //dd($validator);
+
         // 如果验证失败
         if ($validator->fails()) {
             return redirect('admin/user/create')
@@ -107,7 +101,6 @@ class UserController extends Controller
         $admin = Admin::where('name',$input['name'])->first();
         $admin = Admin::where('email',$input['email'])->first();
         $admin = Admin::where('phone',$input['phone'])->first();
-          // dd($admin);
            
           //如果没有此用户，返回没有此用户的错误提示
         if($admin){
@@ -122,47 +115,23 @@ class UserController extends Controller
           }
       }
 
-        //处理上传
-
-        if($request->hasFile('pic'))
-        {
-            $file = $request->file('pic');
-            if($file->isValid())
-            {
-                //处理
-                $ext = $file->getClientOriginalExtension();
-                $filename = time().mt_rand(10000,99999).'.'.$ext;
-                $res = $file->move('./uploads',$filename);
-                if($res){
-                    $input['pic'] = $filename;
-                }else{
-                    $input['pic'] = 'default.jpg';
-                }
-            }else{
-                $input['pic'] = 'default.jpg';
-            }
         
-        }else{
-            $input['pic'] = 'default.jpg';
-        }
-       
-
-        // dd($input);  
 
         //时间
         $time = date('Y-m-d H:i:s',time());
         $input['created_at'] = $time;
         $input['updated_at'] = $time;
-        // dd($input);
+
         //执行添加管理员   
-        //            创建一个空的用户对象
+        //创建一个空的用户对象
           $admin = new Admin();
           $admin->status = $input['status'];
           $admin->name = $input['name'];
           $admin->password = Crypt::encrypt($input['password']);
-          $admin->pic = $input['pic'];
+          $admin->pic = substr($input['pic'],8); 
           $admin->email = $input['email'];
           $admin->phone = $input['phone'];
+
           $res = $admin->save();
           //验证
           if($res)
@@ -174,6 +143,34 @@ class UserController extends Controller
        
 
     }
+
+
+     //图片上传
+    public function upload(Request $request)
+    {
+        //请求中是否携带上传文件
+        if($request->hasFile('pic')){
+        
+
+            //获取上传文件
+            $file = $request->file('pic');
+            //判断上传文件的有效性
+            if($file->isValid()){
+                $entension = $file->getClientOriginalExtension();//上传文件的后缀名
+                //生成新的且唯一的文件名
+                $newName = date('YmdHis').mt_rand(1000,9999).'.'.$entension;
+                //将文件移动到指定的位置move(路径位置()./)
+                $path = $file->move(public_path().'/uploads',$newName);
+                //返回上传的文件在服务器上的保存路径,给浏览器显示上传图片
+                $filepath = 'uploads/'.$newName;
+                //返回文件的路径
+                return  $filepath;
+            }
+        }
+
+    }
+
+
 
     /**
      * Display the specified resource.
@@ -195,10 +192,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = Admin::find($id);
+
+        $user->password = Crypt::decrypt($user->password);
         
-        $user->password = crypt::decrypt($user->password);
-        
-        // dd($user);
         return view('admin.user.edit',compact('user'));
     }
 
@@ -213,55 +209,81 @@ class UserController extends Controller
     {
         //获取要修改的id
         $user = Admin::find($id);
-        // dd($request->repassword);
 
-        if($request->password){
-          if ($request->password != $request->repassword) {
-              return back()->with('errors','输入密码不一致');
+         if($request->ypassword){
+          if ($request->ypassword != Crypt::decrypt($user->password)) {
+              return back()->with('errors','*输入原密码有误*');
           }
           
       }else{
-        return back()->with('errors','密码不能为空');
+        return back()->with('errors','*原密码不能为空*');
       }
+        // 1.接收表单传过来的参数
+      
+        $input = $request->except('_token','_method','repassword','ypassword','picc');
+        // dd($input);
+       
+       
+        //2. 验证数据的有效性
+        //Validator::make('要验证的数据','验证规则','提示信息')
+        $rule = [
+           
 
-       $input = $request->except('_token','_method','repassword');
-       $input['password'] = Crypt::encrypt($input['password']);
+            'name' => 'required|regex:/^\w{4,12}$/',
+            'password' => 'required|regex:/^\w{6,12}$/',
+            'repassword' => 'required|regex:/^\w{6,12}$/',
+            'repassword' => 'same:password',
+            'phone' => 'required|regex:/^1[34578]\d{9}$/',
+            'email'=>'required|email',
+           
+        ];
 
+        //提示信息
+        $mess = [
+           
 
-        //处理上传
-       // 判断是否为空
-       if(empty($input['name'] || $input['email'] || $input ['phone']))
-       {
-         return back()->with('msg','请填写完整的用户信息');
-       }
-        if($request->hasFile('pic'))
-        {
-            // dd($input['pic']);
-            $file = $request->file('pic');
-            if($file->isValid())
-            {
-                //处理
-                $ext = $file->getClientOriginalExtension();
-                $filename = time().mt_rand(10000,99999).'.'.$ext;
-                $res = $file->move('./uploads',$filename);
-                if($res){
-                    $input['pic'] = $filename;
-                }else{
-                    $input['pic'] = $user->pic;
-                }
-            }else{
-                $input['pic'] = $user->pic;
-            }
-        
+            'name.required' => '*用户名不能为空*',
+            'name.regex' => '*请输入4~12位用户名*',
+            'password.required' => '*密码不能为空*',
+            'password.regex' => '*请输入6~12位密码*',
+            'repassword.same' => '*两次密码不一致*',
+            'phone.required' => '*手机号码不能为空*',
+            'phone.regex' => '*手机号码格式不正确*',
+            'email.required'=>'*邮箱不能为空*',
+            'email.email'=>'*邮箱不合法*',
+            
+        ];
+        $validator = Validator::make($input, $rule,$mess);
+        // dd($validator);
+        // 如果验证失败
+        if ($validator->fails()) {
+            return redirect("admin/user/".$id."/edit")
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $oldpic = 'uploads/'.$user->pic;
+        // dd($oldpic);
+        $newpic = $input['pic'];
+
+        if($newpic){
+                $input['pic'] = substr($input['pic'],8);
+                if(!empty($user->pic)){
+                unlink($oldpic);
+              }
         }else{
-            $input['pic'] =$user->pic;
+                $input['pic'] = $user->pic;
         }
 
        
+
+       //加密密码，使用正确文件名
+       $input['password'] = Crypt::encrypt($input['password']);
+       
+       //执行修改
         $res = $user->update($input);
 
-        // dd($user);
-
+        //判断是否成功
          if($res){
             Session::put('admin',$user);
             return redirect('admin/user');

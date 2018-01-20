@@ -46,8 +46,10 @@
                                     </form>
                                 </div>
 
+
                                 <div id="tab" class="am-u-sm-12 tab">
                                     <table  width="100%" class="am-table am-table-compact am-table-striped tpl-table-black ">
+
                                         <thead>
                                             <tr>
                                                 <th>公告缩略图</th>
