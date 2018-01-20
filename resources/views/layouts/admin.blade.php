@@ -21,9 +21,9 @@
 
     <link rel="stylesheet" type="text/css" href="/admin/upload/Huploadify.css"/>
     <script src="/admin/assets/js/jquery.min.js"></script>
-
+    
     <style>
-        table{table-layout:fixed;}
+        #tab table{table-layout:fixed;}
         tbody tr td{width:30em;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
         #fy ul li{
 
@@ -139,6 +139,11 @@
                         <li class="sidebar-nav-link">
                             <a href="{{ url('admin/user') }}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 管理员列表
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-link">
+                            <a href="{{ url('admin/users') }}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 用户列表
                             </a>
                         </li>
                     </ul>

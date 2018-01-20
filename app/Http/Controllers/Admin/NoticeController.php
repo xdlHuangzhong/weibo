@@ -53,7 +53,7 @@ class NoticeController extends Controller
     {
         //接收表单提交
         $input = $request->except('_token','updated_at','created_at');
-        dd($input);
+        // dd($input);
         //修改公告
         $notice = new Notice();
         $notice -> name = $input['name'];
