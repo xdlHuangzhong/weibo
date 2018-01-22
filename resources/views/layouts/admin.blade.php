@@ -242,14 +242,11 @@
                         </li>
                         
                          </ul>
+
                 </li>
 
 
-                <li class="sidebar-nav-link">
-                    <a href="login.html">
-                        <i class="am-icon-key sidebar-nav-link-logo"></i> 登录
-                    </a>
-                </li>
+
                 
                    
         </div>

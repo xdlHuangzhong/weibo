@@ -210,14 +210,17 @@ class UserController extends Controller
         //获取要修改的id
         $user = Admin::find($id);
 
+
          if($request->ypassword){
           if ($request->ypassword != Crypt::decrypt($user->password)) {
               return back()->with('errors','*输入原密码有误*');
+
           }
           
       }else{
         return back()->with('errors','*原密码不能为空*');
       }
+
         // 1.接收表单传过来的参数
       
         $input = $request->except('_token','_method','repassword','ypassword','picc');
@@ -271,6 +274,7 @@ class UserController extends Controller
                 if(!empty($user->pic)){
                 unlink($oldpic);
               }
+
         }else{
                 $input['pic'] = $user->pic;
         }

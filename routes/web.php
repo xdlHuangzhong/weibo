@@ -45,8 +45,24 @@ Route::post('cate/changeorder','CateController@changeorder');
 Route::resource('cate','CateController');
 
 });
+//前台用户模块
+Route::group(['prefix'=>'home','namespace'=>'Home'],function(){
+//前台首页
+Route::get('index','IndexController@index');
+//注册页
+Route::get('register/index','RegisterController@index');
+//加载注册方法
+Route::post('register/send','RegisterController@send');
+//加载激活方法
+Route::get('active','RegisterController@active');
+//忘记密码
+Route::get('forget','RegisterController@forget');
+Route::post('doforget','RegisterController@doForget');
+//加载登录的方法
+Route::resource('login','LoginController');
+});
 
-//@if($cate['order'] == $cate['id']){ echo "selected"; }@endif
+
 
 
 //路由模块

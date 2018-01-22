@@ -70,7 +70,7 @@
                                                     
                                                         
                                                         @if( session('admin')->id == $v->id )
-                                                        <a  href="{{ url('admin/user/'.$v->id.'/edit') }}" disabled="disabled">
+                                                        <a  href="{{ url('admin/user/'.$v->id.'/edit') }}" disabled="disabled" >
                                                             <i class="am-icon-pencil" ></i> 修改
                                                         </a>
                                                         @endif
