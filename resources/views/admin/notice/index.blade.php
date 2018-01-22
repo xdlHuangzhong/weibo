@@ -46,7 +46,7 @@
                                     </form>
                                 </div>
 
-                                <div class="am-u-sm-12">
+                                <div id="tab" class="am-u-sm-12">
                                     <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black ">
                                         <thead>
                                             <tr>

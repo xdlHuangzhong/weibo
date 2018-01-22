@@ -1,0 +1,45 @@
+又一款经典的myFocus图片轮播js代码 我爱模板推荐
+
+使用方法：
+1、在head区引入下面的代码：
+<script src="js/myFocus.js" type="text/javascript"></script>
+<script src="js/5imoban.net.js" type="text/javascript"></script>
+<link href="images/css.css" rel="stylesheet" type="text/css" />
+
+2、将下面代码拷贝到您要应用此图片轮播的地方：
+<div class="myFocus-box">
+	<div id="myFocus">
+		<div class="loading"><span>正在载入...</span></div><!--载入画面-->
+		<ul class="pic"><!--内容列表-->
+			<li><a href="http://www.5imoban.net/"><img src="images/1.jpg" thumb="" alt="模板网" text="" /></a></li>
+			<li><a href="http://www.5imoban.net/"><img src="images/2.jpg" thumb="" alt="我爱模板网" text="" /></a></li>
+			<li><a href="http://www.5imoban.net/"><img src="images/3.jpg" thumb="" alt="网站模板素材" text="" /></a></li>
+			<li><a href="http://www.5imoban.net/"><img src="images/4.jpg" thumb="" alt="免费网站模板下载" text="" /></a></li>
+			<li><a href="http://www.5imoban.net/"><img src="images/1.jpg" thumb="" alt="网站PSD模板" text="" /></a></li>
+			<li><a href="http://www.5imoban.net/"><img src="images/2.jpg" thumb="" alt="网站模板" text="" /></a></li>
+			<li><a href="http://www.5imoban.net/"><img src="images/3.jpg" thumb="" alt="免费模板" text="" /></a></li>
+			<li><a href="http://www.5imoban.net/"><img src="images/4.jpg" thumb="" alt="jQuery特效代码" text="" /></a></li>
+		</ul>
+	</div>
+</div>
+
+3、关于myfocus的更多特效和详细使用方法请参见：http://www.5imoban.net/texiao/gundongtupian/2014/0220/223.html
+
+更多特效欢迎访问：http://www.5imoban.net/texiao/
+
+
+ <div class="myFocus-box">
+    <div id="myFocus">
+        <div class="loading"><span>正在载入...</span></div><!--载入画面-->
+        <ul class="pic"><!--内容列表-->
+            <li><a href="http://www.5imoban.net/"><img src="img/images/1.jpg" thumb="" alt="模板网" text="" /></a></li>
+            <li><a href="http://www.5imoban.net/"><img src="img/images/2.jpg" thumb="" alt="我爱模板网" text="" /></a></li>
+            <li><a href="http://www.5imoban.net/"><img src="img/images/3.jpg" thumb="" alt="网站模板素材" text="" /></a></li>
+            <li><a href="http://www.5imoban.net/"><img src="img/images/4.jpg" thumb="" alt="免费网站模板下载" text="" /></a></li>
+            <li><a href="http://www.5imoban.net/"><img src="img/images/1.jpg" thumb="" alt="网站PSD模板" text="" /></a></li>
+            <li><a href="http://www.5imoban.net/"><img src="img/images/2.jpg" thumb="" alt="网站模板" text="" /></a></li>
+            <li><a href="http://www.5imoban.net/"><img src="img/images/3.jpg" thumb="" alt="免费模板" text="" /></a></li>
+            <li><a href="http://www.5imoban.net/"><img src="img/images/4.jpg" thumb="" alt="jQuery特效代码" text="" /></a></li>
+        </ul>
+    </div>
+</div>

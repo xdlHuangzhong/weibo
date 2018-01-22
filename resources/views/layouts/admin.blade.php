@@ -23,7 +23,7 @@
     <script src="/admin/assets/js/jquery.min.js"></script>
 
     <style>
-        table{table-layout:fixed;}
+        #tab table{table-layout:fixed;}
         tbody tr td{width:30em;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
         #fy ul li{
 
@@ -183,11 +183,25 @@
                             </a>
                         </li>
                          </ul>
-                <li class="sidebar-nav-link">
-                    <a href="login.html">
-                        <i class="am-icon-key sidebar-nav-link-logo"></i> 登录
+                         </li>
+               <li class="sidebar-nav-link">
+                    <a href="javaquery:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 微博管理
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
-                </li>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="{{ url('/admin/friends/create') }}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 查看微博
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-link">
+                            <a href="{{ url('/admin/friends') }}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 删除微博
+                            </a>
+                        </li>
+                         </ul>
+                         </li>
                 
                    
         </div>

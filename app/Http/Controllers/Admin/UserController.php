@@ -214,7 +214,13 @@ class UserController extends Controller
         //获取要修改的id
         $user = Admin::find($id);
         // dd($request->repassword);
-
+        $input = $request->except('_token','_method','repassword');
+         // 判断是否为空
+       if(empty($input['name']) || empty($input['email'])|| empty($input ['phone']) )
+       {
+         return back()->with('msg','请填写完整的用户信息');
+       }
+       
         if($request->password){
           if ($request->password != $request->repassword) {
               return back()->with('errors','输入密码不一致');
@@ -223,17 +229,14 @@ class UserController extends Controller
       }else{
         return back()->with('errors','密码不能为空');
       }
-
-       $input = $request->except('_token','_method','repassword');
+      
+       
+       // dd( $input );
        $input['password'] = Crypt::encrypt($input['password']);
-
+       
 
         //处理上传
-       // 判断是否为空
-       if(empty($input['name'] || $input['email'] || $input ['phone']))
-       {
-         return back()->with('msg','请填写完整的用户信息');
-       }
+      
         if($request->hasFile('pic'))
         {
             // dd($input['pic']);

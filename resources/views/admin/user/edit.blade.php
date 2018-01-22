@@ -92,7 +92,7 @@
                                                 </div>
                                                 <button type="button" class="am-btn am-btn-danger am-btn-sm" type="file" name="pic">
     				<i class="am-icon-cloud-upload"></i> 添加头像</button>
-                                                <input id="doc-form-file" type="file" name="pic" >
+                                                <input id="doc-form-file" type="file" name="pic"  >
                                             </div>
 
                                         </div>
