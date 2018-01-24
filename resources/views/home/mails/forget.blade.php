@@ -8,6 +8,6 @@
     <title>密码重置</title>
 </head>
 <body>
-   请点击 <a href="{{ url('reset?id='.$user->user_id.'&token='.$user->token) }}"> 链接</a>，重置密码.
+   请点击 <a href="{{ url('/home/reset?id='.$user->id.'&token='.$user->token) }}"> 链接</a>，重置密码.
 </body>
 </html>

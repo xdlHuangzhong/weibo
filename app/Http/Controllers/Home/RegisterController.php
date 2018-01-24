@@ -56,7 +56,7 @@ class RegisterController extends Controller
                 $m->to($user->email, $user->name)->subject('账号激活邮件!');
             });
 
-
+            //发送注册返回首页
             return redirect('home/index');
         }else{
             // 注册失败，返回注册页
@@ -91,5 +91,64 @@ class RegisterController extends Controller
     public function forget()
     {
         return view('home.register.forget');
+    }
+
+     //确认 账号的有效性
+    public function doForget(Request $request)
+    {
+        //1. 获取用户需要找回密码的邮箱
+        $email = $request->email;
+        // dd($email);
+        $user = User::where('email',$email)->first();
+
+//        2. 验证账号的安全性（通过向此账号发送邮件来确认此邮箱是用户的真实邮箱）
+        if($user){
+            Mail::send('home.mails.forget', ['user' => $user], function ($m) use ($user) {
+
+                $m->to($user->email, $user->name)->subject('找回密码!');
+            });
+
+            return '重置密码的邮件已经发送，请前往邮箱查看，重置您的账号密码';
+        }
+
+
+
+    }
+    //返回重置密码页面
+    public function reset(Request $request)
+    {
+        // 检测请求的有效性
+        $user = User::find($request->id);
+
+        if($user->token != $request->token){
+            return '请通过您的邮箱中的重置链接来重置您的密码';
+        }
+        //返回密码重置页面
+
+        return view('home.register.reset',compact('user'));
+    }
+    //确认重置密码逻辑
+    public function doReset(Request $request)
+    {
+
+        //1. 接受需要重置的账号、密码
+        $name = $request->name;
+
+        $user = User::where('name',$name)->first();
+//        dd($user);
+
+        $pass = Crypt::encrypt($request->password);
+
+
+//        2. 找到要修改密码的账号，执行修改操作
+
+        $res = $user->update(['password'=>$pass]);
+
+        if($res){
+            return redirect('home/login')->with('msg','密码重置成功');
+        }else{
+            return '密码重置失败，请重新设置密码';
+        }
+        
     }
 }

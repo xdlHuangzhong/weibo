@@ -23,8 +23,12 @@ Route::post('admin/dologin','Admin\LoginController@dologin');
 
 //用户模块
 Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'islogin'],function(){
-//用户添加页
-Route::resource('user','UserController');
+ // 后台用户管理
+Route::resource('users','UsersController');
+
+//管理员添加管理
+    Route::post('user/upload','UserController@upload');
+    Route::resource('user','UserController');
 //后台首页
 Route::get('index', 'LoginController@index');
 //退出登录
@@ -58,8 +62,15 @@ Route::get('active','RegisterController@active');
 //忘记密码
 Route::get('forget','RegisterController@forget');
 Route::post('doforget','RegisterController@doForget');
+//找回密码
+Route::get('reset','RegisterController@reset');
+Route::post('doreset','RegisterController@doReset');
 //加载登录的方法
 Route::resource('login','LoginController');
+//加载个人中心页
+Route::resource('userinfo','InfoController');
+//处理图片
+Route::post('user/upload','InfoController@upload');
 });
 
 

@@ -65,8 +65,8 @@ class UserController extends Controller
          $rule = [
            
 
-            'name' => 'required|regex:/^\w{4,12}$/',
-            'password' => 'required|regex:/^\w{6,12}$/',
+            'name' => 'required|regex:/^.{4,12}$/',
+            'password' => 'required|regex:/^w{6,12}$/',
             'repassword' => 'required|regex:/^\w{6,12}$/',
             'repassword' => 'same:password',
             'phone' => 'required|regex:/^1[34578]\d{9}$/',
@@ -232,7 +232,7 @@ class UserController extends Controller
         $rule = [
            
 
-            'name' => 'required|regex:/^\w{4,12}$/',
+            'name' => 'required|regex:/^.{4,12}$/',
             'password' => 'required|regex:/^\w{6,12}$/',
             'repassword' => 'required|regex:/^\w{6,12}$/',
             'repassword' => 'same:password',

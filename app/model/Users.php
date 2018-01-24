@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Users extends Model
 {
-    //让当前admin模型跟admin表产生关联
+    //让当前Users模型跟User表产生关联
     public $table = 'user';
     
     //定义关联的主键

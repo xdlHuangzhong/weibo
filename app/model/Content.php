@@ -12,6 +12,6 @@ class Content extends Model
     //定义关联的主键
     public $primaryKey = 'cid';
     //允许批量操作
-    public $guarded = [];
+    public $guarded = ['art_thumb'];
     public $timestamps = false;
 }
