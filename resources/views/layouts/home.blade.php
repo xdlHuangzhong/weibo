@@ -66,7 +66,7 @@
     </div>
 
   
-    @section('content')
+@section('content')
 @show
       <div class="WB_footer S_bg2">
         <div class="footer_link clearfix">

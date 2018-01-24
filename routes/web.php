@@ -23,12 +23,14 @@ Route::post('admin/dologin','Admin\LoginController@dologin');
 
 //用户模块
 Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'islogin'],function(){
+
 //管理员添加管理
 Route::post('user/upload','UserController@upload');
 Route::resource('user','UserController');
 
 // 后台普通用户管理
 Route::resource('users','UsersController');
+
 
 //后台首页
 Route::get('index', 'LoginController@index');
@@ -49,7 +51,28 @@ Route::resource('friends','FriendsController');
 Route::post('cate/changeorder','CateController@changeorder');
 Route::resource('cate','CateController');
 
+//轮播图模块
+//修改路由
+    Route::post('reimg','ImgController@update');
+//上传路由
+    Route::post('img/upload','ImgController@upload');
+//热图添加
+    Route::resource('img','ImgController');
+
+//发帖模块
+    Route::get('content/index','ContentController@index');
+    Route::get('content/info','ContentController@info');
+    Route::resource('content','ContentController');
+
 });
+
+
+
+
+
+
+
+//前台路由
 //前台用户模块
 Route::group(['prefix'=>'home','namespace'=>'Home'],function(){
 //前台首页
@@ -63,22 +86,24 @@ Route::get('active','RegisterController@active');
 //忘记密码
 Route::get('forget','RegisterController@forget');
 Route::post('doforget','RegisterController@doForget');
+//找回密码
+Route::get('reset','RegisterController@reset');
+Route::post('doreset','RegisterController@doReset');
 //加载登录的方法
 Route::resource('login','LoginController');
 
-//轮播图模块
-//修改路由
-    Route::post('reimg','Admin\ImgController@update');
-//上传路由
-    Route::post('img/upload','Admin\ImgController@upload');
-//热图添加
-    Route::resource('img','Admin\ImgController');
-
-//发帖模块
-    Route::get('content/index','Admin\ContentController@index');
-    Route::get('content/info','Admin\ContentController@info');
-    Route::resource('content','Admin\ContentController');
+//加载个人中心页
+Route::resource('userinfo','InfoController');
+//处理图片
+Route::post('user/upload','InfoController@upload');
 });
+
+
+
+
+
+
+
 
 
 

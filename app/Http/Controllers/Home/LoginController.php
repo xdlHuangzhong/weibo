@@ -4,7 +4,13 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use App\Org\code\Code;
+//加密的类
+use Illuminate\Support\Facades\Crypt;
+use Session;
 
+use App\Model\User;
 class LoginController extends Controller
 {
     /**
@@ -36,9 +42,63 @@ class LoginController extends Controller
     public function store(Request $request)
     
     {
-        // $input = $request->all();
+        //在此写处理登录的方法
+        $input = $request->except('_token');
         // dd($input);
-        // return view('');
+        // 2.验证数据的有效性
+         $rule = [
+            'name'=>'required|between:2,18',
+            'password'=>'required|between:5,18|alpha_dash',
+            'code' =>'required',
+        ];
+
+        //提示信息
+        $mess = [
+            'name.required'=>'用户名不能为空',
+            'name.between'=>'用户名的长度必须在5-18位',
+            'password.required'=>'密码不能为空',
+            'password.between'=>'密码的长度必须在5-18位',
+            'password.alpha_dash'=>'密码必须是数字字母下划线',
+            'code.required' =>'验证码不能为空',
+        ];
+
+        $validator = Validator::make($input, $rule,$mess);
+        //dd($validator);
+        // 如果验证失败
+        if ($validator->fails()) {
+            return redirect('home/login')
+                ->withErrors($validator)
+                ->withInput();
+        }
+         //          验证码
+        if(strtolower($input['code']) != strtolower(session('code')) ){
+            return back()->with('errors','验证码错误');
+        }
+
+//        3. 判断用户名、密码、验证码的有效性
+//        $input['username']
+          $user = User::where('name',$input['name'])->first();
+            //如果没有此用户，返回没有此用户的错误提示
+          if (! $user) {
+              return back()->with('errors','无此用户');
+          }
+
+//            密码不正确
+          if(Crypt::decrypt($user->password) != $input['password']){
+              return back()->with('errors','密码错误');
+          }
+
+
+          if($user->active != 1){
+              return back()->with('errors','此账号没有激活，请先激活');
+          }
+//        4. 如果有效就登录到后台，验证失败就返回到添加页面
+//        将用户的登录状态保存到session
+
+            Session::put('user',$user);
+
+          return redirect('home/userinfo');
+
     }
 
     /**
