@@ -23,8 +23,12 @@ Route::post('admin/dologin','Admin\LoginController@dologin');
 
 //用户模块
 Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'islogin'],function(){
-//用户添加页
-Route::resource('user','UserController');
+//后台用户管理
+Route::resource('users','UsersController');
+
+//管理员添加管理
+    Route::post('user/upload','UserController@upload');
+    Route::resource('user','UserController');
 //后台首页
 Route::get('index', 'LoginController@index');
 //退出登录
