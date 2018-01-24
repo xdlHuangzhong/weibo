@@ -24,12 +24,14 @@ Route::post('admin/dologin','Admin\LoginController@dologin');
 //用户模块
 Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'islogin'],function(){
 
+
 //管理员添加管理
 Route::post('user/upload','UserController@upload');
 Route::resource('user','UserController');
 
 // 后台普通用户管理
 Route::resource('users','UsersController');
+
 
 
 //后台首页

@@ -26,9 +26,9 @@ class NoticeController extends Controller
         }else{
             $data = Notice::paginate(2);
         }
-
         return view('admin/notice/index',compact('data','input'));
         // return 123;
+
     }
 
     /**

@@ -91,14 +91,9 @@
     <div id="myFocus">
         <div class="loading"><span>正在载入...</span></div><!--载入画面-->
         <ul class="pic"><!--内容列表-->
-            <li><a href="http://www.5imoban.net/"><img src="/home/shouye/img/images/1.jpg" thumb="" alt="模板网" text="" /></a></li>
-            <li><a href="http://www.5imoban.net/"><img src="/home/shouye/img/images/2.jpg" thumb="" alt="我爱模板网" text="" /></a></li>
-            <li><a href="http://www.5imoban.net/"><img src="/home/shouye/img/images/3.jpg" thumb="" alt="网站模板素材" text="" /></a></li>
-            <li><a href="http://www.5imoban.net/"><img src="/home/shouye/img/images/4.jpg" thumb="" alt="免费网站模板下载" text="" /></a></li>
-            <li><a href="http://www.5imoban.net/"><img src="/home/shouye/img/images/1.jpg" thumb="" alt="网站PSD模板" text="" /></a></li>
-            <li><a href="http://www.5imoban.net/"><img src="/home/shouye/img/images/2.jpg" thumb="" alt="网站模板" text="" /></a></li>
-            <li><a href="http://www.5imoban.net/"><img src="/home/shouye/img/images/3.jpg" thumb="" alt="免费模板" text="" /></a></li>
-            <li><a href="http://www.5imoban.net/"><img src="/home/shouye/img/images/4.jpg" thumb="" alt="jQuery特效代码" text="" /></a></li>
+        @foreach ($bata as $f)
+            <li><a href="https://{{ $f->site }}"><img src="/lunbotu/{{ $f->img }}" thumb="" alt="" text="" /></a></li>
+        @endforeach
         </ul>
     </div>
     <div class="ad">
@@ -185,17 +180,21 @@
     <h2 class="UG_box_title">微博实时热点</h2>
     <div class="UG_contents">
                 <div class="UG_list_c" action-type="feed_list_item" href="/a/hot/e554a6e1eca5d7bd_0.html?type=grab" suda-uatrack="key=www_unlogin_home&amp;value=hot05">
+            @foreach ($date as $not)
             <div class="pic W_piccut_v">
-                <a href="https://weibo.com/a/hot/e554a6e1eca5d7bd_0.html?type=grab" target="_blank"><img src="/home/shouye/img/65b2f222ly1fna39yeug1j20sf0zpq8d.jpg" alt=""></a>
+                <a href="javascript:;" target="_blank"><img src="/noticepic/{{ $not->logo }}" alt=""></a>
             </div>
             <div class="list_des">
-                <h3 class="list_title_s"><a href="https://weibo.com/a/hot/e554a6e1eca5d7bd_0.html?type=grab" class="S_txt1" target="_blank">王思聪 回应</a></h3>
-                <div class="des_main S_txt2"> ​​​​</div>
+                <h2 class="list_title_s"><a href="javascript:;" class="S_txt1" target="_blank">{{ $not->name }}</a></h2>
+                <div class="des_main S_txt2">
+                 <h2 class="list_title_s"><a href="javascript:;" class="S_txt1" target="_blank">{{ $not->content }}</a></h2>
+                 ​​​​</div>
             </div>
+            @endforeach
         </div>
             </div>
     <div class="UG_box_foot">
-        <a href="https://weibo.com/a/hot/realtime" class="S_txt1" target="_blank">查看更多<i class="W_ficon ficon_arrow_right S_ficon"></i></a>
+        <a href="javascript:;" class="S_txt1" target="_blank">查看更多<i class="W_ficon ficon_arrow_right S_ficon"></i></a>
     </div>
 </div>
 </div>
