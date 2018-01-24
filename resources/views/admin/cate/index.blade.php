@@ -8,9 +8,8 @@
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
                                 <div class="widget-title  am-cf">分类列表</div>
-
-
                             </div>
+
                             <div class="widget-body  am-fr">
 
                                 <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
@@ -68,11 +67,7 @@
                                                 </td>
 
                                                 <td class="am-text-middle">{{ $v->id }}</td>
-
-               
-                                                        <td class="am-text-middle">{{ $v->name }}</td>
-
-
+                                                <td class="am-text-middle">{{ $v->name }}</td>
                                                 <td class="am-text-middle">{{ $v->title }}</td>
                                                 <td class="am-text-middle">{{ $v->keywords }}</td>
                                                 <td class="am-text-middle">
@@ -85,11 +80,7 @@
                                                         <a href="javascript:;" onclick="delCate({{ $v->id }})" class="tpl-table-black-operation-del">
                                                             <i class="am-icon-trash"></i> 删除
                                                         </a>
-                                                        {{--<form action="{{ url('admin/cate/'.$v->id) }}" method="post">--}}
-                                                            {{--{{ csrf_field() }}--}}
-                                                            {{--{{ method_field('DELETE') }}--}}
-                                                            {{--<button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="submit" ></button>--}}
-                                                        {{--</form>--}}
+
                                                     </div>
                                                 </td>
                                             </tr>

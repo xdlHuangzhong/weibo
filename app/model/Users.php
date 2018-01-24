@@ -13,9 +13,14 @@ class Users extends Model
     public $primaryKey = 'id';
 
 
-    public $timestamps = 'false';
+    public $timestamps = false;
 
     //允许修改字段
     public $guarded = [];
+    //获取用户所属分类
+    public function posts()
+{
+    return $this->hasOne('App\model\Cate','id','cate_id');
+}
 
 }
