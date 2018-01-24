@@ -18,6 +18,7 @@ Route::get('admin/login','Admin\LoginController@login');
 //登录页面的验证码
 Route::get('/code/captcha/{tmp}', 'Admin\LoginController@captcha');
 
+
 //登录页面的处理逻辑
 Route::post('admin/dologin','Admin\LoginController@dologin');
 
@@ -31,8 +32,6 @@ Route::resource('user','UserController');
 
 // 后台普通用户管理
 Route::resource('users','UsersController');
-
-
 
 //后台首页
 Route::get('index', 'LoginController@index');
@@ -53,6 +52,7 @@ Route::resource('friends','FriendsController');
 Route::post('cate/changeorder','CateController@changeorder');
 Route::resource('cate','CateController');
 
+
     //轮播图模块
 //修改路由
     Route::post('reimg','ImgController@update');
@@ -66,15 +66,29 @@ Route::resource('cate','CateController');
     Route::get('content/info','ContentController@info');
     Route::resource('content','ContentController');
 
+//后台加载发送系统消息页面路由
+Route::get('/news/{id}','NewsController@add');
+//后台执行发送系统消息功能路由
+Route::post('/send/{id}','NewsController@send');
+
+
+    // 数据库数据存入config/webconfig.php
+    Route::get('config/putcontent','ConfigController@putContent');
+// 网站配置资源路由
+    Route::resource('config','ConfigController');
+// 网站配置数据更新
+    Route::post('config/update','ConfigController@Update');
+
+
 });
 
 
 
 
 
+//=============================前台=============================//
 
 
-//前台路由
 //前台用户模块
 Route::group(['prefix'=>'home','namespace'=>'Home'],function(){
 //前台首页

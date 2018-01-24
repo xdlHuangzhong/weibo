@@ -46,7 +46,8 @@
         <header>
             <!-- logo -->
             <div class="am-fl tpl-header-logo">
-                <h3 style="color: white;font-size: 30px">weibo.com</h3>
+                <a href=
+                '{{ url("admin/index") }}'><h3 style="color: white;font-size: 30px">weibo.com</h3></a>
             </div>
             <!-- 右侧内容 -->
             <div class="tpl-header-fluid">
@@ -243,6 +244,25 @@
                         
                          </ul>
 
+                </li>
+
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-cog sidebar-nav-link-logo"></i> 网站配置
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="{{ url('admin/config/create') }}">
+                                <span class="am-icon-wrench sidebar-nav-link-logo"></span> 管理配置
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-link">
+                            <a href="{{ url('admin/config') }}">
+                                <span class="am-icon-reorder sidebar-nav-link-logo"></span> 配置列表
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
 

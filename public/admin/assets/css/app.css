@@ -509,6 +509,13 @@ ul.tpl-dropdown-content .tpl-dropdown-menu-messages-item .menu-messages-content 
   line-height: 12px;
   
 }
+.tpl-table-black-operation button {
+  display: inline-block;
+  padding: 5px 6px;
+  font-size: 12px;
+  line-height: 12px;
+  
+}
 
 .tpl-table-black-operation #a1 {
    float:right;
@@ -1650,11 +1657,22 @@ ul.tpl-dropdown-content .tpl-dropdown-menu-messages-item .menu-messages-content 
   padding: 6px;
   border-bottom: 1px solid #666d70;
 }
+
+
 .theme-black .tpl-table-black tbody > tr > td {
   font-size: 14px;
   padding: 7px 6px;
   border-top: 1px solid #666d70;
 }
+
+.theme-black .tpl-table-black tbody > tr > td > button {
+  font-size: 14px;
+  padding: 7px 6px;
+  border-top: 1px solid #666d70;
+}
+
+
+
 .theme-black .tpl-table-black tfoot > tr > th {
   font-size: 14px;
   padding: 6px 0;

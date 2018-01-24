@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Model\Users;
-use App\Model\Cate;
+use App\Model\User_info;
+use App\Model\User;
+
 class UsersController extends Controller
 {
     /**
@@ -16,24 +17,22 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
-        $input = $request->only('keywords');
-//        dd($input);
+        $data = user::join('user_info','user_info.uid','=','user.id')->where('nickName','like','%'.$request->input('search').'%')->paginate(2);
 
-        if($input){
-            $data = Users::where('name','like','%'.$input['keywords'].'%')->paginate(2);
+        // $data = User_info::orderBy('id','asc')
+        //     ->where(function($query) use($request){
+        //         //检测关键字
+        //         $name = $request->input('keywords1');
+        //         //如果用户名不为空
+        //         if(!empty($name)){
+        //             $query->where('name','like','%'.$name.'%');
+        //         }
+                
+        //     })
+        //     ->paginate($request->input('num', 2));
 
-        }else{
-            $data = Users::with('posts')->paginate(2);
-//            dd($data);
-
-            //var_dump($data);die;
-        }
-
-        //获取查询数据所属的分类
-
-
-        return view('admin/users/list',compact('data','input'));
-
+            // dd($data);
+        return view('admin.users.list',['data'=>$data, 'request'=> $request]);
     }
 
     /**
@@ -66,9 +65,7 @@ class UsersController extends Controller
     public function show($id)
     {
         //
-
-
-
+        return 2131;
     }
 
     /**
@@ -79,14 +76,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
-//
-        $users = Users::find($id);
-
-        //获取1级分类
-        $catone = Cate::where('pid','>','0')->get();
-//        dd($users);
-        return view('admin.users.edit',compact('users','catone'));
+       echo 'edit';
     }
 
     /**
@@ -98,21 +88,23 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //添加分类
-        $input = $request->all();
-//        dd($input);
-        $users = Users::find($id);
+    // return 111;
+        
+        //查询用户原来状态
+        $date = User::where('id',$id)->value('active');
+        // dd($date);
+        
+        if($date){
 
-        $users->cate_id = $input['cate_id'];
+            //更新数据库
+            $update = User::where('id',$id)->update(['active'=>0]);
+            return 0;
+        } else {
 
-        $res = $users->save();
-
-        if($res){
-            return redirect('admin/users');
-        }else{
-            return back()->with('msg','修改失败');
+            //更新数据库
+            $update = User::where('id',$id)->update(['active'=>1]);
+            return 1;
         }
-
     }
 
     /**
