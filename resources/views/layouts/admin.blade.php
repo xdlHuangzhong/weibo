@@ -46,7 +46,8 @@
         <header>
             <!-- logo -->
             <div class="am-fl tpl-header-logo">
-                <h3 style="color: white;font-size: 30px">weibo.com</h3>
+                <a href=
+                '{{ url("admin/index") }}'><h3 style="color: white;font-size: 30px">weibo.com</h3></a>
             </div>
             <!-- 右侧内容 -->
             <div class="tpl-header-fluid">

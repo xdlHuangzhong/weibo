@@ -12,71 +12,8 @@
                     <a href="https://weibo.com/?category=0" class="nav_item cur">热门</a>
                 </li>
             </div>
-					            <div category_id="2" action-type="filter_cat" suda-data="key=nologin_home&amp;value=nologin_left_hot:2" suda-uatrack="key=www_unlogin_home&amp;value=star">
-                <li>
-                    <a href="https://weibo.com/?category=2" class="nav_item">明星</a>
-                </li>
-            </div>
-					            <div category_id="1760" action-type="filter_cat" suda-data="key=nologin_home&amp;value=nologin_left_hot:1760" suda-uatrack="key=www_unlogin_home&amp;value=headline">
-                <li>
-                    <a href="https://weibo.com/?category=1760" class="nav_item">头条</a>
-                </li>
-            </div>
-					            <div category_id="video" action-type="filter_cat" suda-data="key=nologin_home&amp;value=nologin_left_hot:video" suda-uatrack="key=www_unlogin_home&amp;value=video">
-                <li>
-                    <a href="http://krcom.cn/" class="nav_item">视频</a>
-                </li>
-            </div>
-					            <div category_id="novelty" action-type="filter_cat" suda-data="key=nologin_home&amp;value=nologin_left_hot:novelty" suda-uatrack="key=www_unlogin_home&amp;value=novelty">
-                <li>
-                    <a href="https://weibo.com/?category=novelty" class="nav_item">新鲜事</a>
-                </li>
-            </div>
-					            <div category_id="99991" action-type="filter_cat" suda-data="key=nologin_home&amp;value=nologin_left_hot:99991" suda-uatrack="key=www_unlogin_home&amp;value=billboard">
-                <li>
-                    <a href="https://weibo.com/?category=99991" class="nav_item">榜单</a>
-                </li>
-            </div>
-					            <div category_id="10011" action-type="filter_cat" suda-data="key=nologin_home&amp;value=nologin_left_hot:10011" suda-uatrack="key=www_unlogin_home&amp;value=fun">
-                <li>
-                    <a href="https://weibo.com/?category=10011" class="nav_item">搞笑</a>
-                </li>
-            </div>
-					            <div category_id="7" action-type="filter_cat" suda-data="key=nologin_home&amp;value=nologin_left_hot:7" suda-uatrack="key=www_unlogin_home&amp;value=society">
-                <li>
-                    <a href="https://weibo.com/?category=7" class="nav_item">社会</a>
-                </li>
-            </div>
-					            <div category_id="10010" action-type="filter_cat" suda-data="key=nologin_home&amp;value=nologin_left_hot:10010" suda-uatrack="key=www_unlogin_home&amp;value=emotion">
-                <li>
-                    <a href="https://weibo.com/?category=10010" class="nav_item">情感</a>
-                </li>
-            </div>
-					            <div category_id="12" action-type="filter_cat" suda-data="key=nologin_home&amp;value=nologin_left_hot:12" suda-uatrack="key=www_unlogin_home&amp;value=fashion">
-                <li>
-                    <a href="https://weibo.com/?category=12" class="nav_item">时尚</a>
-                </li>
-            </div>
-					            <div category_id="4" action-type="filter_cat" suda-data="key=nologin_home&amp;value=nologin_left_hot:4" suda-uatrack="key=www_unlogin_home&amp;value=mil">
-                <li>
-                    <a href="https://weibo.com/?category=4" class="nav_item">军事</a>
-                </li>
-            </div>
-					            <div category_id="10007" action-type="filter_cat" suda-data="key=nologin_home&amp;value=nologin_left_hot:10007" suda-uatrack="key=www_unlogin_home&amp;value=beauty">
-                <li>
-                    <a href="https://weibo.com/?category=10007" class="nav_item">美女</a>
-                </li>
-            </div>
-					            <div category_id="3" action-type="filter_cat" suda-data="key=nologin_home&amp;value=nologin_left_hot:3" suda-uatrack="key=www_unlogin_home&amp;value=sports">
-                <li>
-                    <a href="https://weibo.com/?category=3" class="nav_item">体育</a>
-                </li>
-            </div>
-					            <div category_id="10005" action-type="filter_cat" suda-data="key=nologin_home&amp;value=nologin_left_hot:10005" suda-uatrack="key=www_unlogin_home&amp;value=comic">
-                <li>
-                    <a href="https://weibo.com/?category=10005" class="nav_item">动漫</a>
-                </li>
-            </div>
+					            
+					           
 			</ul>
 </div></div>
 		          </div>
@@ -88,10 +25,10 @@
 <div class="UG_slider">
    
  <div class="myFocus-box">
-    <div id="myFocus">
-        <div class="loading"><span>正在载入...</span></div><!--载入画面-->
+    <div id="myFocus" style="width:100%;">
+        <div class="loading" ><span>正在载入...</span></div><!--载入画面-->
         <ul class="pic"><!--内容列表-->
-            <li><a href="http://www.5imoban.net/"><img src="/home/shouye/img/images/1.jpg" thumb="" alt="模板网" text="" /></a></li>
+            <li><a href="http://www.5imoban.net/"><img  src="/home/shouye/img/images/1.jpg" thumb="" alt="模板网" text="" /></a></li>
             <li><a href="http://www.5imoban.net/"><img src="/home/shouye/img/images/2.jpg" thumb="" alt="我爱模板网" text="" /></a></li>
             <li><a href="http://www.5imoban.net/"><img src="/home/shouye/img/images/3.jpg" thumb="" alt="网站模板素材" text="" /></a></li>
             <li><a href="http://www.5imoban.net/"><img src="/home/shouye/img/images/4.jpg" thumb="" alt="免费网站模板下载" text="" /></a></li>
@@ -101,15 +38,7 @@
             <li><a href="http://www.5imoban.net/"><img src="/home/shouye/img/images/4.jpg" thumb="" alt="jQuery特效代码" text="" /></a></li>
         </ul>
     </div>
-    <div class="ad">
-        <span>新闻热题</span><br>
-        <span>新闻热题</span><br>
-        <span>新闻热题</span><br>
-        <span>新闻热题</span><br>
-        <span>新闻热题</span><br>
-
-    </div>
-
+    
 </div>
 </div>
 <!-- card -->     

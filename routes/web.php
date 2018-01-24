@@ -18,12 +18,17 @@ Route::get('admin/login','Admin\LoginController@login');
 //登录页面的验证码
 Route::get('/code/captcha/{tmp}', 'Admin\LoginController@captcha');
 
+
 //登录页面的处理逻辑
 Route::post('admin/dologin','Admin\LoginController@dologin');
 
 //用户模块
 Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'islogin'],function(){
-//用户添加页
+//后台用户管理
+Route::resource('users','UsersController');
+
+//管理员添加管理
+Route::post('user/upload','UserController@upload');
 Route::resource('user','UserController');
 //后台首页
 Route::get('index', 'LoginController@index');
@@ -44,7 +49,18 @@ Route::resource('friends','FriendsController');
 Route::post('cate/changeorder','CateController@changeorder');
 Route::resource('cate','CateController');
 
+//后台加载发送系统消息页面路由
+Route::get('/news/{id}','NewsController@add');
+//后台执行发送系统消息功能路由
+Route::post('/send/{id}','NewsController@send');
+
 });
+
+
+
+
+//=============================前台=============================//
+
 //前台用户模块
 Route::group(['prefix'=>'home','namespace'=>'Home'],function(){
 //前台首页

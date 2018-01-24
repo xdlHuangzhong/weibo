@@ -1,6 +1,19 @@
 @extends('layouts.admin')
 @section('title','用户列表')
 @section('content')
+
+
+@if(session('msg'))
+    <div class="">
+            <script type="text/javascript">
+                $(function(){
+                        layer.msg( "{{session('msg')}}");
+                })
+            </script>
+    </div>
+@endif
+
+
         <div class="tpl-content-wrapper">
             <div class="row-content am-cf">
                 <div class="row">
@@ -22,7 +35,7 @@
                                             
                                             
                                                 
-                                                <th><input type="text" name="keywords1" value="{{ $request->keywords1 }}" placeholder="用户名" class="am-form-field " style="width:200px;" ></th>
+                                                <th><input type="text" name="search" value="{{$request['search']}}" placeholder="用户名" class="am-form-field " style="width:200px;" ></th>
                                                 
                                                  
                                                 <th><span class="am-input-group-btn">
@@ -45,40 +58,58 @@
 
                                             <tr align="center">
 
-                                                <th>ID</th>
+                                                
+                                                <th>昵称</th>
                                                 <th>头像</th>
-                                                <th>用户名</th>
+                                                <th>性别</th>
+                                                <th>年龄</th>
                                                 <th>邮箱</th>
                                                 <th>手机号</th>
-                                                <th>时间</th>
+                                                <th>状态</th>
                                                 <th>操作</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($data as $k=>$v)
                                             <tr class="even gradeC">
-                                            <td class="am-text-middle">{{ $v->id }}</td>
+                                            <td class="am-text-middle">{{ $v->nickName }}</td>
                                              <td >
                                                     <img src="/uploads/{{ $v->pic }}" class="tpl-table-line-img" alt="" style="width:50px;">
                                                 </td>
-                                                <td class="am-text-middle">{{ $v->name }}</td>
+                                                <td class="am-text-middle">{{ $v->sex }}</td>
+                                                <td class="am-text-middle">{{ $v->age }}</td>
                                                 <td class="am-text-middle">{{ $v->email }}</td>
                                                 <td class="am-text-middle">{{ $v->phone }}</td>
-                                                <td class="am-text-middle">{{ $v->created_at }}</td>
+                                                <td class="am-text-middle" id="status{{$v->uid}}">{{$v->active == 0 ? '正常' : '冻结'}}</td>
                                                 <td class="am-text-middle">
                                                     <div class="tpl-table-black-operation">
                                                     
                                                         
-                                                        @if( session('admin')->id == $v->id )
-                                                        <a  href="{{ url('admin/user/'.$v->id.'/edit') }}" disabled="disabled">
-                                                            <i class="am-icon-pencil" ></i> 修改
+                                                        
+                                                        
+
+                                                        <a  href="{{ url('admin/users/'.$v->id) }}" disabled="disabled">
+                                                             查看微博
                                                         </a>
-                                                        @endif
-                                                        @if(session('admin')->status == 0  )
+
+                                                        <a  href="{{ url('/admin/news/'.$v->uid) }}" disabled="disabled">
+                                                             系统消息
+                                                        </a>
+                                                        <!-- <a  href="{{ url('/admin/users/') }}" disabled="disabled">
+                                                             正常
+                                                        </a> -->
+                                                        <a class="btn btn-default" onclick="user_edit({{$v->uid}})" id="user{{$v->uid}}">{{$v->active == 1 ? '恢复' : '冻结'}}</a>
+
+
+                                                        
+
+
+                                                        
+                                                        <!-- @if(session('admin')->status == 0  )
                                                         <a id="a1" href="javascript:;" onclick="delUser({{ $v->id }})" class="tpl-table-black-operation-del">
-                                                            <i class="am-icon-trash"></i> 删除
+                                                             冻结
                                                         </a>
-                                                        @endif
+                                                        @endif -->
                                                        
                                                     </div>
                                                 </td>
@@ -108,41 +139,58 @@
         </div>
 
 
-        <script>
-            function delUser(id){
-                layer.confirm('您确定要删除吗？', {
-                    btn: ['确定','取消']
+        <script type="text/javascript">
+
+        $('.mws-form-message').delay(3000).slideUp(1000);
+
+        //冻结用户
+        function user_edit(id){
+
+            layer.confirm('您确定要修改此用户状态吗？', {
+                  btn: ['确定','取消'] //按钮
                 }, function(){
 
+                    $.ajax({
+                    type: "post",
+                    url: "/admin/users/"+id,
+                    data: {id:id,_token:'{{csrf_token()}}',_method:'put'},
+                    
+                    beforeSend:function(){
+                        //加载样式
+                        a = layer.load(0, {shade: false});
+                      },
+                    success: function(data) {
 
-                    $.post('{{ url('admin/user/') }}/'+id,{'_method':'delete','_token':"{{csrf_token()}}"},function (data) {
+                        //关闭加载样式
+                        layer.close(a)
 
-
-                        if(data.status == 0){
-                            layer.msg(data.message, {icon: 6});
-                            setTimeout(function(){
-                                window.location.href = location.href;
-                            },2000);
-
-
+                        //改变用户状态
+                        if(data==1){
+                            layer.msg('用户已冻结！', {icon: 1});
+                            document.getElementById('status'+id).innerHTML = '冻结';
+                            document.getElementById('user'+id).innerHTML = '恢复';
                         }else{
-                            layer.msg(data.message, {icon: 5});
-
-
-                            setTimeout(function(){
-                                window.location.href = location.href;
-                            },2000);
+                            layer.msg('用户已恢复！', {icon: 1});
+                           document.getElementById('status'+id).innerHTML = '正常';
+                            document.getElementById('user'+id).innerHTML = '冻结';
                         }
 
+                        
 
-                    })
-
+                        
+                        
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        layer.msg("标签删除失败，请检查网络后重试", {icon:2 ,})  
+                    }
+                });
 
                 }, function(){
-
-
+                        
                 });
-            }
-        </script>
+        }
+
+
+    </script>
            	
 @stop
