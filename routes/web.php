@@ -51,7 +51,7 @@ Route::resource('friends','FriendsController');
 Route::post('cate/changeorder','CateController@changeorder');
 Route::resource('cate','CateController');
 
-//轮播图模块
+    //轮播图模块
 //修改路由
     Route::post('reimg','ImgController@update');
 //上传路由
