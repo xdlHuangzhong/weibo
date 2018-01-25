@@ -67,7 +67,7 @@ class UserController extends Controller
 
             'name' => 'required|regex:/^.{4,12}$/',
 
-            'password' => 'required|regex:/^w{6,12}$/',
+            'password' => 'required|regex:/^\w{6,12}$/',
 
             'repassword' => 'required|regex:/^\w{6,12}$/',
             'repassword' => 'same:password',
