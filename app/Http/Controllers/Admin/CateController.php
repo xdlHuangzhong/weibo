@@ -16,19 +16,21 @@ class CateController extends Controller
     public function index(Request $request)
     {
         //
-//        $cates = Cate::all();
+//
         //实例化分类对象
+//        $cate = new Cate();
+//        $cates = $cate->getcate();
         $input = $request->only('keywords');
 //        dd($input);
         if($input){
-            $cates = Cate::where('name','like','%'.$input['keywords'].'%')->paginate(2);
+            $cates = Cate::where('name','like','%'.$input['keywords'].'%')->orderby('path')->paginate(5);
         }else{
-            $cates = Cate::paginate(2);
+            $cates = Cate::orderby('path')->paginate(5);
         }
         return view('admin/cate/index',compact('cates','input'));
     }
 
-    //排序方法
+    //修改排序方法
     public function changeorder(Request $request)
     {
         $input = $request->except('_token');
@@ -106,10 +108,19 @@ class CateController extends Controller
 
         $cate = New Cate();
         $cate->pid = $input['pid'];
+
         $cate->name = $input['name'];
+
+
         $cate->title =$input['title'];
         $cate->keywords =$input['keywords'];
         $cate->order =$input['order'];
+        if(!$input['pid'] == 0){
+            $cate->path = 0 . ',' . $input['pid'];
+        }else{
+            $cate->path = 0;
+        }
+
         $res = $cate->save();
         if($res)
         {

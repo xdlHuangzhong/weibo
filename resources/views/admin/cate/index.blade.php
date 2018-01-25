@@ -16,11 +16,17 @@
                                     <div class="am-form-group">
                                         <div class="am-btn-toolbar">
                                             <div class="am-btn-group am-btn-group-xs">
+                                                <a href="{{ url('/admin/cate/create') }}">
+                                                    <button  class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span> 新增分类 </button>
+                                                </a>
+
 
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+
                                 <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
                                     <div class="am-form-group tpl-table-list-select">
 
@@ -50,7 +56,7 @@
                                     <table  width="100%" class="am-table am-table-compact am-table-striped tpl-table-black ">
                                         <thead>
                                             <tr>
-                                                <th>排序</th>
+
                                                 <th>分类ID</th>
                                                 <th>分类标题</th>
                                                 <th>分类介绍</th>
@@ -62,12 +68,14 @@
                                             <tr class="gradeX">
 
                                             @foreach($cates as $k=>$v)
-                                                <td id="px" class="am-text-middle">
-                                                    <input style="color:black;" type="text" onchange="changeOrder(this,{{ $v->id }})" value="{{ $v->order }}">
-                                                </td>
+
 
                                                 <td class="am-text-middle">{{ $v->id }}</td>
-                                                <td class="am-text-middle">{{ $v->name }}</td>
+                                                @if($v->pid == 0)
+                                                    <td class="am-text-middle">{{ $v->name }}</td>
+                                                @else
+                                                    <td class="am-text-middle">|--{{ $v->name }}</td>
+                                                @endif
                                                 <td class="am-text-middle">{{ $v->title }}</td>
                                                 <td class="am-text-middle">{{ $v->keywords }}</td>
                                                 <td class="am-text-middle">
@@ -142,25 +150,7 @@
             }
 
             //修改排序
-            function changeOrder(obj,id)
-            {
-                //获取当前文本框的排序值
-                var v = $(obj).val();
-                $.post('{{ url('/admin/cate/changeorder') }}',{'_token':"{{csrf_token()}}",'id':id,'order':v},function(data){
-                    console.log(data);
-                if(data.status == 0){
-                    layer.msg(data.msg);
-                    setTimeout(function(){
-                        window.location.href = location.href;
-                    },2000);
-                }else{
-                    layer.msg(data.msg);
-                    setTimeout(function(){
-                        window.location.href = location.href;
-                    },2000);
-                }
-            })
-            }
+
 
 
         </script>

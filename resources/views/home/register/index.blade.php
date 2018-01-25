@@ -19,18 +19,18 @@
         	<div class="bj_bai">
             <h3>欢迎注册</h3>
              @if (count($errors) > 0)
-                                                                                        <div class="alert alert-danger">
-                                                                                            <ul>
-                                                                                                @if(is_object($errors))
-                                                                                                    @foreach ($errors->all() as $error)
-                                                                                                        <li style="color:red">{{ $error }}</li>
-                                                                                                    @endforeach
-                                                                                                @else
-                                                                                                        <li style="color:red">{{ $errors }}</li>
-                                                                                                @endif
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                    @endif
+                    <div class="alert alert-danger">
+                        <ul>
+                            @if(is_object($errors))
+                                @foreach ($errors->all() as $error)
+                                    <li style="color:red">{{ $error }}</li>
+                                @endforeach
+                            @else
+                                <li style="color:red">{{ $errors }}</li>
+                            @endif
+                        </ul>
+                    </div>
+                @endif
        	  	  <form action="{{ url('/home/register/send') }}" method="post">
               {{ csrf_field() }}
                 <input name="name" type="text" class="kuang_txt phone" placeholder="用户名">

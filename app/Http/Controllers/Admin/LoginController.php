@@ -55,13 +55,13 @@ class LoginController extends Controller
         header("Content-Type:image/jpeg");
         $builder->output();
     }
-    // public function crypt()
-    // {
-    //   //crypt加密
-    //  $str = '123456';
-    //   $input= Crypt::encrypt($str);
-    //   dd($input);
-    // }
+//     public function crypt()
+//     {
+//       //crypt加密
+//      $str = '123456';
+//       $input= Crypt::encrypt($str);
+//       dd($input);
+//     }
     //处理登录逻辑的
     public function dologin(Request $request)
     {

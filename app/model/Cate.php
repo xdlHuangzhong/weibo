@@ -22,7 +22,7 @@ class Cate extends Model
     //格式化数据(排序,缩进)
     public function getCate()
     {
-        $cates = $this->orderBy('order','asc')->get();
+        $cates = $this->orderBy('order','asc')->paginate(2);
 
         return $this->Cate($cates);
     }

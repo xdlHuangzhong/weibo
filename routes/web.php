@@ -118,7 +118,8 @@ Route::post('user/upload','InfoController@upload');
 
 
 
-
+//加密演示
+// Route::get('admin/crypt','Admin\LoginController@crypt');
 
 
 
