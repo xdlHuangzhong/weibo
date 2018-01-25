@@ -80,6 +80,8 @@ Route::post('/send/{id}','NewsController@send');
     Route::post('config/update','ConfigController@Update');
 
 
+    //热门话题
+    Route::resource('topic','TopicController');
 });
 
 
@@ -109,7 +111,10 @@ Route::post('doreset','RegisterController@doReset');
 Route::resource('login','LoginController');
 
 //加载个人中心页
-Route::resource('userinfo','InfoController');
+Route::resource('user','InfoController');
+//加载个人详情
+Route::get('userinfo/index','UserinfoController@index');
+Route::get('userinfo/share','UserinfoController@share');
 //处理图片
 Route::post('user/upload','InfoController@upload');
 });

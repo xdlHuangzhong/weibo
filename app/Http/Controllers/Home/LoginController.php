@@ -97,7 +97,7 @@ class LoginController extends Controller
 
             Session::put('user',$user);
 
-          return redirect('home/userinfo');
+          return redirect('home/user');
 
     }
 

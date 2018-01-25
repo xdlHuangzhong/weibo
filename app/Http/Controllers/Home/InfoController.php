@@ -16,10 +16,8 @@ class InfoController extends Controller
      */
     public function index()
     {
-        //
-         $info = \DB::table('contents')->orderBy('cid','desc')->get();
-         // dd($info);
-        return view('home.userinfo.add',compact('info'));
+
+        return view('home.userinfo.index');
     }
 
     /**
