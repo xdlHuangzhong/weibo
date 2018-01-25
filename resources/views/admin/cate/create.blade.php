@@ -76,13 +76,7 @@
                         </div>
                     </div>
 
-                    <div class="am-form-group">
-                        <label for="user-phone" class="am-u-sm-3 am-form-label">排序 <span class="tpl-form-line-small-title">Bank</span></label>
-                        <div class="am-u-sm-9">
-                            <input name="order" type="text" class="tpl-form-input" id="user-name" value="" placeholder="请输入排序数字">
 
-                        </div>
-                    </div>
 
 
 

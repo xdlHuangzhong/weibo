@@ -23,9 +23,9 @@ class CateController extends Controller
         $input = $request->only('keywords');
 //        dd($input);
         if($input){
-            $cates = Cate::where('name','like','%'.$input['keywords'].'%')->orderby('path')->paginate(5);
+            $cates = Cate::where('name','like','%'.$input['keywords'].'%')->orderby('path')->paginate(10);
         }else{
-            $cates = Cate::orderby('path')->paginate(5);
+            $cates = Cate::orderby('path')->paginate(10);
         }
         return view('admin/cate/index',compact('cates','input'));
     }
@@ -77,20 +77,21 @@ class CateController extends Controller
     {
         //
         $input = $request->except('_token','updated_at','created_at');
+
+//        dd($pidd);
 //        dd($input);
         $rule = [
             'name'=>'required',
             'title'=>'required',
             'keywords'=>'required',
-            'order'=>'required|regex:/^\d{1,3}$/'
+
         ];
         //提示信息
         $mess = [
             'name.required'=>'分类标题不能为空！',
             'title.required'=>'分类介绍不能为空！',
             'keywords.required'=>'分类关键字不能为空！',
-            'order.required'=>'分类排序不能为空！',
-            'order.regex'=>'分类标题只能输入最多三位数字！',
+
 
 
 
@@ -107,6 +108,7 @@ class CateController extends Controller
 //                dd($input);
 
         $cate = New Cate();
+        $pidd = $cate::max('id')+1;
         $cate->pid = $input['pid'];
 
         $cate->name = $input['name'];
@@ -114,11 +116,12 @@ class CateController extends Controller
 
         $cate->title =$input['title'];
         $cate->keywords =$input['keywords'];
-        $cate->order =$input['order'];
+        //处理path字段字符串
+
         if(!$input['pid'] == 0){
-            $cate->path = 0 . ',' . $input['pid'];
+            $cate->path = 0 . ',' . $input['pid'] . ',' .$pidd;
         }else{
-            $cate->path = 0;
+            $cate->path = 0 . ',' . $pidd;
         }
 
         $res = $cate->save();
