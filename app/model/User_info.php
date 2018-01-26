@@ -16,6 +16,6 @@ class User_info extends Model
     public $timestamps = 'false';
 
     //允许修改字段
-    public $guarded = [];
+    public $guarded = ['updated_at'];
 
 }

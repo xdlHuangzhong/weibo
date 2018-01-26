@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','热门话题添加管理')
+@section('title','广告管理')
 @section('content')
 
                     <div class="tpl-content-wrapper">
@@ -9,7 +9,7 @@
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
-                                <div class="widget-title am-fl">热门话题链接添加</div><br>
+                                <div class="widget-title am-fl">广告链接添加</div><br>
                                 @if (count($errors) > 0)
                                     <div class="alert alert-danger">
                                         <ul>
@@ -29,23 +29,15 @@
                             </div>
                             <div class="widget-body am-fr">
         
-                                <form action="/admin/topic" method="post" class="am-form tpl-form-line-form">
+                                <form action="/admin/poster" method="post" class="am-form tpl-form-line-form">
                                 {{ csrf_field() }}
                                     <div class="am-form-group">
-                                        <label for="user-name" class="am-u-sm-3 am-form-label">热门话题链接<span class="tpl-form-line-small-title">Title</span></label>
+                                        <label for="user-name" class="am-u-sm-3 am-form-label">广告链接<span class="tpl-form-line-small-title">Link</span></label>
                                         <div class="am-u-sm-9">
-                                            <input type="text" name="link" class="tpl-form-input" id="user-name" placeholder="请输入热门话题链接">
+                                            <input type="text" name="link" class="tpl-form-input" id="user-name" placeholder="请输入广告链接">
                                             
                                         </div>
                                     </div>
-                                     <div class="am-form-group">
-                                        <label for="user-name" class="am-u-sm-3 am-form-label">热门话题名称<span class="tpl-form-line-small-title">Title</span></label>
-                                        <div class="am-u-sm-9">
-                                            <input type="text" name="name" class="tpl-form-input" id="user-name" placeholder="请输入热门话题名称">
-                                            
-                                        </div>
-                                    </div>
-
                                    
                                     <div class="am-form-group">
                                         <div class="am-u-sm-9 am-u-sm-push-3">

@@ -92,6 +92,7 @@ class LoginController extends Controller
           if($user->active != 1){
               return back()->with('errors','此账号没有激活，请先激活');
           }
+          
 //        4. 如果有效就登录到后台，验证失败就返回到添加页面
 //        将用户的登录状态保存到session
 
