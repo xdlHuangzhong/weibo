@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Content;
+use App\Model\User_info;
 use Illuminate\Support\Facades\Validator;
 use DB;
+use Session;
 class InfoController extends Controller
 {
     /**
@@ -16,8 +18,14 @@ class InfoController extends Controller
      */
     public function index()
     {
-
-        return view('home.userinfo.index');
+        $id = Session('user')->id;
+        // dd($id);
+        //查看微博内容
+        $res = User_info::where('uid','=',$id)->first();
+        // dd($res);
+        $rev = DB::table('contents')->orderBy('time','desc')->paginate(2);
+        // dd($rev);
+        return view('home.userinfo.index',['res'=>$res,'rev'=>$rev]);
     }
 
     /**
@@ -42,16 +50,17 @@ class InfoController extends Controller
         // dd($input);
         //时间
         $time = date('Y-m-d H:i:s',time());
-        $pic = substr($input['art_thumb'],8);
+        
         // dd($pic);
         $input['time'] = $time;
+         $pic = substr($input['art_thumb'],8);
         $input['pic'] = $pic;
         // dd($input);
         $res = Content::create($input);
         // 判断是否添加成功
         if($res){
             //如果添加成功，跳转到列表页
-            return redirect('home/userinfo')->with('msg','添加成功');
+            return redirect('home/user')->with('msg','添加成功');
         }else{
             //如果添加失败，返回到添加页
             return back()->with('msg','添加失败');

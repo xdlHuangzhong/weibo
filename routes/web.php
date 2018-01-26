@@ -110,6 +110,10 @@ Route::post('doreset','RegisterController@doReset');
 //加载登录的方法
 Route::resource('login','LoginController');
 
+    Route::post('user/upload','InfoController@upload');
+//加载个人中心发帖页
+    Route::resource('user','InfoController');
+
 //加载个人中心页
 Route::resource('user','InfoController');
 //加载个人详情
@@ -121,10 +125,11 @@ Route::post('user/upload','InfoController@upload');
 
 
 
-
+Route::get('comment','CommentController@index');
+Route::post('comment/add','CommentController@addComment');
 
 //加密演示
-// Route::get('admin/crypt','Admin\LoginController@crypt');
+//Route::get('admin/crypt','Admin\LoginController@crypt');
 
 
 

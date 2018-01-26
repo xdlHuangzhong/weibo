@@ -321,8 +321,8 @@
 					</div>
 					</div>
 					</div>
-						<a class="WB_cardmore S_txt1 S_line1 clearfix" href="javascript:" action-type="login">
-						<span class="more_txt">查看更多&nbsp;<em class="W_ficon ficon_arrow_right S_ficon">a</em></span>
+						<a class="WB_cardmore S_txt1 S_line1 clearfix" href="{{ url('/home/user/create') }}" action-type="login">
+						<span class="more_txt">编辑个人资料&nbsp;<em class="W_ficon ficon_arrow_right S_ficon">a</em></span>
 						</a>
 						
 				</div>

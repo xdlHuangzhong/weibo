@@ -16,6 +16,6 @@ class Notice extends Model
 
     public $guarded = [];
 
-//    public $timestamps = 'false';
+    public $timestamps = false;
 
 }

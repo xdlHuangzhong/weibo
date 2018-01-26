@@ -173,7 +173,7 @@
                 </li>
 
                 <li class="sidebar-nav-link">
-                    <a href="javaquery:;" class="sidebar-nav-sub-title">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
                         <i class="am-icon-table sidebar-nav-link-logo"></i> 友情链接
                         <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
@@ -192,7 +192,7 @@
                 </li>
 
                 <li class="sidebar-nav-link">
-                    <a href="javaquery:;" class="sidebar-nav-sub-title">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
                         <i class="am-icon-table sidebar-nav-link-logo"></i> 分类管理
                         <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
@@ -211,7 +211,7 @@
                 </li>
 
                 <li class="sidebar-nav-link">
-                    <a href="javaquery:;" class="sidebar-nav-sub-title">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
                         <i class="am-icon-table sidebar-nav-link-logo"></i> 轮播图片
                         <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
@@ -231,7 +231,7 @@
 
 
                   <li class="sidebar-nav-link">
-                    <a href="javaquery:;" class="sidebar-nav-sub-title">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
                         <i class="am-icon-table sidebar-nav-link-logo"></i> 微博发帖
                         <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
@@ -247,7 +247,7 @@
                 </li>
 
                 <li class="sidebar-nav-link">
-                    <a href="javaquery:;" class="sidebar-nav-sub-title">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
                         <i class="am-icon-table sidebar-nav-link-logo"></i> 热门话题
                         <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
