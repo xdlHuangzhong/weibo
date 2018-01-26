@@ -5,28 +5,25 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Content;
+use App\Model\User_info;
 class ContentController extends Controller
 {
 
     public function info(Request $request)
     {
-        //分页
-            $data = Content::orderBy('cid','asc')
-            ->where(function($query) use($request){
-                //检测关键字
-                $title = $request->input('keywords1');
-                $uid = $request->input('keywords2');
-                //如果用户名不为空
-                if(!empty($title)){
-                    $query->where('title','like','%'.$title.'%');
-                }
-                //如果手机号不为空
-                if(!empty($uid)){
-                    $query->where('email','like','%'.$uid.'%');
-                }
-            })
-            ->paginate($request->input('num', 2));
-        return view('admin/contents/contents',['data'=>$data, 'request'=> $request]);
+       
+
+        // 通过contents表联查user_info表查询相应发博人用户名
+        $resd = Content::join('user_info','contents.uid','=','user_info.uid')
+
+        ->Where('content','like','%'.$request->input('search').'%')
+
+        ->paginate(3); 
+
+        
+
+        // 返回视图页面并把查询到的值发送到模板遍历到相应位置
+        return view('admin/contents/contents',['resd'=>$resd,'request'=>$request]);
     }
 
     /**
@@ -77,13 +74,17 @@ class ContentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($cid)
+    public function edit($id)
     {
+
+        $nickName = User_info::where('uid','=',$id)->value('nickName');
         
-          // 获取传值cid查询记录
-        $content = Content::find($cid);
+        
+        //获取用户微博信息
+        $res = Content::where('uid','=',$id)->first();
+          // dd($res->time);
         // dd($content);
-        return view('admin/contents/contents_info',compact('content'));
+        return view('admin/contents/contents_info',['nickName'=>$nickName,'res'=>$res]);
     }
 
     /**
@@ -95,7 +96,23 @@ class ContentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+
+        //查询用户原来状态
+        $date = Content::where('cid',$id)->value('hot');
+      // dd($date);
+        
+        if($date){
+
+            //更新数据库
+            $update = Content::where('cid',$id)->update(['hot'=>0]);
+            return 0;
+        } else {
+
+            //更新数据库
+            $update = Content::where('cid',$id)->update(['hot'=>1]);
+            return 1;
+        }
     }
 
     /**

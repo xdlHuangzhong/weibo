@@ -76,7 +76,7 @@
                     <li><a dot="pos55b9e1ad88ae4" href="https://d.weibo.com/?topnav=1&amp;mod=logo&amp;wvr=6" nm="find" class="S_txt1" suda-uatrack="key=topnav_tab&amp;value=discover"><em class="S_txt1">发现</em></a></li>
                                             <li><a href="http://game.weibo.com/?topnav=1&amp;mod=logo&amp;wvr=6" nm="game" class="S_txt1" suda-uatrack="key=topnav_tab&amp;value=game" target="_blank"><em class="S_txt1">游戏</em></a></li>
                                         <li><a dot="pos55b9e0848171d" bpfilter="page_frame" href="https://weibo.com/5210522488/profile?topnav=1&amp;wvr=6" nm="name" class="gn_name" suda-uatrack="key=topnav_tab&amp;value=profile"><em class="S_txt1">爷们帅的不明显</em></a></li>
-                                          <li><a href="http://krcom.cn/" nm="tv" class="S_txt1" suda-uatrack="key=topnav_tab&amp;value=video"><em class="S_txt1">退出</em></a></li>
+                                          <li><a href="{{ url('home/logout') }}" nm="tv" class="S_txt1" suda-uatrack="key=topnav_tab&amp;value=video"><em class="S_txt1">退出</em></a></li>
                 </ul>
             </div>
            
@@ -130,7 +130,9 @@
     <div class="am-u-sm-9">
                                             <div class="am-form-group am-form-file">
                                                 <div class="tpl-form-file-img">
-                                                     <p><img src="/lunbotu/0.jpg" id="img1" alt="上传后显示图片"  style="max-width:350px;max-height:100px;" /></p>
+
+                                                     <p><img src="" id="img1" alt="上传后显示图片"  style="max-width:350px;max-height:100px;" /></p>
+
                                                 </div>
                                                         <input type="hidden" size="50" name="art_thumb" id="art_thumb">
                                                         <input id="file_upload" name="pic" type="file" multiple="false">  <!-- multiple多文件上传开关 -->
@@ -232,7 +234,9 @@
             <div class="WB_media_wrap clearfix" node-type="feed_list_media_prev">
         <div class="media_box">&gt;
                                                 <!--图片个数等于1，只显示图片-->
+
          @if($v->pic != 0)                                           <!--picture_count == 1-->
+
     <ul class="WB_media_a  WB_media_a_m1 clearfix"  action-data="isPrivate=0&amp;relation=0&amp; clear_picSrc=%2F%2Fwx2.sinaimg.cn%2Fmw690%2Fa78cdda2ly1fnry3ptycmj20by0buq46.jpg">
                         <li class="WB_pic li_1 bigcursor li_n_mix_w" action-data="isPrivate=0&amp;relation=0&amp;pid=a78cdda2ly1fnry3ptycmj20by0buq46&amp;object_ids=1042018%3A5e61d31a68fd2a2612968e209103aeef&amp;photo_tag_pids=&amp;uid=2811026850&amp;mid=4199811005523661&amp;pic_ids=a78cdda2ly1fnry3ptycmj20by0buq46&amp;pic_objects=" action-type="feed_list_media_img" suda-uatrack="key=tblog_newimage_feed&amp;value=image_feed_unfold:4199811005523661:a78cdda2ly1fnry3ptycmj20by0buq46:2811026850">
                              <img src="/lunbotu/{{ $v->pic }}">
@@ -241,7 +245,9 @@
             <i class="W_loading" style="display:none;"></i>
                     </li>
     </ul>
+
     @endif
+
                                     </div>
     </div>
             <div class="WB_expand_media_box " style="display: none;" node-type="feed_list_media_disp">
@@ -257,6 +263,7 @@
                 <ul class="WB_row_line WB_row_r4 clearfix S_line2">
             <li>
 
+
                         <a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_collect" href="javascript:" diss-data="fuid=2811026850" action-type="fl_favorite"><span class="pos"><span class="line S_line1" node-type="favorite_btn_text"><span><em>删除</em></span></a>
                                         </li>
             <li>
@@ -265,6 +272,7 @@
                     <li>
                         <a id="pinglun" class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_comm:4199811005523661" href="javascript:;" action-type="fl_comment"  action-data="ouid=2811026850&amp;location=home"><span class="pos"><span  class="line S_line1" node-type="comment_btn_text"><em>评论</em></span></span>
 
+
                         <a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_collect" href="javascript:" diss-data="fuid=2811026850" action-type="fl_favorite"><span class="pos"><span class="line S_line1" node-type="favorite_btn_text"><span><em>收藏</em></span></a>
                                         </li>
             <li>
@@ -272,8 +280,27 @@
             </li>
 
 
+
             </li>
 
+
+
+            <li>
+                        <a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_comm:4199811005523661" href="javascript:" action-type="fl_comment" action-data="ouid=2811026850&amp;location=home"><span class="pos"><span class="line S_line1" node-type="comment_btn_text"><em>评论</em></span></span>
+                        </a>
+                        <span class="arrow" style="display: none;" node-type="cmtarrow">
+                        <span class="W_arrow_bor W_arrow_bor_t"><i class="S_line1"></i><em class="S_bg1_br"></em></span>
+                        </span>
+            </li>
+            <li>
+                        <!--cuslike用于前端判断是否显示个性赞，1:显示-->
+            <a href="javascript:" class="S_txt2" action-type="fl_like" action-data="version=mini&amp;qid=heart&amp;mid=4199811005523661&amp;like_src=1&amp;cuslike=1" title="赞">
+            <span class="pos"><span class="line S_line1">
+            <span node-type="like_status" class=""><em>点赞</em></span>
+            </span>
+            </a>
+            </li>
+                </ul>
 
             </div>
         </div>
@@ -281,6 +308,7 @@
             </div>
     </div>
     </div>
+
 
 
                  {{--一级评论--}}
@@ -311,6 +339,7 @@
 
 
     @endforeach
+
 
 
 
@@ -390,7 +419,9 @@
           <h4 class="obj_name"><span class="main_title W_fb W_f14">公告栏</span></h4>
         </div>
 
+
         @foreach($notice as $k=>$v)
+
 
         <div class="WB_innerwrap">
           <ul class="opinion_type_list">
@@ -421,6 +452,7 @@
 
         <div class="other_link S_bg1 clearfix T_add_ser">
 
+
             <p class="copy">
               @foreach ($date as $k=>$v)
               @if($v->active == 0)
@@ -431,6 +463,11 @@
               @endforeach
             </p>
             <p class="company"><span class="copy S_txt2">Copyright © 2009-2018 WEIBO PHP196版权所有</span></p>
+
+
+            <p class="copy"><a target="_blank" href="http://help.weibo.com/?refer=didao&amp;bottomnav=1&amp;wvr=6" class="S_txt2"><i class="W_icon icon_weibo"></i>微博客服</a><span class="S_txt2">客服热线4000-960-960</span><a class="S_txt2" target="_blank" href="http://help.weibo.com/newtopic/suggest?bottomnav=1&amp;wvr=6">意见反馈</a><a class="S_txt2" target="_blank" href="https://weibo.com/aj/static/report.html?_wv=6">舞弊举报</a><a class="S_txt2" target="_blank" href="http://ir.weibo.com/">About Weibo</a><a class="S_txt2" target="_blank" href="http://open.weibo.com/?bottomnav=1&amp;wvr=6">开放平台</a><a class="S_txt2" target="_blank" href="http://hr.weibo.com/?bottomnav=1&amp;wvr=6">微博招聘</a><a class="S_txt2" target="_blank" href="http://news.sina.com.cn/guide/?bottomnav=1&amp;wvr=6">新浪网导航</a><a class="S_txt2" target="_blank" href="http://service.account.weibo.com/?bottomnav=1&amp;wvr=6">举报处理大厅</a>
+                </p>
+            
 
         </div>
       </div>
@@ -443,6 +480,7 @@
 </div>
 </body>
 
+
 </html>
 
 <script>
@@ -451,4 +489,5 @@
         $('#SOHUCS').toggle();
     })
 </script>
+
 

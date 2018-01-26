@@ -92,32 +92,43 @@ Route::post('/send/{id}','NewsController@send');
 
 //=============================前台=============================//
 
-
-//前台用户模块
-Route::group(['prefix'=>'home','namespace'=>'Home'],function(){
-//前台首页
-Route::get('index','IndexController@index');
 //注册页
-Route::get('register/index','RegisterController@index');
+Route::get('home/register/index','Home\RegisterController@index');
 //加载注册方法
-Route::post('register/send','RegisterController@send');
+Route::post('home/register/send','Home\RegisterController@send');
 //加载激活方法
-Route::get('active','RegisterController@active');
+Route::get('home/active','Home\RegisterController@active');
+//前台首页
+Route::get('home/index','Home\IndexController@index');
+//加载登录的方法
+Route::resource('home/login','Home\LoginController');
+//前台用户模块
+Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>'hislogin'],function(){
+//退出登录
+Route::get('logout/','LoginController@logout');
+
+
+
 //忘记密码
 Route::get('forget','RegisterController@forget');
 Route::post('doforget','RegisterController@doForget');
 //找回密码
 Route::get('reset','RegisterController@reset');
 Route::post('doreset','RegisterController@doReset');
+
 //加载登录的方法
 Route::resource('login','LoginController');
 Route::post('user/upload','InfoController@upload');
 //加载个人中心发帖页
 Route::resource('user','InfoController');
 
-    Route::post('user/upload','InfoController@upload');
+
+
+
+Route::post('user/upload','InfoController@upload');
 //加载个人中心发帖页
-    Route::resource('user','InfoController');
+Route::resource('user','InfoController');
+
 
 //加载个人中心页
 Route::resource('user','InfoController');

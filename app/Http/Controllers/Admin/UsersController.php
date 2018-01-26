@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Model\User_info;
 use App\Model\User;
+use App\Model\Content;
 
 class UsersController extends Controller
 {
@@ -19,19 +20,8 @@ class UsersController extends Controller
     {
         $data = user::join('user_info','user_info.uid','=','user.id')->where('nickName','like','%'.$request->input('search').'%')->paginate(2);
 
-        // $data = User_info::orderBy('id','asc')
-        //     ->where(function($query) use($request){
-        //         //检测关键字
-        //         $name = $request->input('keywords1');
-        //         //如果用户名不为空
-        //         if(!empty($name)){
-        //             $query->where('name','like','%'.$name.'%');
-        //         }
-                
-        //     })
-        //     ->paginate($request->input('num', 2));
-
-            // dd($data);
+    
+        
         return view('admin.users.list',['data'=>$data, 'request'=> $request]);
     }
 
@@ -64,8 +54,16 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
-        return 2131;
+        // dd($id);
+        //获取用户名
+        $nickName = User_info::where('uid','=',$id)->value('nickName');
+        
+        
+        //获取用户微博信息
+        $res = Content::where('uid','=',$id)->orderBy('time','desc')->paginate(10);
+        
+        return view('admin/users/show',['nickName'=>$nickName,'res'=>$res]);
+        
     }
 
     /**

@@ -19,43 +19,38 @@
                             </div>
                             
                                       
-                                <form id="art_form" class="am-form tpl-form-line-form" action="{{ url('admin/content') }}" method="post" enctype="multipart/form-data">
+                                <form id="art_form" class="am-form tpl-form-line-form" action="" method="post" enctype="multipart/form-data">
                                        <div class="am-form-group">
                                             <label for="user-phone" class="am-u-sm-3 am-form-label">发布者 <span class="tpl-form-line-small-title">Bank</span></label>
                                             <div class="am-u-sm-9">
-                                                <input name="cid" type="text" class="tpl-form-input" id="user-name" value="{{ $content->uid }}" readonly="readonly">
+                                                <input name="cid" type="text" class="tpl-form-input" id="user-name" value="{{$nickName}}" readonly="readonly">
 
                                             </div>
                                         </div>
                                     
-                                     <div class="am-form-group">
-                                            <label for="user-phone" class="am-u-sm-3 am-form-label">标题<span class="tpl-form-line-small-title">Title</span></label>
-                                            <div class="am-u-sm-9">
-                                                <input name="title" type="text" class="tpl-form-input" id="user-name" value="{{ $content->title }}" readonly="readonly">
-
-                                            </div>
-                                        </div>
+                                     
                                    <div class="am-form-group">
                                         <label for="user-email" class="am-u-sm-3 am-form-label">发布时间 <span class="tpl-form-line-small-title">Time</span></label>
                                         <div class="am-u-sm-9">
-                                            <input name="time" type="text" class="tpl-form-input" id="user-name" value="{{ date('Y-m-d H:i:s') }}" readonly="readonly">
+                                            <input name="time" type="text" class="tpl-form-input" id="user-name" value="{{$res->time}}" readonly="readonly">
                                         </div>
                                     </div>
                                        
                                     <div class="am-form-group">
-                                        <label for="user-weibo" class="am-u-sm-3 am-form-label"> <span class="tpl-form-line-small-title">Img</span></label>
+                                        <label for="user-weibo" class="am-u-sm-3 am-form-label"> 图片<span class="tpl-form-line-small-title"> Img</span></label>
                                           
                                         <div class="am-u-sm-9">
                                             <div class="am-form-group am-form-file">
                                                 <div class="tpl-form-file-img">
-                                                     <p><img src="/lunbotu/default.jpg" id="img1" alt="上传后显示图片"  style="max-width:350px;max-height:100px;"  /></p>
+                                                     <p><img src="/lunbotu/{{$res->pic}}" id="img1" alt=""  style="max-width:350px;max-height:100px;"  /></p>
                                                 </div>                                                         
                                         </div>
                                         </div>
                                                 <div class="am-form-group">
-                                                    <label for="user-intro" class="am-u-sm-3 am-form-label">文章内容</label>
+                                                    <label for="user-intro" class="am-u-sm-3 am-form-label">文章内容<span class="tpl-form-line-small-title"> Content</span></label>
+
                                                     <div class="am-u-sm-9">
-                                                        <textarea name="content" class="" rows="10" id="user-intro" readonly="readonly" >{{ $content->content }}</textarea>
+                                                        <textarea name="content" class="" rows="10" id="user-intro" readonly="readonly" >{{$res->content}}</textarea>
                                                     </div>
                                                 </div>
                                     </div>

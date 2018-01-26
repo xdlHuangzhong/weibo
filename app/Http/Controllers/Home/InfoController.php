@@ -25,11 +25,13 @@ class InfoController extends Controller
         // dd($res);
         $rev = DB::table('contents')->orderBy('time','desc')->paginate(2);
 
+
         $data = DB::table('poster')->get();
         $date = DB::table('friends')->get();
         $notice = DB::table('notice')->get();
         // dd($rev);
         return view('home.userinfo.index',['res'=>$res,'rev'=>$rev,'data'=>$data,'date'=>$date,'notice'=>$notice]);
+
 
     }
 

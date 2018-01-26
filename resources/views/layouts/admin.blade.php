@@ -24,7 +24,8 @@
     
     <style>
         #tab table{table-layout:fixed;}
-        tbody tr td{width:30em;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+        tbody tr td{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+        
         #fy ul li{
 
             float: left;

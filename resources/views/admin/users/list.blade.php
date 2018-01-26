@@ -88,7 +88,7 @@
                                                         
                                                         
 
-                                                        <a  href="{{ url('admin/users/'.$v->id) }}" disabled="disabled">
+                                                        <a  href="{{ url('admin/users/'.$v->uid) }}" disabled="disabled">
                                                              查看微博
                                                         </a>
 
