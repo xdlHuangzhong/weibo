@@ -112,7 +112,7 @@
                     <div class="am-form-group">
                         <label for="user-intro" class="am-u-sm-3 am-form-label">文章内容</label>
                         <div class="am-u-sm-9">
-                            <textarea name="content" class="" rows="10" id="user-intro" >{{ $notice->content }}</textarea>
+                             <input name="content" type="text" class="tpl-form-input" id="user-name" value="{{ $notice->content }}">
                         </div>
                     </div>
 

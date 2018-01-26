@@ -79,9 +79,11 @@ Route::post('/send/{id}','NewsController@send');
 // 网站配置数据更新
     Route::post('config/update','ConfigController@Update');
 
+    //广告图片上传
+    Route::post('poster/upload','PosterController@upload');
+    //广告模块
+    Route::resource('poster','PosterController');
 
-    //热门话题
-    Route::resource('topic','TopicController');
 });
 
 
@@ -109,6 +111,9 @@ Route::get('reset','RegisterController@reset');
 Route::post('doreset','RegisterController@doReset');
 //加载登录的方法
 Route::resource('login','LoginController');
+Route::post('user/upload','InfoController@upload');
+//加载个人中心发帖页
+Route::resource('user','InfoController');
 
 //加载个人中心页
 Route::resource('user','InfoController');

@@ -83,11 +83,15 @@
         </div>
         <div class="other_link S_bg1 clearfix">
            <p class="copy">
-              @foreach ($data as $ob)
-                <a target="_blank" href="http://{{ $ob->link }}" class="S_txt2"><i class="W_icon icon_weibo"></i>{{ $ob->name }}</a>
+              @foreach ($data as $k=>$v)
+              @if($v->active == 0)
+                <a target="_blank" href="http://{{ $v->link }}" class="S_txt2"><i class="W_icon icon_weibo"></i>{{ $v->name }}</a>
+              @else
+
+              @endif
               @endforeach
             </p>
 
-            <p class="company"><span class="copy S_txt2">Copyright © 2009-2018 WEIBO 北京兄弟连PHP196西游6骚网络技术有限公司</span></p>
+            <p class="company"><span class="copy S_txt2">Copyright © 2009-2018 WEIBO PHP196版权所有</span></p>
         </div>
       </div>

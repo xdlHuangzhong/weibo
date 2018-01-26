@@ -12,8 +12,9 @@ class UserinfoController extends Controller
     public function index(Request $request)
     {
     	// $data = DB::table('user_info')->get();
+        $friends = DB::table('friends')->get();
     	// dd($data);
-    	return view('home.userinfo.userinfo');
+    	return view('home.userinfo.userinfo',['friends'=>$friends]);
     }
     public function share()
     {
