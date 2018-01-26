@@ -87,7 +87,23 @@ class FriendsController extends Controller
      */
     public function show($id)
     {
+        // return 111;
         //
+        //查询用户原来状态
+        $date = Friends::where('id',$id)->value('active');
+        // dd($date);
+        
+        if($date){
+
+            //更新数据库
+            $update = Friends::where('id',$id)->update(['active'=>0]);
+            return 0;
+        } else {
+
+            //更新数据库
+            $update = Friends::where('id',$id)->update(['active'=>1]);
+            return 1;
+        }
     }
 
     /**

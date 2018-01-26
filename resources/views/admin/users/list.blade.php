@@ -160,7 +160,7 @@
 
                         //改变用户状态
                         if(data==1){
-                            layer.msg('用户已冻结！', {icon: 1});
+                            layer.msg('用户已冻结！', {icon: 1})
                             document.getElementById('status'+id).innerHTML = '冻结';
                             document.getElementById('user'+id).innerHTML = '恢复';
                         }else{

@@ -122,9 +122,9 @@
 
 
                     <div class="am-form-group">
-                        <label for="user-intro" class="am-u-sm-3 am-form-label">文章内容</label>
+                        <label for="user-intro" class="am-u-sm-3 am-form-label">公告链接</label>
                         <div class="am-u-sm-9">
-                            <textarea name="content" class="" rows="10" id="user-intro" placeholder="请输入文章内容"></textarea>
+                            <input name="content" type="text" class="tpl-form-input" id="user-name" placeholder="请输入公告链接">
                         </div>
                     </div>
 

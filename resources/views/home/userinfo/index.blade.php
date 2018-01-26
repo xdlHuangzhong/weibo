@@ -256,6 +256,7 @@
             <div class="WB_handle">
                 <ul class="WB_row_line WB_row_r4 clearfix S_line2">
             <li>
+
                         <a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_collect" href="javascript:" diss-data="fuid=2811026850" action-type="fl_favorite"><span class="pos"><span class="line S_line1" node-type="favorite_btn_text"><span><em>删除</em></span></a>
                                         </li>
             <li>
@@ -263,26 +264,24 @@
             </li>
                     <li>
                         <a id="pinglun" class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_comm:4199811005523661" href="javascript:;" action-type="fl_comment"  action-data="ouid=2811026850&amp;location=home"><span class="pos"><span  class="line S_line1" node-type="comment_btn_text"><em>评论</em></span></span>
-                        </a>
-                        <span class="arrow" style="display: none;" node-type="cmtarrow">
-                        <span class="W_arrow_bor W_arrow_bor_t"><i class="S_line1"></i><em class="S_bg1_br"></em></span>
-                        </span>
-                    </li>
+
+                        <a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_collect" href="javascript:" diss-data="fuid=2811026850" action-type="fl_favorite"><span class="pos"><span class="line S_line1" node-type="favorite_btn_text"><span><em>收藏</em></span></a>
+                                        </li>
             <li>
-                        <!--cuslike用于前端判断是否显示个性赞，1:显示-->
-            <a href="javascript:" class="S_txt2" action-type="fl_like" action-data="version=mini&amp;qid=heart&amp;mid=4199811005523661&amp;like_src=1&amp;cuslike=1" title="赞">
-            <span class="pos"><span class="line S_line1">
-            <span node-type="like_status" class=""><em>点赞</em></span>
-            </span>
-            </a>
+                            <a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_tran:4199811005523661" href="javascript:" action-history="rec=1" action-type="fl_forward" action-data="allowForward=1&amp;url=https://weibo.com/2811026850/FFSxunaXj&amp;mid=4199811005523661&amp;name=浮力达人君&amp;uid=2811026850&amp;domain=2811026850&amp;pid=a78cdda2ly1fnry3ptycmj20by0buq46"><span class="pos"><span class="line S_line1" node-type="forward_btn_text"><em>转发</em></span></span></a>
             </li>
-                </ul>
+
+
+            </li>
+
+
             </div>
         </div>
         </div> 
             </div>
     </div>
     </div>
+
 
                  {{--一级评论--}}
                       <div id="SOHUCS" style="display: none;">
@@ -312,6 +311,7 @@
 
 
     @endforeach
+
 
 
 
@@ -347,7 +347,12 @@
     
     <div id="v6_pl_rightmod_recominfo"><!-- notice -->
 <div id="v6_pl_rightmod_ads35">
-    <div ucardconf="type=1" ad-data="id=ads_35&amp;url=//biz.weibo.com/adfront/deliver&amp;psid=PDPS000000037694&amp;wbVersion=v6&amp;uid=5210522488"><div class="WB_cardwrap S_bg2" pbc-refresh="true"><div class="WB_right_module M_sc_right"><div class="WB_innerwrap"><div class="m_wrap"><div class="scr_iframe_wrap"><iframe id="sc_37694" src="/home/fatie/images/index_3.html" scrolling="no" width="186" height="250" frameborder="0"></iframe></div></div></div></div></div></div>
+    <!-- 广告 -->
+    @foreach($data as $k=>$v)@if($v->active == 0)<div ucardconf="type=1" ad-data="id=ads_35&amp;url=//biz.weibo.com/adfront/deliver&amp;psid=PDPS000000037694&amp;wbVersion=v6&amp;uid=5210522488"><div class="WB_cardwrap S_bg2" pbc-refresh="true"><div class="WB_right_module M_sc_right"><div class="WB_innerwrap"><div class="m_wrap"><div class="scr_iframe_wrap"><a href="https://{{ $v->link }}"><img src="/guanggao/{{ $v->img }}"  scrolling="no" width="186" height="250" frameborder="0"></img></a></div></div></div></div></div></div>@else
+
+    @endif
+    @endforeach
+   
 </div>
 <div style="visibility: hidden;"></div>
 <div style="z-index: 10; transform: translateZ(0px); position: relative; transition: margin-top 0.3s ease 0s; will-change: margin-top, top; width: 230px;">
@@ -385,12 +390,14 @@
           <h4 class="obj_name"><span class="main_title W_fb W_f14">公告栏</span></h4>
         </div>
 
+        @foreach($notice as $k=>$v)
+
         <div class="WB_innerwrap">
           <ul class="opinion_type_list">
-            <li><a href="http://service.account.weibo.com/derumor?rightmod=1&amp;wvr=6&amp;mod=noticeboard" target="_blank">《​全国辟谣平台》</a></li>
-            <li><a href="http://news.sina.com.cn/c/2013-08-14/154027948112.shtml?rightmod=1&amp;wvr=6" suda-uatrack="key=tblog_home_new&amp;value=rightmod_news" target="_blank">《首都互联网协会发布坚守七条底线倡议书》</a></li>
+            <li><a href="https://{{ $v->content }}" target="_blank">{{ $v->name }}</a></li>
           </ul>
         </div>
+        @endforeach
       </div>
     </div>
 </div>
@@ -413,9 +420,18 @@
       <div class="WB_footer S_bg2">
 
         <div class="other_link S_bg1 clearfix T_add_ser">
-            <p class="copy"><a target="_blank" href="http://help.weibo.com/?refer=didao&amp;bottomnav=1&amp;wvr=6" class="S_txt2"><i class="W_icon icon_weibo"></i>微博客服</a><span class="S_txt2">客服热线4000-960-960</span><a class="S_txt2" target="_blank" href="http://help.weibo.com/newtopic/suggest?bottomnav=1&amp;wvr=6">意见反馈</a><a class="S_txt2" target="_blank" href="https://weibo.com/aj/static/report.html?_wv=6">舞弊举报</a><a class="S_txt2" target="_blank" href="http://ir.weibo.com/">About Weibo</a><a class="S_txt2" target="_blank" href="http://open.weibo.com/?bottomnav=1&amp;wvr=6">开放平台</a><a class="S_txt2" target="_blank" href="http://hr.weibo.com/?bottomnav=1&amp;wvr=6">微博招聘</a><a class="S_txt2" target="_blank" href="http://news.sina.com.cn/guide/?bottomnav=1&amp;wvr=6">新浪网导航</a><a class="S_txt2" target="_blank" href="http://service.account.weibo.com/?bottomnav=1&amp;wvr=6">举报处理大厅</a>
-                </p>
-            
+
+            <p class="copy">
+              @foreach ($date as $k=>$v)
+              @if($v->active == 0)
+                <a target="_blank" href="http://{{ $v->link }}" class="S_txt2"><i class="W_icon icon_weibo"></i>{{ $v->name }}</a>
+              @else
+
+              @endif
+              @endforeach
+            </p>
+            <p class="company"><span class="copy S_txt2">Copyright © 2009-2018 WEIBO PHP196版权所有</span></p>
+
         </div>
       </div>
 
@@ -426,6 +442,7 @@
 </div>
 </div>
 </body>
+
 </html>
 
 <script>
@@ -434,3 +451,4 @@
         $('#SOHUCS').toggle();
     })
 </script>
+
