@@ -23,16 +23,11 @@
 <link rel="dns-prefetch" href="https://ww3.sinaimg.cn/">
 <link rel="dns-prefetch" href="https://ww4.sinaimg.cn/">
 
-    <meta name="_token" content="{{ csrf_token() }}"/>
-    <link rel="stylesheet" type="text/css" href="/home/gailou/css/comment.css">
-    <script type="text/javascript" src="/home/gailou/js/jquery-1.11.3.min.js" ></script>
-    <script type="text/javascript" src="/home/gailou/js/comment.js" ></script>
-
 <link rel="mask-icon" sizes="any" href="https://img.t.sinajs.cn/t6/style/images/apple/wbfont.svg" color="black">
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <link title="微博" href="https://weibo.com/aj/static/opensearch.xml" type="application/opensearchdescription+xml" rel="search">
 
-<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" charset="utf-8" async=""></script><script type="text/javascript" charset="utf-8" async=""></script><script type="text/javascript"></script> 
 <script type="text/javascript"></script> 
 <title>我的首页 微博-随时随地发现新鲜事</title>
@@ -124,18 +119,18 @@
       <div id="plc_main"><div class="WB_main_c">
     <div id="v6_pl_content_publishertop">
     <div class="send_weibo S_bg2 clearfix send_weibo_long" node-type="wrap">
-    <form action="" method="post" enctype="multipart/form-data">
-
+    <form action="{{ url('home/user') }}" method="post" enctype="multipart/form-data">
+    {{ csrf_field() }}
     <div class="input" node-type="textElDiv">
         <textarea class="W_input" title="微博输入框" name="content" node-type="textEl" pic_split="1" style="overflow: hidden; height: 68px;" range="0&amp;0"></textarea>
     </div>
 
     
-    <input type="hidden" name="uid" value="" >
+    <input type="hidden" name="uid" value="{{ session('user')->id }}" >
     <div class="am-u-sm-9">
                                             <div class="am-form-group am-form-file">
                                                 <div class="tpl-form-file-img">
-                                                     <p><img src="" id="img1" alt="上传后显示图片"  style="max-width:350px;max-height:100px;" /></p>
+                                                     <p><img src="/lunbotu/0.jpg" id="img1" alt="上传后显示图片"  style="max-width:350px;max-height:100px;" /></p>
                                                 </div>
                                                         <input type="hidden" size="50" name="art_thumb" id="art_thumb">
                                                         <input id="file_upload" name="pic" type="file" multiple="false">  <!-- multiple多文件上传开关 -->
@@ -199,7 +194,7 @@
     </form>
 </div>
 </div>
- {{--@foreach ($rev as $k=>$v)--}}
+ @foreach ($rev as $k=>$v)
     <div id="v6_pl_content_homefeed">
 
     <div node-type="homefeed">
@@ -222,31 +217,31 @@
         <div class="WB_detail">
 
             <div class="WB_info">
-                <a suda-uatrack="key=feed_headnick&amp;value=pubuser_nick:4199811005523661" target="_blank" class="W_f14 W_fb S_txt1" nick-name="浮力达人君" title="浮力达人君" href="https://weibo.com/u/2811026850?refer_flag=0000015010_&amp;from=feed&amp;loc=nickname" usercard="id=2811026850&amp;refer_flag=0000015010_"></a>
+                <a suda-uatrack="key=feed_headnick&amp;value=pubuser_nick:4199811005523661" target="_blank" class="W_f14 W_fb S_txt1" nick-name="浮力达人君" title="浮力达人君" href="https://weibo.com/u/2811026850?refer_flag=0000015010_&amp;from=feed&amp;loc=nickname" usercard="id=2811026850&amp;refer_flag=0000015010_">{{ $res->nickName }}</a>
                 <a target="_blank" suda-data="key=pc_apply_entry&amp;value=feed_icon" href="http://verified.weibo.com/verify"><i title="微博个人认证 " class="W_icon icon_approve_gold"></i></a>
                 <a action-type="ignore_list" suda-uatrack="key=home_vip&amp;value=home_feed_vip" title="微博会员" target="_blank" href="http://vip.weibo.com/personal?from=main"><em class="W_icon icon_member4"></em></a><a target="_blank" href="https://huodong.weibo.com/hongbao2018?ref=icon" title="2018让红包飞"><i class="W_icon icon_redpack"></i></a>            
                 </div>
             <div class="WB_from S_txt2">
                 <!-- minzheng add part 2 -->
-            <a target="_blank" href="https://weibo.com/2811026850/FFSxunaXj?ref=home&amp;rid=0_0_8_2633256715635820022" title="2018-01-24 20:20" date="1516796435000" class="S_txt2" node-type="feed_list_item_date" suda-data="key=tblog_home_new&amp;value=feed_time:4199811005523661:frommainfeed"></a>
+            <a target="_blank" href="https://weibo.com/2811026850/FFSxunaXj?ref=home&amp;rid=0_0_8_2633256715635820022" title="2018-01-24 20:20" date="1516796435000" class="S_txt2" node-type="feed_list_item_date" suda-data="key=tblog_home_new&amp;value=feed_time:4199811005523661:frommainfeed">{{ $v->time }}</a>
                                                         <!-- minzheng add part 2 -->
             </div>
             <div class="WB_text W_f14" node-type="feed_list_content">
-                                  ​​​​
+                                   {{ $v->content }} ​​​​                            
             </div>
             <div class="WB_media_wrap clearfix" node-type="feed_list_media_prev">
         <div class="media_box">&gt;
                                                 <!--图片个数等于1，只显示图片-->
-         {{--@if($v->pic != 0)                                           <!--picture_count == 1-->--}}
+         @if($v->pic != 0)                                           <!--picture_count == 1-->
     <ul class="WB_media_a  WB_media_a_m1 clearfix"  action-data="isPrivate=0&amp;relation=0&amp; clear_picSrc=%2F%2Fwx2.sinaimg.cn%2Fmw690%2Fa78cdda2ly1fnry3ptycmj20by0buq46.jpg">
                         <li class="WB_pic li_1 bigcursor li_n_mix_w" action-data="isPrivate=0&amp;relation=0&amp;pid=a78cdda2ly1fnry3ptycmj20by0buq46&amp;object_ids=1042018%3A5e61d31a68fd2a2612968e209103aeef&amp;photo_tag_pids=&amp;uid=2811026850&amp;mid=4199811005523661&amp;pic_ids=a78cdda2ly1fnry3ptycmj20by0buq46&amp;pic_objects=" action-type="feed_list_media_img" suda-uatrack="key=tblog_newimage_feed&amp;value=image_feed_unfold:4199811005523661:a78cdda2ly1fnry3ptycmj20by0buq46:2811026850">
-                             <img src="/lunbotu/">
+                             <img src="/lunbotu/{{ $v->pic }}">
             <i class="W_loading" style="display:none;"></i>
                   
             <i class="W_loading" style="display:none;"></i>
                     </li>
     </ul>
-    {{--@endif--}}
+    @endif
                                     </div>
     </div>
             <div class="WB_expand_media_box " style="display: none;" node-type="feed_list_media_disp">
@@ -261,18 +256,18 @@
             <div class="WB_handle">
                 <ul class="WB_row_line WB_row_r4 clearfix S_line2">
             <li>
-                        <a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_collect" href="javascript:" diss-data="fuid=2811026850" action-type="fl_favorite"><span class="pos"><span class="line S_line1" node-type="favorite_btn_text"><span><em>收藏</em></span></a>
+                        <a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_collect" href="javascript:" diss-data="fuid=2811026850" action-type="fl_favorite"><span class="pos"><span class="line S_line1" node-type="favorite_btn_text"><span><em>删除</em></span></a>
                                         </li>
             <li>
-                            <a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_tran:4199811005523661" href="javascript:" action-history="rec=1" action-type="fl_forward" action-data="allowForward=1&amp;url=https://weibo.com/2811026850/FFSxunaXj&amp;mid=4199811005523661&amp;name=浮力达人君&amp;uid=2811026850&amp;domain=2811026850&amp;pid=a78cdda2ly1fnry3ptycmj20by0buq46"><span class="pos"><span class="line S_line1" node-type="forward_btn_text"><em>转发</em></span></span></a>
+                            <a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_tran:4199811005523661" href="userinfo/share" action-history="rec=1" action-type="fl_forward" action-data="allowForward=1&amp;url=https://weibo.com/2811026850/FFSxunaXj&amp;mid=4199811005523661&amp;name=浮力达人君&amp;uid=2811026850&amp;domain=2811026850&amp;pid=a78cdda2ly1fnry3ptycmj20by0buq46"><span class="pos"><span class="line S_line1" node-type="forward_btn_text"><em>分享</em></span></span></a>
             </li>
-            <li>
+                    <li>
                         <a id="pinglun" class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_comm:4199811005523661" href="javascript:;" action-type="fl_comment"  action-data="ouid=2811026850&amp;location=home"><span class="pos"><span  class="line S_line1" node-type="comment_btn_text"><em>评论</em></span></span>
                         </a>
                         <span class="arrow" style="display: none;" node-type="cmtarrow">
                         <span class="W_arrow_bor W_arrow_bor_t"><i class="S_line1"></i><em class="S_bg1_br"></em></span>
                         </span>
-            </li>
+                    </li>
             <li>
                         <!--cuslike用于前端判断是否显示个性赞，1:显示-->
             <a href="javascript:" class="S_txt2" action-type="fl_like" action-data="version=mini&amp;qid=heart&amp;mid=4199811005523661&amp;like_src=1&amp;cuslike=1" title="赞">
@@ -288,6 +283,11 @@
             </div>
     </div>
     </div>
+
+
+
+
+    @endforeach
               <script>
 
 
@@ -297,123 +297,30 @@
               </script>
 
 
-
-              <div class="comment-filed" id="SOHUCS" style="display: none;">
-                  <!--发表评论区begin-->
-                  <div>
-
-                      <div>
-                          <div>
-                              <textarea class="txt-commit" replyid="0"></textarea>
+              <div id="SOHUCS" style="display: none;">
+                  <div class="send_weibo S_bg2 clearfix send_weibo_long" node-type="wrap">
+                      <form action="{{ url('home/user') }}" method="post" enctype="multipart/form-data">
+                          {{ csrf_field() }}
+                          <div class="input" node-type="textElDiv">
+                              <textarea class="W_input" title="微博输入框" name="content" node-type="textEl" pic_split="1" style="overflow: hidden; height: 68px;" range="0&amp;0"></textarea>
                           </div>
-                          <div class="div-txt-submit">
-                              <a class="comment-submit" parent_id="0" style="" href="javascript:void(0);"><span style=''>发表评论</span></a>
+
+
+                          <input type="hidden" name="uid" value="{{ session('user')->id }}" >
+
+                          <div class="func_area clearfix" node-type="widget" layout-shell="true">
+
+                              <div class="func">
+
+                                  <button class="W_btn_a btn_30px W_btn_a_disable" diss-data="module=stissue" type="submit" >评论</button>
+                              </div>
+
                           </div>
-                      </div>
+
+
+                      </form>
                   </div>
-                  <!--发表评论区end-->
-
-                  <!--评论列表显示区begin-->
-                  <!-- {$commentlist} -->
-                  <div class="comment-filed-list" >
-                      <div><span>全部评论</span></div>
-                      <br>
-                      <div class="comment-list" >
-                          <!--一级评论列表begin-->
-                          <ul class="comment-ul">
-                              @if(isset($data))
-                                  @foreach($data as $v1)
-                                      <li comment_id="{{$v1->id}}">
-                                          <div >
-                                              <div>
-                                                  <img class="head-pic"  src="{{$v1->head_pic}}" alt="">
-                                              </div>
-                                              <div class="cm">
-                                                  <div class="cm-header">
-                                                      <span>{{$v1->nickname}}</span>
-                                                      <span>{{$v1->create_time}}</span>
-                                                  </div>
-                                                  <div class="cm-content">
-                                                      <p>
-                                                          {!! $v1->content !!}
-                                                      </p>
-                                                  </div>
-                                                  <div class="cm-footer">
-                                                      <a class="comment-reply" comment_id="{{$v1->id}}" href="javascript:void(0);">回复</a>
-                                                  </div>
-                                              </div>
-                                          </div>
-
-                                          <!--二级评论begin-->
-                                          <ul class="children">
-                                              @if(isset($v1->children))
-                                                  @foreach($v1->children as $v2)
-                                                      <li comment_id="{{$v2->id}}">
-                                                          <div >
-                                                              <div>
-                                                                  <img class="head-pic"  src="{{$v2->head_pic}}" alt="">
-                                                              </div>
-                                                              <div class="children-cm">
-                                                                  <div  class="cm-header">
-                                                                      <span>{{$v2->nickname}}</span>
-                                                                      <span>{{$v2->create_time}}</span>
-                                                                  </div>
-                                                                  <div class="cm-content">
-                                                                      <p>
-                                                                          {!! $v2->content !!}
-                                                                      </p>
-                                                                  </div>
-                                                                  <div class="cm-footer">
-                                                                      <a class="comment-reply" replyswitch="off" comment_id="{{$v2->id}}"  href="javascript:void(0);">回复</a>
-                                                                  </div>
-                                                              </div>
-                                                          </div>
-
-                                                          <!--三级评论begin-->
-                                                          <ul class="children">
-                                                              @if(isset($v2->children))
-                                                                  @foreach($v2->children as $v3)
-                                                                      <li comment_id="{{$v3->id}}">
-                                                                          <div >
-                                                                              <div>
-                                                                                  <img class="head-pic"  src="{{$v3->head_pic}}" alt="">
-                                                                              </div>
-                                                                              <div class="children-cm">
-                                                                                  <div  class="cm-header">
-                                                                                      <span>{{$v3->nickname}}</span>
-                                                                                      <span>{{$v3->create_time}}</span>
-                                                                                  </div>
-                                                                                  <div class="cm-content">
-                                                                                      <p>
-                                                                                          {!! $v3->content !!}
-                                                                                      </p>
-                                                                                  </div>
-                                                                                  <div class="cm-footer">
-                                                                                      <!-- <a class="comment-reply" comment_id="1"  href="javascript:void(0);">回复</a> -->
-                                                                                  </div>
-                                                                              </div>
-                                                                          </div>
-                                                                      </li>
-                                                                  @endforeach
-                                                              @endif
-                                                          </ul>
-                                                          <!--三级评论end-->
-                                                      </li>
-                                                  @endforeach
-                                              @endif
-                                          </ul>
-                                          <!--二级评论end-->
-
-                                      </li>
-                                  @endforeach
-                              @endif
-                          </ul>
-                          <!--一级评论列表end-->
-                      </div>
-                  </div>
-                  <!--评论列表显示区end-->
               </div>
-    {{--@endforeach--}}
 
     <div id="qfy">
     {!! $rev->render() !!}
