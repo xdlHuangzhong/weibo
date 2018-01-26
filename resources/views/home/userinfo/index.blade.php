@@ -285,21 +285,8 @@
 
 
 
-            <li>
-                        <a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_comm:4199811005523661" href="javascript:" action-type="fl_comment" action-data="ouid=2811026850&amp;location=home"><span class="pos"><span class="line S_line1" node-type="comment_btn_text"><em>评论</em></span></span>
-                        </a>
-                        <span class="arrow" style="display: none;" node-type="cmtarrow">
-                        <span class="W_arrow_bor W_arrow_bor_t"><i class="S_line1"></i><em class="S_bg1_br"></em></span>
-                        </span>
-            </li>
-            <li>
-                        <!--cuslike用于前端判断是否显示个性赞，1:显示-->
-            <a href="javascript:" class="S_txt2" action-type="fl_like" action-data="version=mini&amp;qid=heart&amp;mid=4199811005523661&amp;like_src=1&amp;cuslike=1" title="赞">
-            <span class="pos"><span class="line S_line1">
-            <span node-type="like_status" class=""><em>点赞</em></span>
-            </span>
-            </a>
-            </li>
+
+
                 </ul>
 
             </div>
