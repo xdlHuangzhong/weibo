@@ -284,43 +284,38 @@
     </div>
     </div>
 
+                 {{--一级评论--}}
+                      <div id="SOHUCS" style="display: none;">
+                      <div class="send_weibo S_bg2 clearfix send_weibo_long" node-type="wrap">
+                          <form action="{{ url('home/user') }}" method="post" enctype="multipart/form-data">
+                              {{ csrf_field() }}
+                              <div class="input" node-type="textElDiv">
+                                  <textarea class="W_input" title="微博输入框" name="content" node-type="textEl" pic_split="1" style="overflow: hidden; height: 68px;" range="0&amp;0"></textarea>
+                              </div>
+
+
+                              <input type="hidden" name="uid" value="{{ session('user')->id }}" >
+
+                              <div class="func_area clearfix" node-type="widget" layout-shell="true">
+
+                                  <div class="func">
+
+                                      <button class="W_btn_a btn_30px W_btn_a_disable" diss-data="module=stissue" type="submit" >评论</button>
+                                  </div>
+
+                              </div>
+
+                          </form>
+                      </div>
+                  </div>
 
 
 
     @endforeach
-              <script>
 
 
-                  $('#pinglun').click(function(){
-                      $('#SOHUCS').toggle();
-                  })
-              </script>
 
 
-              <div id="SOHUCS" style="display: none;">
-                  <div class="send_weibo S_bg2 clearfix send_weibo_long" node-type="wrap">
-                      <form action="{{ url('home/user') }}" method="post" enctype="multipart/form-data">
-                          {{ csrf_field() }}
-                          <div class="input" node-type="textElDiv">
-                              <textarea class="W_input" title="微博输入框" name="content" node-type="textEl" pic_split="1" style="overflow: hidden; height: 68px;" range="0&amp;0"></textarea>
-                          </div>
-
-
-                          <input type="hidden" name="uid" value="{{ session('user')->id }}" >
-
-                          <div class="func_area clearfix" node-type="widget" layout-shell="true">
-
-                              <div class="func">
-
-                                  <button class="W_btn_a btn_30px W_btn_a_disable" diss-data="module=stissue" type="submit" >评论</button>
-                              </div>
-
-                          </div>
-
-
-                      </form>
-                  </div>
-              </div>
 
     <div id="qfy">
     {!! $rev->render() !!}
@@ -432,3 +427,10 @@
 </div>
 </body>
 </html>
+
+<script>
+
+    $('#pinglun').click(function(){
+        $('#SOHUCS').toggle();
+    })
+</script>
