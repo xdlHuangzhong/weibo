@@ -145,4 +145,12 @@ class LoginController extends Controller
     {
         //
     }
+
+
+     //退出登录
+     public function logout()
+     {
+        session()->forget('user');
+        return redirect('home/index');
+     }
 }
