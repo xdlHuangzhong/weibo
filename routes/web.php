@@ -111,10 +111,15 @@ Route::resource('login','LoginController');
 Route::post('user/upload','InfoController@upload');
 //加载个人中心发帖页
 Route::resource('user','InfoController');
+//加载补充个人信息页面
+Route::get('userinfo/add','InfoController@add');
+//加载个人页面修改方法
+Route::post('userinfo/update','InfoController@update');
 
-//加载个人详情
-Route::get('userinfo/index','UserinfoController@index');
-Route::get('userinfo/share','UserinfoController@share');
+//提交修改数据
+Route::post('userinfo/upload','UserinfoController@upload');
+//修改个人信息页
+Route::resource('userinfo','UserinfoController');
 });
 
 

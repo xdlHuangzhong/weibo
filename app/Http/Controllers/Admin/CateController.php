@@ -173,6 +173,7 @@ class CateController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // return 111;
         //修改分类
         $input = $request->except('_method','_token','updated_at','created_at');
         $rule = [

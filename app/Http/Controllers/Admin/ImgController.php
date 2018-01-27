@@ -170,7 +170,7 @@ class ImgController extends Controller
                 ->withInput();
         }
      //        向数据表中添加数据的第一种方法
-//            创建一个空的用户对象
+    //         创建一个空的用户对象
           $fig = Fig::find($id);
          $oldimg = 'lunbotu/'.$fig->img;
        // dd($oldimg);

@@ -28,6 +28,7 @@
 <link title="微博" href="https://weibo.com/aj/static/opensearch.xml" type="application/opensearchdescription+xml" rel="search">
 
 <script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{{'/layer/layer.js'}}"></script>
 <script type="text/javascript" charset="utf-8" async=""></script><script type="text/javascript" charset="utf-8" async=""></script><script type="text/javascript"></script> 
 <script type="text/javascript"></script> 
 <title>我的首页 微博-随时随地发现新鲜事</title>
@@ -210,14 +211,14 @@
         
         <div class="WB_face W_fl">
             <div class="face">
-            <a target="_blank" class="W_face_radius" suda-uatrack="key=feed_headnick&amp;value=pubuser_head:4199811005523661" href="https://weibo.com/u/2811026850?refer_flag=0000015010_&amp;from=feed&amp;loc=avatar" title="浮力达人君"><img usercard="id=2811026850&amp;refer_flag=0000015010_" title="浮力达人君" alt="" src="/home/fatie/images/a78cdda2ly8fnbqimkmnlj20ro0rotb3.jpg" class="W_face_radius" width="50" height="50"></a>
+            <a target="_blank" class="W_face_radius" suda-uatrack="key=feed_headnick&amp;value=pubuser_head:4199811005523661" href="https://weibo.com/u/2811026850?refer_flag=0000015010_&amp;from=feed&amp;loc=avatar" title="浮力达人君"><img usercard="id=2811026850&amp;refer_flag=0000015010_"  alt="" src="/lunbotu/{{ $res->pic }}" class="W_face_radius" width="50" height="50"></a>
             </div>
             </div>
 
         <div class="WB_detail">
 
             <div class="WB_info">
-                <a suda-uatrack="key=feed_headnick&amp;value=pubuser_nick:4199811005523661" target="_blank" class="W_f14 W_fb S_txt1" nick-name="浮力达人君" title="浮力达人君" href="https://weibo.com/u/2811026850?refer_flag=0000015010_&amp;from=feed&amp;loc=nickname" usercard="id=2811026850&amp;refer_flag=0000015010_">{{ $res->nickName }}</a>
+                <a suda-uatrack="key=feed_headnick&amp;value=pubuser_nick:4199811005523661" target="_blank" class="W_f14 W_fb S_txt1"  >{{ $res->nickName }}</a>
                 <a target="_blank" suda-data="key=pc_apply_entry&amp;value=feed_icon" href="http://verified.weibo.com/verify"><i title="微博个人认证 " class="W_icon icon_approve_gold"></i></a>
                 <a action-type="ignore_list" suda-uatrack="key=home_vip&amp;value=home_feed_vip" title="微博会员" target="_blank" href="http://vip.weibo.com/personal?from=main"><em class="W_icon icon_member4"></em></a><a target="_blank" href="https://huodong.weibo.com/hongbao2018?ref=icon" title="2018让红包飞"><i class="W_icon icon_redpack"></i></a>            
                 </div>
@@ -256,13 +257,13 @@
             <div class="WB_handle">
                 <ul class="WB_row_line WB_row_r4 clearfix S_line2">
             <li>
-                        <a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_collect" href="javascript:" diss-data="fuid=2811026850" action-type="fl_favorite"><span class="pos"><span class="line S_line1" node-type="favorite_btn_text"><span><em>收藏</em></span></a>
-                                        </li>
-            <li>
-                            <a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_tran:4199811005523661" href="javascript:" action-history="rec=1" action-type="fl_forward" action-data="allowForward=1&amp;url=https://weibo.com/2811026850/FFSxunaXj&amp;mid=4199811005523661&amp;name=浮力达人君&amp;uid=2811026850&amp;domain=2811026850&amp;pid=a78cdda2ly1fnry3ptycmj20by0buq46"><span class="pos"><span class="line S_line1" node-type="forward_btn_text"><em>转发</em></span></span></a>
+                        <a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_collect" href="javascript:;" onclick="delcontent({{ $v->cid }})" diss-data="fuid=2811026850" action-type="fl_favorite"><span class="pos"><span class="line S_line1" node-type="favorite_btn_text"><span><em>删除</em></span></a>
             </li>
             <li>
-                        <a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_comm:4199811005523661" href="javascript:" action-type="fl_comment" action-data="ouid=2811026850&amp;location=home"><span class="pos"><span class="line S_line1" node-type="comment_btn_text"><em>评论</em></span></span>
+                            <a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_tran:4199811005523661" href="userinfo/share" action-history="rec=1" action-type="fl_forward" action-data="allowForward=1&amp;url=https://weibo.com/2811026850/FFSxunaXj&amp;mid=4199811005523661&amp;name=浮力达人君&amp;uid=2811026850&amp;domain=2811026850&amp;pid=a78cdda2ly1fnry3ptycmj20by0buq46"><span class="pos"><span class="line S_line1" node-type="forward_btn_text"><em>分享</em></span></span></a>
+            </li>
+            <li>
+                        <a onclick=""class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_comm:4199811005523661" href="javascript:" action-type="fl_comment" action-data="ouid=2811026850&amp;location=home"><span class="pos"><span class="line S_line1" node-type="comment_btn_text"><em>评论</em></span></span>
                         </a>
                         <span class="arrow" style="display: none;" node-type="cmtarrow">
                         <span class="W_arrow_bor W_arrow_bor_t"><i class="S_line1"></i><em class="S_bg1_br"></em></span>
@@ -296,10 +297,10 @@
     <div id="v6_pl_rightmod_myinfo"><div class="WB_cardwrap S_bg2">
     <div class="W_person_info">
       <div class="cover" id="skin_cover_s" style="background-image:url(&quot;profile_cover_s.jpg&quot;)">
-        <div class="headpic"> <a bpfilter="page_frame" href="{{ url('home/userinfo/index') }}" title="爷们帅的不明显"><img class="W_face_radius" src="/home/fatie/images/005GCOVily8fnjxwx2r4wj30zk0m8dlj.jpg" alt="爷们帅的不明显" width="60" height="60"></a></div>
+        <div class="headpic"> <a bpfilter="page_frame" href="{{ url('home/userinfo') }}" title="爷们帅的不明显"><img class="W_face_radius" src="/lunbotu/{{ $res->pic }}" alt="爷们帅的不明显" width="60" height="60"></a></div>
       </div>
       <div class="WB_innerwrap">
-        <div class="nameBox"><a bpfilter="page_frame" href="https://weibo.com/5210522488/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" class="name S_txt1" title="爷们帅的不明显">爷们帅的不明显</a><a action-type="ignore_list" title="微博会员" target="_blank" href="http://vip.weibo.com/"><i class="W_icon icon_member_dis"></i></a><a action-type="" suda-data="key=tblog_grade_float&amp;value=grade_icon_click" target="_blank" href="http://level.account.weibo.com/level/mylevel?from=front"><span node-type="levelBox" levelup="0" action-data="level=3" class="W_icon_level icon_level_c2"><span class="txt_out"><span class="txt_in"><span node-type="levelNum" title="微博等级3 升级有好礼">Lv.3</span></span></span></span></a></div>
+        <div class="nameBox"><a bpfilter="page_frame" href="" class="name S_txt1" title="爷们帅的不明显">{{ $res->nickName }}</a><a action-type="ignore_list" title="微博会员" target="_blank" href="http://vip.weibo.com/"><i class="W_icon icon_member_dis"></i></a><a action-type="" suda-data="key=tblog_grade_float&amp;value=grade_icon_click" target="_blank" href="http://level.account.weibo.com/level/mylevel?from=front"></a></div>
         <ul class="user_atten clearfix W_f18">
           <li class="S_line1"><a bpfilter="page_frame" href="https://weibo.com/5210522488/follow?rightmod=1&amp;wvr=6" class="S_txt1"><strong node-type="follow">62</strong><span class="S_txt2">关注</span></a></li>
           <li class="S_line1"><a bpfilter="page_frame" href="https://weibo.com/5210522488/fans?rightmod=1&amp;wvr=6" class="S_txt1"><strong node-type="fans">4</strong><span class="S_txt2">粉丝</span></a></li>
@@ -392,6 +393,42 @@
 </div>
 </div>
 </div>
+ <script>
+            function delcontent(cid){
+                layer.confirm('您确定要删除吗？', {
+                    btn: ['确定','取消']
+                }, function(){
+
+
+                    $.post('{{ url('home/user/') }}/'+cid,{'_method':'delete','_token':"{{csrf_token()}}"},function (data) {
+
+
+                        if(data.status == 0){
+                            layer.msg(data.message, {icon: 6});
+                            setTimeout(function(){
+                                window.location.href = location.href;
+                            },2000);
+
+
+                        }else{
+                            layer.msg(data.message, {icon: 5});
+
+
+                            setTimeout(function(){
+                                window.location.href = location.href;
+                            },2000);
+                        }
+
+
+                    })
+
+
+                }, function(){
+
+
+                });
+            }
+        </script>
 </div>
 </body>
 </html>

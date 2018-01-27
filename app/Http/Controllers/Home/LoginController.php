@@ -9,8 +9,9 @@ use App\Org\code\Code;
 //加密的类
 use Illuminate\Support\Facades\Crypt;
 use Session;
-
+use DB;
 use App\Model\User;
+use App\Model\User_info;
 class LoginController extends Controller
 {
     /**
@@ -20,7 +21,10 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('home.login.login');
+        
+       
+
+        return view('home.login.login',compact('data'));
     }
 
     /**
@@ -77,6 +81,7 @@ class LoginController extends Controller
 
 //        3. 判断用户名、密码、验证码的有效性
 //        $input['username']
+        
           $user = User::where('name',$input['name'])->first();
             //如果没有此用户，返回没有此用户的错误提示
           if (! $user) {
@@ -97,9 +102,20 @@ class LoginController extends Controller
 //        将用户的登录状态保存到session
 
             Session::put('user',$user);
+            // dd($user->id);
+            //查询user_info表进行判断
+        $res = User_info::where('uid','=',$user->id)->first();
+        if($res){
+             return redirect('home/user');
 
-          return redirect('home/user');
+         }else{
+            //加载补充用户个人信息页
+            return redirect('home/userinfo/add');
+         }
 
+
+
+         
     }
 
     /**

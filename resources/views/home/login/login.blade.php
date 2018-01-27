@@ -17,7 +17,6 @@
               <br>
        	  <form action="{{ url('home/login') }}" method="post">
                 {{ csrf_field() }}
-                <!-- <input type="hidden" name="uid"> -->
                 <input name="name" type="text" class="kuang_txt" placeholder="用户名">
                 <input name="password" type="password" class="kuang_txt" placeholder="密码">
                 <input name="code" type="text" class="kuang_txt"  placeholder="请输入验证码">
