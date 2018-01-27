@@ -77,11 +77,12 @@ class ContentController extends Controller
     public function edit($id)
     {
 
-        $nickName = User_info::where('uid','=',$id)->value('nickName');
+        
         
         
         //获取用户微博信息
-        $res = Content::where('uid','=',$id)->first();
+        $res = Content::where('cid','=',$id)->first();
+        $nickName = User_info::where('uid','=',$res->uid)->value('nickName');
           // dd($res->time);
         // dd($content);
         return view('admin/contents/contents_info',['nickName'=>$nickName,'res'=>$res]);

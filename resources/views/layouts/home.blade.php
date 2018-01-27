@@ -37,17 +37,12 @@
             
         </div>
         <div class=" gn_search_v2">
-          <span class=" placeholder">大家正在搜：南京 2018年1号文件</span><input node-type="searchInput" autocomplete="off" value="" class="W_input" name="15154665682382" type="text">
+          <span class=" placeholder">搜索精彩微博</span>
+          <input node-type="searchInput" autocomplete="off" value="" class="W_input" name="15154665682382" type="text">
           <a href="javascript:" title="搜索" node-type="searchSubmit" class="W_ficon ficon_search S_ficon" suda-uatrack="key=topnav_tab&amp;value=search" target="_top">S</a> 
-          <!--搜索热词下拉-->
-          <div class="gn_topmenulist_search" node-type="searchSuggest" style="display:none;">
-             <div class="gn_topmenulist">
-              <div node-type="basic"></div>
-              <div node-type="plus"></div>
-            </div>
-          </div>
-          <!--/搜索热词下拉--> 
+          
         </div>       
+
         <div class="gn_position">
           <div class="gn_nav">
               <ul class="gn_nav_list">
