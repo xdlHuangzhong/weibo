@@ -23,9 +23,9 @@ class CateController extends Controller
         $input = $request->only('keywords');
 //        dd($input);
         if($input){
-            $cates = Cate::where('name','like','%'.$input['keywords'].'%')->orderby('path')->paginate(10);
+            $cates = Cate::where('name','like','%'.$input['keywords'].'%')->paginate(10);
         }else{
-            $cates = Cate::orderby('path')->paginate(10);
+            $cates = Cate::paginate(10);
         }
         return view('admin/cate/index',compact('cates','input'));
     }
@@ -61,7 +61,7 @@ class CateController extends Controller
     public function create(Request $request)
     {
         //获取1级分类
-        $catone = Cate::where('pid',0)->get();
+        $catone = Cate::get();
 
         return view('admin/cate/create',compact('catone'));
     }
@@ -108,21 +108,15 @@ class CateController extends Controller
 //                dd($input);
 
         $cate = New Cate();
-        $pidd = $cate::max('id')+1;
-        $cate->pid = $input['pid'];
+
+
 
         $cate->name = $input['name'];
-
-
         $cate->title =$input['title'];
         $cate->keywords =$input['keywords'];
         //处理path字段字符串
 
-        if(!$input['pid'] == 0){
-            $cate->path = 0 . ',' . $input['pid'] . ',' .$pidd;
-        }else{
-            $cate->path = 0 . ',' . $pidd;
-        }
+
 
         $res = $cate->save();
         if($res)
@@ -159,7 +153,7 @@ class CateController extends Controller
         //
 
         $cate = Cate::find($id);
-        $catone = Cate::where('pid',0)->get();
+        $catone = Cate::get();
 
         return view('admin/cate/edit',compact('cate','catone'));
     }
@@ -175,6 +169,7 @@ class CateController extends Controller
     {
         //修改分类
         $input = $request->except('_method','_token','updated_at','created_at');
+//        dd($input);
         $rule = [
             'name'=>'required',
             'title'=>'required',
@@ -205,7 +200,7 @@ class CateController extends Controller
         $cate->name = $input['name'];
         $cate->title = $input['title'];
         $cate->keywords = $input['keywords'];
-        $cate->pid = $input['pid'];
+
         $res = $cate->save();
         if($res){
             return redirect('admin/cate');
@@ -227,10 +222,10 @@ class CateController extends Controller
         //删除
         //判断分类下有没有子分类如果没有可以删除
         //获取父分类
-        $fcate = Cate::where("pid",'=',$id)->first();
+
 //        dd($fcate);
 
-        if(!$fcate){
+
             $res = Cate::find($id)->delete();
 
             if($res){
@@ -247,14 +242,8 @@ class CateController extends Controller
             }
             return $data;
 
-        }else{
-            $data = [
-                'status'=>1,
-                'message' => '下面有子分类删除失败'
-            ];
 
-            return $data;
-        }
+
 
 
 

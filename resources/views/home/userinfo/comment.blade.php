@@ -1,14 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta name="_token" content="{{ csrf_token() }}"/>
-    <title>php无限级分类实战————评论及回复功能</title>
-    <link rel="stylesheet" type="text/css" href="/css/comment.css">
-    <script type="text/javascript" src="/js/jquery-1.11.3.min.js" ></script>
-    <script type="text/javascript" src="/js/comment.js" ></script>
-</head>
-<body>
+
 
 <div class="comment-filed">
     <!--发表评论区begin-->
@@ -125,5 +115,3 @@
 </div>
 <!--评论列表显示区end-->
 </div>
-</body>
-</html>

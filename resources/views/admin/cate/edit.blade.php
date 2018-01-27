@@ -37,19 +37,7 @@
                 <form class="am-form tpl-form-border-form tpl-form-border-br" action="{{ url('admin/cate/'.$cate->id) }}" method="post" >
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
-                    <div class="am-form-group">
-                        <label for="user-phone" class="am-u-sm-3 am-form-label">父级分类 <span class="tpl-form-line-small-title">Author</span></label>
-                        <div class="am-u-sm-9">
-                            <select data-am-selected="{searchBox: 1}" name="pid" style="display: none;" >
-                                <option value="0">--顶级分类--</option>
-                                @foreach($catone as $k=>$v)
-                                    <option value="{{ $v->id }}" >{{ $v->name }}</option>
 
-                                @endforeach
-                            </select>
-
-                        </div>
-                    </div>
                     <div class="am-form-group">
                         <label for="user-name" class="am-u-sm-3 am-form-label">分类名称 <span class="tpl-form-line-small-title">Title</span></label>
                         <div class="am-u-sm-9">

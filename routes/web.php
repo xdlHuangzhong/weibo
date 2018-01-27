@@ -116,16 +116,14 @@ Route::post('doforget','RegisterController@doForget');
 Route::get('reset','RegisterController@reset');
 Route::post('doreset','RegisterController@doReset');
 
-//加载登录的方法
-Route::resource('login','LoginController');
-Route::post('user/upload','InfoController@upload');
-//加载个人中心发帖页
-Route::resource('user','InfoController');
+
 
 
 
 
 Route::post('user/upload','InfoController@upload');
+    Route::post('user/pinglun','InfoController@pinglun');
+
 //加载个人中心发帖页
 Route::resource('user','InfoController');
 

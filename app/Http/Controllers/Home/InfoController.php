@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Content;
+use App\Model\Replay;
 use App\Model\User_info;
 use Illuminate\Support\Facades\Validator;
 use DB;
@@ -23,12 +24,33 @@ class InfoController extends Controller
         //查看微博内容
         $res = User_info::where('uid','=',$id)->first();
         // dd($res);
-        $rev = DB::table('contents')->orderBy('time','desc')->paginate(2);
+        $rev = DB::table('contents')->orderBy('time','desc')->paginate(5);
 
 
         $data = DB::table('poster')->get();
         $date = DB::table('friends')->get();
         $notice = DB::table('notice')->get();
+
+        // dd($rev);
+        return view('home.userinfo.index',['res'=>$res,'rev'=>$rev,'data'=>$data,'date'=>$date,'notice'=>$notice]);
+
+
+    }
+
+    public function showpinglun()
+    {
+        $id = Session('user')->id;
+        // dd($id);
+        //查看微博内容
+        $res = User_info::where('uid','=',$id)->first();
+        // dd($res);
+        $rev = DB::table('contents')->orderBy('time','desc')->paginate(10);
+
+
+        $data = DB::table('poster')->get();
+        $date = DB::table('friends')->get();
+        $notice = DB::table('notice')->get();
+
         // dd($rev);
         return view('home.userinfo.index',['res'=>$res,'rev'=>$rev,'data'=>$data,'date'=>$date,'notice'=>$notice]);
 
@@ -64,6 +86,33 @@ class InfoController extends Controller
         $input['pic'] = $pic;
         // dd($input);
         $res = Content::create($input);
+        // 判断是否添加成功
+        if($res){
+            //如果添加成功，跳转到列表页
+            return redirect('home/user')->with('msg','添加成功');
+        }else{
+            //如果添加失败，返回到添加页
+            return back()->with('msg','添加失败');
+        }
+
+    }
+
+    public function pinglun(Request $request)
+    {
+//        return 111;
+        $input = $request->except('_token','pic');
+        //时间
+        $time = date('Y-m-d H:i:s',time());
+
+        // dd($pic);
+        $input['time'] = $time;
+
+//        dd($input);
+
+
+
+        // dd($input);
+            $res = Replay::create($input);
         // 判断是否添加成功
         if($res){
             //如果添加成功，跳转到列表页

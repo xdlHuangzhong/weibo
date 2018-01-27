@@ -7,6 +7,7 @@
 <meta name="viewport" content="initial-scale=1,minimum-scale=1">
 <meta content="随时随地发现新鲜事！微博带你欣赏世界上每一个精彩瞬间，了解每一个幕后故事。分享你想表达的，让全世界都能听到你的心声！" name="description">
 <link rel="mask-icon" sizes="any" href="" color="black">
+<meta name="_token" content="{{ csrf_token() }}"/>
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <script type="text/javascript"></script>
 <title>微博-随时随地发现新鲜事</title>
