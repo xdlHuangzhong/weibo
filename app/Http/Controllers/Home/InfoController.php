@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Content;
+
 use App\Model\Replay;
+
 use App\Model\User_info;
 use Illuminate\Support\Facades\Validator;
 use DB;
@@ -24,6 +26,7 @@ class InfoController extends Controller
         //查看微博内容
         $res = User_info::where('uid','=',$id)->first();
         // dd($res);
+
         $rev = DB::table('contents')->orderBy('time','desc')->paginate(5);
 
 
@@ -55,6 +58,7 @@ class InfoController extends Controller
         return view('home.userinfo.index',['res'=>$res,'rev'=>$rev,'data'=>$data,'date'=>$date,'notice'=>$notice]);
 
 
+
     }
 
     /**
@@ -76,6 +80,7 @@ class InfoController extends Controller
     public function store(Request $request)
     {
         $input = $request->except('_token','pic');
+        // $data = $request->only('uid');
         // dd($input);
         //时间
         $time = date('Y-m-d H:i:s',time());
@@ -86,10 +91,12 @@ class InfoController extends Controller
         $input['pic'] = $pic;
         // dd($input);
         $res = Content::create($input);
+        // $rev = User_info::create($data);
         // 判断是否添加成功
         if($res){
             //如果添加成功，跳转到列表页
             return redirect('home/user')->with('msg','添加成功');
+
         }else{
             //如果添加失败，返回到添加页
             return back()->with('msg','添加失败');
@@ -117,6 +124,7 @@ class InfoController extends Controller
         if($res){
             //如果添加成功，跳转到列表页
             return redirect('home/user')->with('msg','添加成功');
+
         }else{
             //如果添加失败，返回到添加页
             return back()->with('msg','添加失败');
@@ -156,10 +164,10 @@ class InfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    // public function update(Request $request, $id)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -169,13 +177,30 @@ class InfoController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $res = Content::find($id)->delete();
+         // dd($res);
+        //如果删除成功
+        if($res){
+            $data = [
+                'status'=>0,
+                'message'=>'删除成功'
+            ];
+        }else{
+            $data = [
+                'status'=>1,
+                'message'=>'删除失败'
+            ];
+        }
+        // return response()->json($data);
+        // json_encode($data);
+        return $data;
     }
+    
 
       //文件上传
     public function upload(Request $request)
     {
-
+        // return 123;
          //请求中是否携带上传文件
         if($request->hasFile('pic')){
             //获取上传文件
@@ -195,4 +220,31 @@ class InfoController extends Controller
         }
       
     }
+     //补充个人信息
+    public function add()
+    {
+        
+        return view('home.userinfo.add');
+    }
+    //接收传过来的信息值
+    public function update(Request $request)
+    {
+        $input = $request->except('_token','pic','updated_at','created_at');
+//         dd($input);
+        //执行插入数据库
+         $pic = substr($input['art_thumb'],8);
+         // dd($pic);
+        $input['pic'] = $pic;
+        // dd($input);
+        $res = User_info::create($input);
+        // 判断是否添加成功
+        if($res){
+            //如果添加成功，跳转到列表页
+            return redirect('home/user')->with('msg','添加成功');
+        }else{
+            //如果添加失败，返回到添加页
+            return back()->with('msg','添加失败');
+        }
+    }
+   
 }

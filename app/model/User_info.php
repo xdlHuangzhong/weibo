@@ -13,9 +13,9 @@ class User_info extends Model
     public $primaryKey = 'id';
 
 
-    public $timestamps = 'false';
+    public $timestamps = false;
 
     //允许修改字段
-    public $guarded = [];
+    public $guarded = ['updated_at','created_at','art_thumb'];
 
 }

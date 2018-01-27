@@ -22,6 +22,9 @@
 <script src="/home/shouye/js/myFocus.js" type="text/javascript"></script>
 <script src="/home/shouye/js/5imoban.net.js" type="text/javascript"></script>
 <link href="/home/shouye/css/css.css" rel="stylesheet" type="text/css" />
+
+
+
 </head>
 
 

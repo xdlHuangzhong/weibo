@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 use App\Model\User;
+use App\Model\User_info;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Mail;
@@ -41,10 +42,12 @@ class RegisterController extends Controller
         	$pass = Crypt::encrypt($input['password']);
         	$token = md5(date('Y-m-d H:i:s').rand(1000,9999));
 
+
         	//        dd($input);
 
         // 注册未激活的用户
         $user = User::create(['name'=>$name,'password'=>$pass,'email'=>$input['email'],'token'=>$token]);
+        
         if($user){
 
             //向用户注册的邮箱发送激活邮件
@@ -62,6 +65,7 @@ class RegisterController extends Controller
             // 注册失败，返回注册页
             return back();
         }
+        
     	
 }
  //邮箱激活

@@ -79,10 +79,13 @@ Route::post('/send/{id}','NewsController@send');
 // 网站配置数据更新
     Route::post('config/update','ConfigController@Update');
 
+
     //广告图片上传
     Route::post('poster/upload','PosterController@upload');
     //广告模块
     Route::resource('poster','PosterController');
+
+
 
 });
 
@@ -102,6 +105,8 @@ Route::get('home/active','Home\RegisterController@active');
 Route::get('home/index','Home\IndexController@index');
 //加载登录的方法
 Route::resource('home/login','Home\LoginController');
+
+
 //前台用户模块
 Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>'hislogin'],function(){
 //退出登录
@@ -121,20 +126,33 @@ Route::post('doreset','RegisterController@doReset');
 
 
 
+
 Route::post('user/upload','InfoController@upload');
-    Route::post('user/pinglun','InfoController@pinglun');
-
-//加载个人中心发帖页
-Route::resource('user','InfoController');
+Route::post('user/pinglun','InfoController@pinglun');
 
 
-//加载个人中心页
-Route::resource('user','InfoController');
+
+
+
 //加载个人详情
 Route::get('userinfo/index','UserinfoController@index');
 Route::get('userinfo/share','UserinfoController@share');
 //处理图片
+
+
+
 Route::post('user/upload','InfoController@upload');
+//加载个人中心发帖页
+Route::resource('user','InfoController');
+//加载补充个人信息页面
+Route::get('userinfo/add','InfoController@add');
+//加载个人页面修改方法
+Route::post('userinfo/update','InfoController@update');
+
+//提交修改数据
+Route::post('userinfo/upload','UserinfoController@upload');
+//修改个人信息页
+Route::resource('userinfo','UserinfoController');
 });
 
 

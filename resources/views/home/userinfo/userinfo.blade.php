@@ -112,21 +112,20 @@
 				<div class="shadow  S_shadow" layout-shell="false">
 						<div class="pf_photo" node-type="photo">
 						<p class="photo_wrap">
-					 	<img src="" alt="" class="photo"></p>
+					 	<img src="/lunbotu/{{ $res->pic }}" alt="" class="photo"></p>
 						</div>
 				<div class="pf_username">
 				
-					<h1 class="username"></h1>
+					<h1 class="username">{{ $res->nickName }}</h1>
 					<span class="icon_bed"><a><i class="W_icon icon_pf_male"></i></a></span>				
 				</div>
 				
 		<div class="pf_opt" diss-data="wforce=1&amp;refer_sort=profile&amp;refer_flag=profile_head">
 		<div class="opt_box clearfix">
 			<div class="btn_bed W_fl" node-type="focusLink" action-data="uid=5210522488&amp;fnick=&amp;f=1&amp;refer_flag=1005050001_&amp;refer_lflag=&amp;refer_from=profile_headerv6">
-			<a href="javascript:" suda-uatrack="key=tblog_profile_v6&amp;value=atten" suda-data="key=tblog_attention_click&amp;value=5210522488" action-type="login" class="W_btn_c btn_34px"><em class="W_ficon ficon_add S_ficon">+</em>关注</a>
+			<a href="/home/userinfo/{{ $res->id }}/edit" suda-uatrack="key=tblog_profile_v6&amp;value=atten" suda-data="key=tblog_attention_click&amp;value=5210522488" action-type="login" class="W_btn_c btn_34px"><em class="W_ficon ficon_add S_ficon"></em>个人信息</a>
 			</div>
-			<div class="btn_bed W_fl"><a href="javascript:" action-type="login" action-data="uid=5210522488&amp;nick=" class="W_btn_d btn_34px" suda-uatrack="key=tblog_profile_v6&amp;value=private_letter">私信</a></div>
-			<div class="btn_bed W_fl"><a href="javascript:" node-type="more" class="W_btn_d W_btn_pf_menu btn_34px"><em class="W_ficon ficon_menu S_ficon">=</em></a></div>
+			
 		</div>
 		</div>
 		</div>
@@ -167,27 +166,7 @@
 			<div id="Pl_Third_Inline__6" anchor="-50"></div>
 			<div id="Pl_Core_UserInfo__7" anchor="-50"><div class="WB_cardwrap S_bg2" fixed-inbox="true" node-type="sigleProfileUsrinfo" fixed-mutex="false">
     <!-- v6 card 通用标题 -->
-	<div class="PCD_person_info">
-				
-		<div class="WB_innerwrap">
-			<div class="m_wrap">
-				<div class="detail">
-					<ul class="ul_detail">
-						<li class="item S_line2 clearfix">
-							<span class="item_ico W_fl"><em class="W_ficon ficon_starmark S_ficon">Û</em></span>
-							<span class="item_text W_fl"><a class="W_icon_level icon_level_c2" title="微博等级3" href="http://level.account.weibo.com/level/levelexplain?from=profile2" target="_black"><span>Lv.3</span></a></span>
-						</li>
-						
-						<li class="item S_line2 clearfix">
-							<span class="item_ico W_fl"><em class="W_ficon ficon_constellation S_ficon">ö</em></span>
-	    						<span class="item_text W_fl"></span>
-							</li>
-					</ul>
-								</div>
-							</div>
-						</div>
-						
-					</div>
+	
 				</div>
 				</div>
 					<div id="Pl_Third_Inline__8" anchor="-50"></div>
@@ -343,7 +322,7 @@
     <div class="PCD_feed">
         <div class="WB_cardtitle_b S_line2">
             <h4 class="obj_name"><span class="main_title W_fb W_f14"><a target="_blank" href="https://weibo.com/" suda-data="key=embedded_weibo&amp;value=recommend_title" class="S_txt1">相关推荐</a></span></h4>
-            <div class="opt_box"><a suda-data="key=embedded_weibo&amp;value=refresh_button" href="javascript:" node-type="infoChange" class="opt_change S_txt1"><em class="W_ficon ficon_rotate S_ficon">e</em>刷新</a></div>
+            
         </div>
         <!--滚动条组件-->
         <div class="WB_innerwrap UI_scrollView" node-type="scrollView" style="height: 544px;"><div class="UI_scrollContainer">
@@ -352,11 +331,7 @@
                                  <div class="Tf_feed_type S_line1" node-type="infoFeed" action-type="fl_jumpurl" action-data="url=%2F%2Fweibo.com%2F1676910563%2FFFsvR4uhO%3Ffrom%3Dembedded_weibo&amp;target=_blank" mid="4198810551069736">
                                 <!--主内容-->
                                 <div class="Tf_feed_detail clearfix">
-                                    <div class="Tf_screen">
-                                        <div class="screen_box" node-type="widget_followBtnBox" action-data="uid=1676910563&amp;fnick=博露齿一笑&amp;template=2&amp;refer_sort=friends&amp;nogroup=1&amp;third_appkey_alias=rec&amp;refer_flag=2312270001_1676910563">
-                                         <a href="javascript:" node-type="feedfollow" class="W_btn_b btn_22px" action-type="follow" suda-uatrack="key=tblog_pc_attention&amp;value=addatten_button:Cuser:1676910563:addaten"><em class="W_ficon ficon_add S_ficon">+</em>关注</a>
-                                         </div>
-                                    </div>
+                                    
                                     <div class="Tf_face">
                                         <div class="face" suda-uatrack="key=feed_headnick&amp;value=pubuser_head:embedded_weibo"><a target="_blank" href="https://weibo.com/1676910563"><img src="/xiangqing/images/63f39fe3gw1elhkkbfomtj205u060glr.jpg" alt="" class="W_face_radius"></a></div>
                                     </div>
@@ -369,8 +344,8 @@
                                                 <div class="media_box" action-type="infoChangeMouse" suda-uatrack="key=tblog_newimage_feed&amp;value=image_feed_unfold:embedded_weibo">
                                                     <ul action-type="infoSmallPic" class="Tf_media_a Tf_media_a_mn clearfix" node-type="infoCountWidth" style="width: 276px;"><!--li和img和i标签中间不能有空格-->
                                                         <!--图片宽高比>=130:98增加样式名W_piccut_h，否则增加样式名W_piccut_v-->
-                                                                                                                                                                                <li action-data="pid=b8b73ba1jw1eum0897pylj20c819zwnl" class="Tf_pic li_1  W_piccut_v  "><img src="/xiangqing/images/b8b73ba1jw1eum0897pylj20c819zwnl.jpg" alt=""><i class="W_loading" style="display:none;"></i></li>
-                                                                                                                                                                                <li action-data="pid=b8b73ba1jw1eum08c0rqcg209v05ke81" class="Tf_pic li_1  W_piccut_v  "><img src="/xiangqing/images/b8b73ba1jw1eum08c0rqcg209v05ke81.jpg" alt=""><i class="W_loading" style="display:none;"></i></li>
+                                                     <li action-data="pid=b8b73ba1jw1eum0897pylj20c819zwnl" class="Tf_pic li_1  W_piccut_v  "><img src="/xiangqing/images/b8b73ba1jw1eum0897pylj20c819zwnl.jpg" alt=""><i class="W_loading" style="display:none;"></i></li>
+                                                     <li action-data="pid=b8b73ba1jw1eum08c0rqcg209v05ke81" class="Tf_pic li_1  W_piccut_v  "><img src="/xiangqing/images/b8b73ba1jw1eum08c0rqcg209v05ke81.jpg" alt=""><i class="W_loading" style="display:none;"></i></li>
                                                                                                             </ul>
                                                 </div>
                                             </div>
@@ -483,68 +458,14 @@
                 <li class="tab_li tab_li_first curr S_bg2" node-type="tab_all" action-type="search_type" action-data="profile_ftype=1&amp;is_all=1">
                     <a href="javascript:void(0);" suda-data="key=tblog_profile_new&amp;value=weibo_all" class="S_txt1 S_line1">全部</a>
                     <span class="ani_border"></span>
-                </li>
-                <li class="tab_li" node-type="tab_hot" action-type="search_type" action-data="profile_ftype=1&amp;is_hot=1" style="display:none">
-                    <a href="javascript:void(0);" suda-uatrack="key=tblog_profile_v6&amp;value=topnav" class="S_txt1"><em class="W_ficon ficon_hot S_ficon">ì</em>热门</a>
-                    <span class="ani_border"></span>
-                </li>
-               
+                </li>   
             </ul>
-            <div class="fr_box W_fr" node-type="search_adv_rightbar">
-                <div class="search_box W_fr" node-type="input_search" style="">
-                    <span class="WB_search_s">
-                    <form method="get" action="" node-type="singleForm">
-                        <input type="text" node-type="keyword" name="key_word" class="W_input" value="" placeholder="这里输入您的查找"><span class="pos"><a href="javascript:void(0);" action-type="search_key" title="搜索" class="W_ficon ficon_search S_ficon S_ficon_dis" suda-uatrack="key=tblog_profile_v6&amp;value=search" onclick="return false;">f</a></span>
-                    </form>
-                    </span>
-                </div>
-            </div>
+          
            
         </div>
     </div><div style="height:1px;margin-top:-1px;visibility:hidden;"></div></div>
-    <div style="display:none;" class="WB_cardwrap S_bg2 feed_pop_search" node-type="search">
-       
-        <div class="WB_innerwrap">
-            <div class="m_wrap">
-            <div class="form_table_s">
-                <form method="get" action="" node-type="searchForm">
-                    <dl class="f_normal clearfix">
-                    <dt class="f_tit">类　型：</dt>
-                    <dd class="f_con">
-                        <span class="f_ipt">
-                            <label for="is_ori" class="W_label"><input name="is_ori" type="checkbox" value="1" id="is_ori" checked="checked" class="W_checkbox" suda-data="key=tblog_otherprofile_page&amp;value=check_original"><span>原创</span></label>
-                            <label for="is_forward" class="W_label"><input name="is_forward" type="checkbox" value="1" id="is_ori" checked="checked" class="W_checkbox" suda-data="key=tblog_otherprofile_page&amp;value=check_transfer"><span>转发</span></label>
-                            <label for="is_text" class="W_label"><input name="is_text" type="checkbox" value="1" id="is_text" checked="checked" class="W_checkbox" suda-data="key=tblog_otherprofile_page&amp;value=check_text"><span>纯文字</span></label>
-                            <label for="is_pic" class="W_label"><input name="is_pic" type="checkbox" value="1" id="is_pic" checked="checked" class="W_checkbox" suda-data="key=tblog_otherprofile_page&amp;value=check_picture"><span>含图片</span></label>
-                            <label for="is_video" class="W_label"><input name="is_video" type="checkbox" value="1" id="is_video" checked="checked" class="W_checkbox" suda-data="key=tblog_otherprofile_page&amp;value=check_video"><span>含视频</span></label>
-                            <label for="is_music" class="W_label"><input name="is_music" type="checkbox" value="1" id="is_music" checked="checked" class="W_checkbox" suda-data="key=tblog_otherprofile_page&amp;value=check_music"><span>含音乐</span></label>
-                            <label for="is_article" class="W_label"><input name="is_article" type="checkbox" value="1" id="is_article" checked="checked" class="W_checkbox" suda-data="key=zhuzhan_advance_search&amp;value=profile_article"><span>含文章</span></label>
-                        </span>
-                    </dd>
-                    </dl>
-                    <dl class="f_normal clearfix">
-                        <dt class="f_tit">关键字：</dt>
-                        <dd class="f_con"><span class="f_ipt"><input type="text" node-type="keyword" class="W_input w1" value="搜我的微博" id="key_word" notice="搜我的微博" name="key_word"></span></dd>
-                    </dl>
-                    <dl class="f_normal clearfix">
-                        <dt class="f_tit">时　间：</dt>
-                        <dd class="f_con"><span class="f_ipt"><input type="text" action-type="search_date" action-data="type=1" value="" class="W_input w2" id="start_time" def="点击选择日期" name="start_time" readonly="true"><i class="t1">到</i><input type="text" class="W_input w2" action-type="search_date" action-data="type=2" value="2018-01-23" def="点击选择日期" id="end_time" name="end_time" readonly="true"></span></dd>
-                    </dl>
-                    <dl class="f_btn">
-                        <dd class="f_con"><a href="javascript:void(0);" class="W_btn_a" action-type="search_button" onclick="return false;" suda-uatrack="key=tblog_profile_v6&amp;value=senior_search">搜索</a></dd>
-                    </dl>
-                </form>
-            </div>
-            </div>
-        </div>
-    </div>
-    <div style="display:none;" class="WB_cardwrap WB_result S_bg1" node-type="search_ranks">
-        <span class="tab_s">
-            <a action-type="search_rank" node-type="search_rank" action-data="rank=1" class="S_txt1 " href="javascript:void(0);">公开</a>
-            <a action-type="search_rank" node-type="search_rank" action-data="rank=2" class="S_txt1 " href="javascript:void(0);">私密</a>
-            <a action-type="search_rank" node-type="search_rank" action-data="rank=4" class="S_txt1 " href="javascript:void(0);">定向分组</a>
-        </span>
-    </div>
+   
+    
     <div style="display:none;" node-type="feed_tag_list" class="WB_cardwrap S_bg2 feed_pop_tag"></div>
        
 </div>
@@ -552,22 +473,27 @@
         <div style="position:relative;" node-type="feedconfig" data-queryfix="is_all=1">
             <div style="position:absolute;top:-110px;left:0;width:0;height:0;" id="feedtop" name="feedtop"></div>
         </div>
+        @foreach($rev as $k=>$v)
              <div tbinfo="ouid=5210522488" action-type="feed_list_item" diss-data="" mid="4199306967675968" class="WB_cardwrap WB_feed_type S_bg2 WB_feed_like ">
         <div class="WB_feed_detail clearfix" node-type="feed_content">
                      
         <div class="WB_face W_fl">
-            <div class="face"><a target="_blank" class="W_face_radius" suda-uatrack="key=noload_singlepage&amp;value=user_pic" href="//weibo.com/u/5210522488?refer_flag=1005055010_" title=""><img usercard="id=5210522488&amp;type=0&amp;refer_flag=1005055010_" src="" width="50" height="50" alt="" class="W_face_radius"></a></div>
+            <div class="face"><a target="_blank" class="W_face_radius" suda-uatrack="key=noload_singlepage&amp;value=user_pic" href="//weibo.com/u/5210522488?refer_flag=1005055010_" title=""><img usercard="id=5210522488&amp;type=0&amp;refer_flag=1005055010_" src="/lunbotu/{{ $res->pic }}" width="50" height="50" alt="" class="W_face_radius"></a></div>
        </div>
 
         <div class="WB_detail"  style="text-align:left;">
             <div class="WB_info">
-                <a href="//weibo.com/u/5210522488?refer_flag=1005055010_" target="_blank" class="W_f14 W_fb S_txt1" usercard="id=5210522488&amp;type=0&amp;refer_flag=1005055010_" suda-uatrack="key=noload_singlepage&amp;value=user_name"></a>
+                <a href="//weibo.com/u/5210522488?refer_flag=1005055010_" target="_blank" class="W_f14 W_fb S_txt1" usercard="id=5210522488&amp;type=0&amp;refer_flag=1005055010_" suda-uatrack="key=noload_singlepage&amp;value=user_name"></a>&nbsp;&nbsp;&nbsp;&nbsp;{{ $res->nickName }}
                                             </div>
             <div class="WB_from S_txt2">
-                                <a name="4199306967675968" target="_blank" href="/5210522488/FFFqwwcRW?from=page_1005055210522488_profile&amp;wvr=6&amp;mod=weibotime" title="2018-01-23 10:57" date="1516676263000" class="S_txt2" node-type="feed_list_item_date" suda-data="key=tblog_home_new&amp;value=feed_time:4199306967675968:fromprofile"> 13分钟前</a> 来自 <a class="S_txt2" suda-uatrack="key=profile_feed&amp;value=pubfrom_host" action-type="app_source" target="_blank" href="http://app.weibo.com/t/feed/6vtZb0" rel="nofollow">微博 weibo.com</a>            	            </div>
+                                <a name="4199306967675968" target="_blank" href="/5210522488/FFFqwwcRW?from=page_1005055210522488_profile&amp;wvr=6&amp;mod=weibotime" title="2018-01-23 10:57" date="1516676263000" class="S_txt2" node-type="feed_list_item_date" suda-data="key=tblog_home_new&amp;value=feed_time:4199306967675968:fromprofile">&nbsp;&nbsp;&nbsp;&nbsp; {{ $v->time }}</a>            	            </div>
             <div class="WB_text W_f14" node-type="feed_list_content" nick-name="">
-                                                                                                                                   </div>
-                                                                                            <div class="WB_tag  clearfix S_txt2" style="display: none">
+                       &nbsp;&nbsp;&nbsp;&nbsp;{{ $v->content }}                       
+              </div>
+              <div class="tpl-form-file-img">
+                 <p><img src="/lunbotu/{{ $v->pic }}" id="img1" alt="上传后显示图片"  style="max-width:350px;max-height:100px;" /></p>
+            </div>
+                    <div class="WB_tag  clearfix S_txt2" style="display: none">
                 <span class="WB_tag_s" node-type="feed_list_tagList">
                                         <span class="b" id="q1" style="display:none;">
 		                                </span>
@@ -583,11 +509,7 @@
     <div class="WB_feed_handle" node-type="feed_list_options">
         <div class="WB_handle">
             <ul class="WB_row_line WB_row_r4 clearfix S_line2">
-                                    <li>
-                                                    <a href="javascript:void(0);" class="S_txt2" action-type="fl_pop" action-data="mid=4199306967675968&amp;from=p_profile_pc_05" suda-uatrack="key=profile_feed&amp;value=popularize_host"><span class="pos"><span class="line S_line1">
-                                                                                    <i class="S_txt2" title="此条微博已经被阅读3次">阅读 3</i>&nbsp;</span></span>
-                           		 </a>
-                        		</li>
+                                  
                            <li>
                         <a action-data="allowForward=1&amp;url=https://weibo.com/5210522488/FFFqwwcRW&amp;mid=4199306967675968&amp;&amp;uid=5210522488&amp;domain=5210522488" action-type="fl_forward" action-history="rec=1" href="/home/userinfo/share" class="S_txt2" suda-uatrack="key=profile_feed&amp;value=transfer"><span class="pos"><span class="line S_line1" node-type="forward_btn_text"><span><em class="W_ficon ficon_forward S_ficon"></em><em>分享</em></span></span></span></a>
                         <span class="arrow"><span class="W_arrow_bor W_arrow_bor_t"><i class="S_line1"></i><em class="S_bg1_br"></em></span></span>
@@ -607,7 +529,7 @@
 			    </div>
 			            <div node-type="feed_list_repeat" class="WB_feed_repeat S_bg1" style="display:none;"></div>
 			    </div>
-	                               
+	        @endforeach
     
     <!--翻页-->
                         

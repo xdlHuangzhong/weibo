@@ -33,6 +33,7 @@
                 @endif
        	  	  <form action="{{ url('/home/register/send') }}" method="post">
               {{ csrf_field() }}
+                <!-- <input name="uid" type="hidden" value="id"> -->
                 <input name="name" type="text" class="kuang_txt phone" placeholder="用户名">
                 <input name="email" type="email" class="kuang_txt email" placeholder="邮箱">
                 <input name="password" type="password" class="kuang_txt possword" placeholder="密码">
