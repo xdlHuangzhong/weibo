@@ -107,6 +107,10 @@ Route::get('home/index','Home\IndexController@index');
 Route::resource('home/login','Home\LoginController');
 
 
+//热门微博列表
+Route::get('home/hot','Home\IndexController@hot');
+
+
 //前台用户模块
 Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>'hislogin'],function(){
 //退出登录
@@ -120,10 +124,6 @@ Route::post('doforget','RegisterController@doForget');
 //找回密码
 Route::get('reset','RegisterController@reset');
 Route::post('doreset','RegisterController@doReset');
-
-
-
-
 
 
 

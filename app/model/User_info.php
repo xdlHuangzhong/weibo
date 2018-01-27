@@ -18,4 +18,17 @@ class User_info extends Model
     //允许修改字段
     public $guarded = ['updated_at','created_at','art_thumb'];
 
+    //用户信息
+    public function user()
+    {
+        return $this->belongsTo('App\Http\user','id');
+    }
+
+	//用户发帖的信息
+    public function contents()
+    {
+    	return $this->hasOne('App\Model\contents','uid','uid');
+    }
+
+
 }

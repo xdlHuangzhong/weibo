@@ -14,4 +14,9 @@ class Content extends Model
     //允许批量操作
     public $guarded = ['art_thumb'];
     public $timestamps = false;
+
+    public function user_info()
+    {
+    	return $this->hasOne('App\Model\user_info','uid','uid');	
+    }
 }

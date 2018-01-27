@@ -77,7 +77,7 @@
                                                 <td class="am-text-middle">
                                                     <div class="tpl-table-black-operation">
                                                     <a class="btn btn-default" onclick="user_edit({{$v->cid}})" id="user{{$v->cid}}">{{$v->hot == 1 ? '普通' : '热门'}}</a>
-                                                      <a href="{{ url('admin/content/'.$v->uid.'/edit') }}">
+                                                      <a href="{{ url('admin/content/'.$v->cid.'/edit') }}">
                                                             查看
                                                         </a>
                                                         <a href="javascript:;" onclick="delContents({{ $v->cid }})" class="tpl-table-black-operation-del">
@@ -132,11 +132,11 @@
 
                         //改变用户状态
                         if(data==1){
-                            layer.msg('用户已冻结！', {icon: 1});
+                            layer.msg('升级为热门！', {icon: 1});
                             document.getElementById('status'+id).innerHTML = '是';
                             document.getElementById('user'+id).innerHTML = '普通';
                         }else{
-                            layer.msg('用户已恢复！', {icon: 1});
+                            layer.msg('降级为普通！', {icon: 1});
                            document.getElementById('status'+id).innerHTML = '否';
                             document.getElementById('user'+id).innerHTML = '热门';
                         }
