@@ -22,44 +22,29 @@ class InfoController extends Controller
     public function index()
     {
         $id = Session('user')->id;
+//        $user = DB::table('user')->get();
         // dd($id);
         //查看微博内容
         $res = User_info::where('uid','=',$id)->first();
         // dd($res);
 
-        $rev = DB::table('contents')->orderBy('time','desc')->paginate(5);
+        $rev = DB::table('contents')->orderBy('time','desc')->paginate(1);
+
+        //获取帖子归属人
 
 
         $data = DB::table('poster')->get();
         $date = DB::table('friends')->get();
         $notice = DB::table('notice')->get();
+        $replay = DB::table('replay')->where('cid','=',$id)->get();
 
-        // dd($rev);
-        return view('home.userinfo.index',['res'=>$res,'rev'=>$rev,'data'=>$data,'date'=>$date,'notice'=>$notice]);
-
-
-    }
-
-    public function showpinglun()
-    {
-        $id = Session('user')->id;
-        // dd($id);
-        //查看微博内容
-        $res = User_info::where('uid','=',$id)->first();
-        // dd($res);
-        $rev = DB::table('contents')->orderBy('time','desc')->paginate(10);
-
-
-        $data = DB::table('poster')->get();
-        $date = DB::table('friends')->get();
-        $notice = DB::table('notice')->get();
-
-        // dd($rev);
-        return view('home.userinfo.index',['res'=>$res,'rev'=>$rev,'data'=>$data,'date'=>$date,'notice'=>$notice]);
-
+//         dd($rev);
+        return view('home.userinfo.index',['res'=>$res,'rev'=>$rev,'data'=>$data,'date'=>$date,'notice'=>$notice,'replay'=>$replay]);
 
 
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -103,11 +88,12 @@ class InfoController extends Controller
         }
 
     }
-
+    //添加评论
     public function pinglun(Request $request)
     {
 //        return 111;
         $input = $request->except('_token','pic');
+
         //时间
         $time = date('Y-m-d H:i:s',time());
 
@@ -129,6 +115,26 @@ class InfoController extends Controller
             //如果添加失败，返回到添加页
             return back()->with('msg','添加失败');
         }
+
+    }
+    //显示评论
+    public function showpinglun(Request $request)
+    {
+
+
+        $input = $request->only('cid');
+        //获取帖子下所有评论
+        $replay = Replay::where('cid',$input)->get();
+
+//        dd($replay);
+
+
+
+
+
+        return ($replay);
+
+
 
     }
    

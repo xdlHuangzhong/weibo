@@ -14,4 +14,5 @@ class Replay extends Model
     //允许批量操作
     public $guarded = [];
     public $timestamps = false;
+
 }

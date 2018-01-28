@@ -22,7 +22,7 @@ class IndexController extends Controller
     	$bata = \DB::table('fig')->get();
     	//全部微博
     	//查询微博内容
-        	$index = Content::with('user_info')->orderBy('time','desc')->paginate(5);
+        	$index = Content::with('user_info')->orderBy('time','desc')->paginate(10);
         	// foreach($index as $k=>$v){
         	// 	dd($v->pic);
         	// }

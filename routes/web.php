@@ -117,7 +117,9 @@ Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>'hislogin'],fun
 Route::get('logout/','LoginController@logout');
 
 
-
+// 点赞
+    Route::resource('Handle','HandleController');
+    
 //忘记密码
 Route::get('forget','RegisterController@forget');
 Route::post('doforget','RegisterController@doForget');
@@ -129,6 +131,8 @@ Route::post('doreset','RegisterController@doReset');
 
 Route::post('user/upload','InfoController@upload');
 Route::post('user/pinglun','InfoController@pinglun');
+Route::post('user/showpinglun','InfoController@showpinglun');
+
 
 
 
