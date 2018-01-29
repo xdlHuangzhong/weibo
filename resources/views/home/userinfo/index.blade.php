@@ -410,7 +410,7 @@
 </div>
 </div>
 <div class="WB_frame WB_frame_bottom">
-            <div id="pl_common_base"></div>
+            <div id="pl_common_base"></div> 
             <div id="v6_pl_guide_homeguide">    <div node-type="no-guide"></div>
 </div>
             <div id="v6_pl_ad_bottomtip"><div ucardconf="type=1" ad-data="id=ads_bottom&amp;url=//biz.weibo.com/adfront/deliver&amp;psid=PDPS000000037700&amp;wbVersion=v6&amp;uid="></div></div>

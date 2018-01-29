@@ -38,7 +38,7 @@
         </div>
         <div class=" gn_search_v2">
           <span class=" placeholder">大家正在搜：南京 2018年1号文件</span><input node-type="searchInput" autocomplete="off" value="" class="W_input" name="15154665682382" type="text">
-          <a href="javascript:" title="搜索" node-type="searchSubmit" class="W_ficon ficon_search S_ficon" suda-uatrack="key=topnav_tab&amp;value=search" target="_top">S</a> 
+          <a href="javascript:;" title="搜索" node-type="searchSubmit" class="W_ficon ficon_search S_ficon" suda-uatrack="key=topnav_tab&amp;value=search" target="_top">S</a> 
           <!--搜索热词下拉-->
           <div class="gn_topmenulist_search" node-type="searchSuggest" style="display:none;">
              <div class="gn_topmenulist">
