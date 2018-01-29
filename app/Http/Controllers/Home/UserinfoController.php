@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\User_info;
+use  App\Model\Cate;
 use DB;
 use Session;
 class UserinfoController extends Controller
@@ -27,7 +28,8 @@ class UserinfoController extends Controller
         // dd($id);
         //查看微博内容
         $res = User_info::where('uid','=',$id)->first();
-        // dd($res);
+
+//         dd($cate);
         $rev = DB::table('contents')->where('uid','=',$id)->orderBy('time','desc')->paginate(2);
         $friends = DB::table('friends')->get();
         // dd($data);
@@ -62,9 +64,10 @@ class UserinfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        //游戏
+        return view('home.userinfo.youxi');
     }
 
     /**
@@ -78,12 +81,12 @@ class UserinfoController extends Controller
         // return 111;
         $id = Session('user')->id;
         // dd($id);
-
+        $cate = Cate::get();
         //查看微博内容
         $res = User_info::where('uid','=',$id)->first();
         // dd($res);
         $rev = DB::table('contents')->where('uid','=',$id)->orderBy('time','desc')->paginate(2);
-        return view('home.userinfo.edit',['res'=>$res,'rev'=>$rev]);
+        return view('home.userinfo.edit',['res'=>$res,'rev'=>$rev,'cate'=>$cate]);
     }
 
     /**
@@ -97,7 +100,7 @@ class UserinfoController extends Controller
     {
        
        $input = $request->except('_token','_method');
-       // dd($input);
+//        dd($input);
            //接收出去_token,pic提交所有的数据
          //        向数据表中添加数据的第一种方法
     //         创建一个空的用户对象

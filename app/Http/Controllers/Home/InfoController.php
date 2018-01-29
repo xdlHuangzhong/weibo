@@ -26,17 +26,18 @@ class InfoController extends Controller
         // dd($id);
         //查看微博内容
         $res = User_info::where('uid','=',$id)->first();
+
         // dd($res);
 
         $rev = DB::table('contents')->orderBy('time','desc')->paginate(1);
 
         //获取帖子归属人
-
+        $replay = Replay::where('cid','=',$id)->get();
 
         $data = DB::table('poster')->get();
         $date = DB::table('friends')->get();
         $notice = DB::table('notice')->get();
-        $replay = DB::table('replay')->where('cid','=',$id)->get();
+
 
 //         dd($rev);
         return view('home.userinfo.index',['res'=>$res,'rev'=>$rev,'data'=>$data,'date'=>$date,'notice'=>$notice,'replay'=>$replay]);

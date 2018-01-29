@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Model\User_info;
-use App\Model\User;
+use App\Model\Cate;
 use App\Model\Content;
 
 class IndexController extends Controller
@@ -20,16 +20,19 @@ class IndexController extends Controller
     	$date = \DB::table('notice')->get();
     	//轮播图
     	$bata = \DB::table('fig')->get();
+		$cate = Cate::get();
+//		dd($cate);
     	//全部微博
     	//查询微博内容
+//		$arr=[];
         	$index = Content::with('user_info')->orderBy('time','desc')->paginate(10);
-        	// foreach($index as $k=>$v){
-        	// 	dd($v->pic);
-        	// }
-//    	 dd($index);
+//        	 foreach($index as $k=>$v){
+//        	 	$arr[]=($v->user_info->nickName);
+//        	 }
+//    	 dd($arr);
     	
         	
-    	return view('home.index',['data' => $data,'date' => $date,'bata' => $bata,'index'=>$index]);
+    	return view('home.index',['data' => $data,'date' => $date,'bata' => $bata,'index'=>$index,'cate'=>$cate]);
     	
     }         
 
@@ -42,6 +45,7 @@ class IndexController extends Controller
     	$date = \DB::table('notice')->get();
     	//轮播图
     	$bata = \DB::table('fig')->get();
+		$cate = Cate::get();
     	//查询热门微博内容
         $index = Content::with('user_info')
         ->where('hot',1)
@@ -49,6 +53,34 @@ class IndexController extends Controller
         ->paginate(5);
 //		dd($index);
 
-       return view('home.index',['data' => $data,'date' => $date,'bata' => $bata,'index'=>$index]);
+       return view('home.index',['data' => $data,'date' => $date,'bata' => $bata,'index'=>$index,'cate'=>$cate]);
     }
+
+	public function usercate($name)
+	{
+		$data = \DB::table('friends')->get();
+		//公告
+		$date = \DB::table('notice')->get();
+		//轮播图
+		$bata = \DB::table('fig')->get();
+		$cate = Cate::get();
+//		dd($cate);
+		//全部微博
+		//查询微博内容
+//		$arr=[];
+		$index = Content::with('user_info')->orderBy('time','desc')->get();
+//        	 foreach($index as $k=>$v){
+//        	 	$arr[]=($v->user_info->nickName);
+//        	 }
+//    	 dd($arr);
+
+		$user = User_info::where('work','=',$name)->paginate(10);
+//		dd($user);
+		return view('home.usercate',['data' => $data,'date' => $date,'bata' => $bata,'index'=>$index,'cate'=>$cate,'user'=>$user]);
+
+//		dd($user);
+
+
+
+	}
 }

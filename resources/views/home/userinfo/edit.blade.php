@@ -97,19 +97,18 @@
 								    <label for="inputcode3" class="col-sm-2 control-label" style="margin-right:15px"><span style="color:red;margin-right: 5px;">*</span>工作:</label> 
 									
 									<select class="form-control" style="width:345px;font-size: 18px" name="work">
-    									                                        <option value="{{ $res->work }}" selected="selected">嫖</option>
-                                                                                <option value="IT">IT</option>
-                                                                                <option value="吃">吃</option>
-                                                                                <option value="喝">喝</option>
-                                                                                <option value="嫖">嫖</option>
-                                                                                <option value="赌">赌</option>
+
+    									                                        <option value="" selected="selected">请选择职业</option>
+										@foreach($cate as $k=>$v)
+                                                                                <option value="{{ $v->name }}">{{ $v->name }}</option>
+                                        @endforeach
                                         									</select>
 
 								  </div>
 								  <div class="form-group">
 								    <label for="inputPassword3" class="col-sm-2 control-label"><span style="color:red;margin-right: 5px;">*</span>邮箱:</label>
 								    <div class="col-sm-4" style="width: 600px;height:40px">
-								      <input class="form-control" id="email" name="email" placeholder="请输入邮箱" style="width: 345px;float: left" value="{{ $res->email }}" required="" type="text"  readonly="readonly">
+								      <input class="form-control" id="email" name="email" placeholder="{{ $res->email }}" style="width: 345px;float: left" value="{{ $res->email }}" required="" type="text"  readonly="readonly">
 								     <div id="spa1" style="float:left;margin-left: 10px;margin-top: 7px;color:#3EA0E1;font-size:18px">
 								     </div>
 

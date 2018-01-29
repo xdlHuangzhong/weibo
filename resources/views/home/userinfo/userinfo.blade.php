@@ -71,16 +71,16 @@
         <div class="gn_position">
 	        <div class="gn_nav">
 		         <ul class="gn_nav_list">
-		            <li><a href="/home/index" class="S_txt1" suda-uatrack="key=topnav_tab&amp;value=homepage"><em class="W_ficon ficon_home S_ficon">E</em><em class="S_txt1">首页</em></a></li>
+		            <li><a href="{{ url('/home/user') }}" class="S_txt1" suda-uatrack="key=topnav_tab&amp;value=homepage"><em class="W_ficon ficon_home S_ficon">E</em><em class="S_txt1">首页</em></a></li>
                      <li><a href="http://krcom.cn/" nm="tv" class="S_txt1" suda-uatrack="key=topnav_tab&amp;value=video"><em class="W_ficon ficon_video_v2 S_ficon"></em><em class="S_txt1">视频</em></a></li>
                      <li><a dot="pos55b9e1ad88ae4" href="https://d.weibo.com/?topnav=1&amp;mod=logo" class="S_txt1" suda-uatrack="key=topnav_tab&amp;value=discover"><em class="W_ficon ficon_found S_ficon">F</em><em class="S_txt1">发现</em></a></li>
-		            <li><a href="http://game.weibo.com/?topnav=1&amp;mod=logo" class="S_txt1" suda-uatrack="key=topnav_tab&amp;value=game"><em class="W_ficon ficon_game S_ficon">G</em><em class="S_txt1">游戏</em></a></li>
+		            <li><a href="{{ url('home/userinfo/show') }}" class="S_txt1" suda-uatrack="key=topnav_tab&amp;value=game"><em class="W_ficon ficon_game S_ficon">G</em><em class="S_txt1">游戏</em></a></li>
 		         </ul>
 	        </div>
 	        <div class="gn_login">
 	          	<ul class="gn_login_list">
 	           
-	            	<li><a node-type="loginBtn" href="javascript:" class="S_txt1">退出</a></li>
+	            	<li><a node-type="loginBtn" href="{{ url('home/logout') }}" class="S_txt1">退出</a></li>
 	          	</ul>
             </div>          
         </div>            

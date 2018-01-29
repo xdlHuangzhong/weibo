@@ -114,4 +114,29 @@ class HandleController extends Controller
     {
         //
     }
+
+    public function report(Request $request)
+    {
+        // 举报
+        $cid=$request->input('cid');
+        $uid=$request->input('uid');
+        // 查询是否举报过该帖子
+        $res=DB::table('report')->where(array('cid'=>$cid,'uid'=>$uid))->first();
+        if(is_null($res)){
+            // 未举报
+            // 字段加1
+            $res=DB::table('contents')->where('cid',$cid)->increment('report');
+            if($res){
+                // 写入数据
+                $res=DB::table('report')->insert(array('cid'=>$cid,'uid'=>$uid));
+                if($res){
+                    // 返回数量
+                    $res=DB::table('contents')->where('cid',$cid)->pluck('report');
+                    return $res;
+                }
+            }else{return false;}
+        }else{
+            return ['status'=>0];
+        }
+    }
 }

@@ -81,11 +81,11 @@
         <div class="gn_position" style="margin-right:130px;">
             <div class="gn_nav">
                 <ul class="gn_nav_list">
-                    <li><a href="https://weibo.com/u/5210522488/home?topnav=1&amp;wvr=6" nm="home" class="home S_txt1" bpfilter="main" suda-uatrack="key=topnav_tab&amp;value=homepage"><em class="S_txt1">首页</em></a></li>
+                    <li><a href="{{ url('home/user') }}" nm="home" class="home S_txt1" bpfilter="main" suda-uatrack="key=topnav_tab&amp;value=homepage"><em class="S_txt1">首页</em></a></li>
 
                     <li><a dot="pos55b9e1ad88ae4" href="https://d.weibo.com/?topnav=1&amp;mod=logo&amp;wvr=6" nm="find" class="S_txt1" suda-uatrack="key=topnav_tab&amp;value=discover"><em class="S_txt1">发现</em></a></li>
-                                            <li><a href="http://game.weibo.com/?topnav=1&amp;mod=logo&amp;wvr=6" nm="game" class="S_txt1" suda-uatrack="key=topnav_tab&amp;value=game" target="_blank"><em class="S_txt1">游戏</em></a></li>
-                                        <li><a dot="pos55b9e0848171d" bpfilter="page_frame" href="https://weibo.com/5210522488/profile?topnav=1&amp;wvr=6" nm="name" class="gn_name" suda-uatrack="key=topnav_tab&amp;value=profile"><em class="S_txt1">爷们帅的不明显</em></a></li>
+                                            <li><a href="{{ url('home/userinfo/show') }}" nm="game" class="S_txt1" target="_blank"><em class="S_txt1">游戏</em></a></li>
+                                        <li><a dot="pos55b9e0848171d" bpfilter="page_frame" href="" nm="name" class="gn_name" suda-uatrack="key=topnav_tab&amp;value=profile"><em class="S_txt1">{{ $res->nickName }}</em></a></li>
                                           <li><a href="{{ url('home/logout') }}" nm="tv" class="S_txt1" suda-uatrack="key=topnav_tab&amp;value=video"><em class="S_txt1">退出</em></a></li>
                 </ul>
             </div>
@@ -221,7 +221,7 @@
 
         <div class="WB_face W_fl">
             <div class="face">
-            <a target="_blank" class="W_face_radius" suda-uatrack="key=feed_headnick&amp;value=pubuser_head:4199811005523661" href="https://weibo.com/u/2811026850?refer_flag=0000015010_&amp;from=feed&amp;loc=avatar" title="浮力达人君"><img usercard="id=2811026850&amp;refer_flag=0000015010_"  alt="" src="/lunbotu/{{ $res->pic }}" class="W_face_radius" width="50" height="50"></a>
+            <a target="_blank" class="W_face_radius"  href="" ><img usercard="id=2811026850&amp;refer_flag=0000015010_"  alt="" src="/lunbotu/{{ $res->pic }}" class="W_face_radius" width="50" height="50"></a>
             </div>
             </div>
 
@@ -269,8 +269,19 @@
                     <li>
                                 <a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_collect" href="javascript:;" onclick="delcontent({{ $v->cid }})" diss-data="fuid=2811026850" action-type="fl_favorite"><span class="pos"><span class="line S_line1" node-type="favorite_btn_text"><span><em>删除</em></span></a>
                     </li>
+                    {{--<li>--}}
+                                    {{--<a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_tran:4199811005523661" href="userinfo/share" action-history="rec=1" action-type="fl_forward" action-data="allowForward=1&amp;url=https://weibo.com/2811026850/FFSxunaXj&amp;mid=4199811005523661&amp;name=浮力达人君&amp;uid=2811026850&amp;domain=2811026850&amp;pid=a78cdda2ly1fnry3ptycmj20by0buq46"><span class="pos"><span class="line S_line1" node-type="forward_btn_text"><em>分享</em></span></span></a>--}}
+                    {{--</li>--}}
                     <li>
-                                    <a class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_tran:4199811005523661" href="userinfo/share" action-history="rec=1" action-type="fl_forward" action-data="allowForward=1&amp;url=https://weibo.com/2811026850/FFSxunaXj&amp;mid=4199811005523661&amp;name=浮力达人君&amp;uid=2811026850&amp;domain=2811026850&amp;pid=a78cdda2ly1fnry3ptycmj20by0buq46"><span class="pos"><span class="line S_line1" node-type="forward_btn_text"><em>分享</em></span></span></a>
+                        <!-- 举报开始 -->
+                        <a onclick="Reports({{$v->cid}},{{$res->uid}})" class="S_txt2" href="javascript:" title="举报">
+                      <span class="pos">
+                          <span class="line S_line1 am-icon-warning" node-type="comment_btn_text">
+                            <em id="report">举报</em>
+                          </span>
+                      </span>
+                        </a>
+                        <!-- 举报结束 -->
                     </li>
                     <li>
                         <a  class="S_txt2 mmmm" string="{{ $v->cid }}" suda-data="key=smart_feed&amp;value=time_sort_comm:4199811005523661" href="javascript:;" action-type="fl_comment"  action-data="ouid=2811026850&amp;location=home">
@@ -335,71 +346,7 @@
                       </div>
 
 
-                {{--二级评论--}}
-                      {{--@foreach($data as $m=>$i)--}}
-                  <div id="v6_pl_content_homefeed">
 
-                      <div node-type="homefeed">
-
-
-                          <!--feed list-->
-                          <div class="WB_feed WB_feed_v3 WB_feed_v4" pagenum="1" node-type="feed_list" unread_mode="1">
-
-                              <div class="WB_cardwrap WB_feed_type S_bg2 WB_feed_vipcover WB_feed_like">
-                                  <div class="WB_feed_detail clearfix " node-type="feed_content" style="background-image:url(&quot;vip_012_pc_x2.png&quot;)">
-
-
-
-                                      <div class="WB_face W_fl">
-                                          <div class="face">
-                                              <a target="_blank" class="W_face_radius" suda-uatrack="key=feed_headnick&amp;value=pubuser_head:4199811005523661" href="https://weibo.com/u/2811026850?refer_flag=0000015010_&amp;from=feed&amp;loc=avatar" title="浮力达人君"><img usercard="id=2811026850&amp;refer_flag=0000015010_"  alt="" src="/lunbotu/{{ $res->pic }}" class="W_face_radius" width="50" height="50"></a>
-                                          </div>
-                                      </div>
-
-                                      <div class="WB_detail">
-
-                                          <div class="WB_info">
-                                              <a suda-uatrack="key=feed_headnick&amp;value=pubuser_nick:4199811005523661" target="_blank" class="W_f14 W_fb S_txt1"  >{{ $res->nickName }}</a>
-                                              <a target="_blank" suda-data="key=pc_apply_entry&amp;value=feed_icon" href="http://verified.weibo.com/verify"><i title="微博个人认证 " class="W_icon icon_approve_gold"></i></a>
-                                              <a action-type="ignore_list" suda-uatrack="key=home_vip&amp;value=home_feed_vip" title="微博会员" target="_blank" href="http://vip.weibo.com/personal?from=main"><em class="W_icon icon_member4"></em></a><a target="_blank" href="https://huodong.weibo.com/hongbao2018?ref=icon" title="2018让红包飞"><i class="W_icon icon_redpack"></i></a>
-                                          </div>
-                                          <div class="WB_from S_txt2 " >
-                                              <!-- minzheng add part 2 -->
-                                              <a target="_blank" href="https://weibo.com/2811026850/FFSxunaXj?ref=home&amp;rid=0_0_8_2633256715635820022" title="2018-01-24 20:20" date="1516796435000" class="S_txt2" node-type="feed_list_item_date" suda-data="key=tblog_home_new&amp;value=feed_time:4199811005523661:frommainfeed">{{ $v->time }}</a>
-                                              <!-- minzheng add part 2 -->
-                                          </div>
-                                          <div  class="WB_text W_f14 " node-type="feed_list_content">
-                                               ​​​​
-                                          </div>
-
-                                          <div class="WB_expand_media_box " style="display: none;" node-type="feed_list_media_disp">
-
-                                          </div>
-                                      </div>
-
-                                  </div>
-                                  <!-- minzheng add part 3 -->
-                                  <div class="WB_feed_handle">
-
-                                      <div class="WB_handle">
-                                          <ul class="WB_row_line WB_row_r4 clearfix S_line2">
-
-
-                                              <li>
-                                                  <a id="pinglun" class="S_txt2" suda-data="key=smart_feed&amp;value=time_sort_comm:4199811005523661" href="javascript:;" action-type="fl_comment"  action-data="ouid=2811026850&amp;location=home"><span class="pos"><span  class="line S_line1" node-type="comment_btn_text"><em>回复</em></span></span>
-                                              </li>
-
-                                          </ul>
-                                      </div>
-
-                                  </div>
-                              </div>
-
-                          </div>
-
-                      </div>
-
-                  </div>
                   </div>
 
 
@@ -416,14 +363,14 @@
     <div id="v6_pl_rightmod_myinfo"><div class="WB_cardwrap S_bg2">
     <div class="W_person_info">
       <div class="cover" id="skin_cover_s" style="background-image:url(&quot;profile_cover_s.jpg&quot;)">
-        <div class="headpic"> <a bpfilter="page_frame" href="{{ url('home/userinfo') }}" title="爷们帅的不明显"><img class="W_face_radius" src="/lunbotu/{{ $res->pic }}" alt="爷们帅的不明显" width="60" height="60"></a></div>
+        <div class="headpic"> <a bpfilter="page_frame" href="{{ url('home/userinfo') }}" title="爷们帅的不明显"><img class="W_face_radius" src="/lunbotu/{{ $res->pic }}" width="60" height="60"></a></div>
       </div>
       <div class="WB_innerwrap">
-        <div class="nameBox"><a bpfilter="page_frame" href="" class="name S_txt1" title="爷们帅的不明显">{{ $res->nickName }}</a><a action-type="ignore_list" title="微博会员" target="_blank" href="http://vip.weibo.com/"><i class="W_icon icon_member_dis"></i></a><a action-type="" suda-data="key=tblog_grade_float&amp;value=grade_icon_click" target="_blank" href="http://level.account.weibo.com/level/mylevel?from=front"></a></div>
+        <div class="nameBox"><a bpfilter="page_frame" href="" class="name S_txt1" title="爷们帅的不明显">{{ $res->nickName }}</a><a action-type="ignore_list"  target="_blank" href=""><i class="W_icon icon_member_dis"></i></a><a  target="_blank" href=""></a></div>
         <ul class="user_atten clearfix W_f18">
-          <li class="S_line1"><a bpfilter="page_frame" href="https://weibo.com/5210522488/follow?rightmod=1&amp;wvr=6" class="S_txt1"><strong node-type="follow">62</strong><span class="S_txt2">关注</span></a></li>
-          <li class="S_line1"><a bpfilter="page_frame" href="https://weibo.com/5210522488/fans?rightmod=1&amp;wvr=6" class="S_txt1"><strong node-type="fans">4</strong><span class="S_txt2">粉丝</span></a></li>
-          <li class="S_line1"><a bpfilter="page_frame" href="https://weibo.com/5210522488/profile?rightmod=1&amp;wvr=6&amp;mod=personnumber" class="S_txt1"><strong node-type="weibo">1</strong><span class="S_txt2">微博</span></a></li>
+          <li class="S_line1"><a bpfilter="page_frame" href="" class="S_txt1"><strong node-type="follow">62</strong><span class="S_txt2">关注</span></a></li>
+          <li class="S_line1"><a bpfilter="page_frame" href="" class="S_txt1"><strong node-type="fans">4</strong><span class="S_txt2">粉丝</span></a></li>
+          <li class="S_line1"><a bpfilter="page_frame" href="" class="S_txt1"><strong node-type="weibo">1</strong><span class="S_txt2">微博</span></a></li>
         </ul>
       </div>
     </div>
@@ -510,25 +457,49 @@
 
 </div>
        <script type="text/javascript">
-           $('.mmmm').on('click',function(){
-               var cid = $(this).attr('string');
 
-               $.ajax({
-                   url:"{{ url('home/user/showpinglun') }}",
-                   type:'POST',
-                   data:{'cid':cid,'_token':"{{ csrf_token() }}"},
-                   success:function(data){
-                       $('.replaycon').empty();
-                       $.each(data,function(i,n){
+
+           function delcontent(cid){
+               layer.confirm('您确定要删除吗？', {
+                   btn: ['确定','取消']
+               }, function(){
 
 
 
-                           console.log(n.time);
-                       });
-                   },
-                   dataType:'JSON'
-               })
-           });
+                   $.post('{{ url('home/user/') }}/'+cid,{'_method':'delete','_token':"{{csrf_token()}}"},function (data) {
+
+
+
+                       if(data.status == 0){
+                           layer.msg(data.message, {icon: 6});
+                           setTimeout(function(){
+                               window.location.href = location.href;
+                           },2000);
+
+
+
+                       }else{
+                           layer.msg(data.message, {icon: 5});
+
+
+
+                           setTimeout(function(){
+                               window.location.href = location.href;
+                           },2000);
+                       }
+
+
+
+                   })
+
+
+
+               }, function(){
+
+
+
+               });
+           }
 
 
            // 点赞开始
@@ -550,6 +521,25 @@
                })
            };
            // 点赞结束
+
+           // 举报开始
+           function Reports(cid,uid){
+               $.ajax({
+                   type:'post',
+                   url:'/home/handle/report',
+                   data:{cid:cid,uid:uid,'_token':"{{ csrf_token() }}"},
+                   success:function(data){
+                       if(data.status==0){
+                           var res='你已举报过';
+                       }else{
+                           var res=data;
+                       }
+                       $('#report').html(res);
+                   },
+                   dataType:'json'
+               })
+           };
+           // 举报结束
        </script>
 
 </body>

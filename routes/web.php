@@ -119,7 +119,7 @@ Route::get('logout/','LoginController@logout');
 
 // 点赞
     Route::resource('Handle','HandleController');
-    
+
 //忘记密码
 Route::get('forget','RegisterController@forget');
 Route::post('doforget','RegisterController@doForget');
@@ -153,12 +153,17 @@ Route::get('userinfo/add','InfoController@add');
 //加载个人页面修改方法
 Route::post('userinfo/update','InfoController@update');
 
+//加载游戏
+Route::get('userinfo/show','UserinfoController@show');
 //提交修改数据
 Route::post('userinfo/upload','UserinfoController@upload');
 //修改个人信息页
 Route::resource('userinfo','UserinfoController');
+// 举报
+Route::post('handle/report','HandleController@report');
 });
 
+Route::get('home/usercate/{name}','Home\IndexController@usercate');
 
 
 Route::get('comment','CommentController@index');

@@ -26,61 +26,51 @@
 		          	<div id="plc_unlogin_home_main"><div class="WB_frame_c">
     <div id="pl_unlogin_home_feed">    <!--榜单栏位置-->
                     <!--/ card-->
-<div class="UG_slider">
-   
- <div class="myFocus-box">
-    <div id="myFocus" style="width:100%;">
-        <div class="loading" ><span>正在载入...</span></div><!--载入画面-->
-        <ul class="pic"><!--内容列表-->
-        @if($bata)
-        @foreach ($bata as $f)
-            <li><a href="https://{{ $f->site }}"><img src="/lunbotu/{{ $f->img }}" thumb="" alt="" text="" /></a></li>
-        @endforeach
-        @endif
+        <div class="UG_slider">
 
-        </ul>
-    </div>
-    
-</div>
-</div>
-<!-- card -->     
-             @foreach($index as $k=>$v)
-        
+            <div class="myFocus-box">
+                <div id="myFocus" style="width:100%;">
+                    <div class="loading" ><span>正在载入...</span></div><!--载入画面-->
+                    <ul class="pic"><!--内容列表-->
+                        @if($bata)
+                            @foreach ($bata as $f)
+                                <li><a href="https://{{ $f->site }}"><img src="/lunbotu/{{ $f->img }}" thumb="" alt="" text="" /></a></li>
+                            @endforeach
+                        @endif
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+<!-- card -->
+             @foreach($user as $k=>$v)
+
         <div class="UG_contents" id="PCD_pictext_i_v5">
             <!--feed内容-->
                     <ul class="pt_ul clearfix" pagenum="" node-type="feed_list">
           <div class="UG_list_b" mid="4193931174309006" action-type="feed_list_item" href="//weibo.com/1711684227/FDpzTi4Y6?ref=feedsdk" suda="key=nologin_home&amp;value=nologin_card_weibo:4193931174309006" suda-uatrack="key=www_unlogin_home&amp;value=recommend_feed">
-                    @if($v->pic)
-                        <div class="pic W_piccut_v">
-                                                        <img src="/lunbotu/{{$v->pic}}" alt="">
-                        </div>
-                    @endif
+
                         <div class="list_des">
-                            <h3 class="list_title_s">
-                                <div>{{$v->content}}​​​​</div>
-                            </h3>
+
                             <div class="subinfo_box clearfix">
-                            
-                                <a href="https://weibo.com/huxinger?from=feed&amp;loc=nickname" target="_blank">
+
+                                <a href="#" target="_blank">
                                     <span class="subinfo_face ">
-                                        <img src="/lunbotu/{{$v->user_info->pic}}" alt="" width="20" height="20">
+                                        <img src="/lunbotu/{{$v->pic}}" alt="" width="65" height="65">
                                     </span>
                                 </a>
-                           
 
-                            
 
-                                <a href="https://weibo.com/huxinger?from=feed&amp;loc=nickname" target="_blank">
-                                    <span class="subinfo S_txt2">{{$v->user_info->nickName}}</span>
+
+
+                                <a href="#" target="_blank">
+                                    <span class="subinfo S_txt2" style="font-size:24px;">{{$v->nickName}}</span>
                                 </a>
 
-                                <span class="subinfo S_txt2">{{$v->time}}</span>
 
-                                <span class="subinfo_rgt S_txt2"><em class="W_ficon ficon_praised S_ficon W_f16">ñ</em><em>204967</em></span>
-                                <span class="rgt_line W_fr"></span>
-                                <span class="subinfo_rgt S_txt2"><em class="W_ficon ficon_repeat S_ficon W_f16"></em><em>12375</em></span>
-                                <span class="rgt_line W_fr"></span>
-                                <span class="subinfo_rgt S_txt2"><em class="W_ficon ficon_forward S_ficon W_f16"></em><em>3266</em></span>
+
+
                             </div>
                         </div>
                     </div>
@@ -108,7 +98,7 @@
             </div>
             <div class="list_des">
                 <h2 class="list_title_s"><a href="https://{{ $not->content }}" class="S_txt1" target="_blank">{{ $not->name }}</a></h2>
-                
+
             </div>
             @endforeach
         </div>
@@ -121,15 +111,16 @@
   <h2 class="UG_box_title">微博找人</h2>
   <div class="UG_contents">
     <div class="UG_tag_list">
-
+      <h3 class="tag_title">工作</h3>
       <ul class="clearfix">
           @foreach($cate as $k=>$v)
                                   <li><a class="S_txt1"  href="{{ url('home/usercate/'.$v->name) }}"><i class="item_icon"><img src="/home/shouye/img/1087030002_892_1003_0.png" class="pic"></i><span class="text width_fix W_autocut">{{ $v->name }}</span></a></li>
 
           @endforeach
-                                
-                        </ul>
-      </div>
+                </ul>
+    </div>
+
+
      
   </div>
 </div></div>
