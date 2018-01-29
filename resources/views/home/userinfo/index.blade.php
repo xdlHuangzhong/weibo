@@ -85,7 +85,7 @@
 
                     <li><a dot="pos55b9e1ad88ae4" href="https://d.weibo.com/?topnav=1&amp;mod=logo&amp;wvr=6" nm="find" class="S_txt1" suda-uatrack="key=topnav_tab&amp;value=discover"><em class="S_txt1">发现</em></a></li>
                                             <li><a href="{{ url('home/userinfo/show') }}" nm="game" class="S_txt1" target="_blank"><em class="S_txt1">游戏</em></a></li>
-                                        <li><a dot="pos55b9e0848171d" bpfilter="page_frame" href="" nm="name" class="gn_name" suda-uatrack="key=topnav_tab&amp;value=profile"><em class="S_txt1">{{ $res->nickName }}</em></a></li>
+                                        <li><a dot="pos55b9e0848171d" bpfilter="page_frame" href="" nm="name" class="gn_name" suda-uatrack="key=topnav_tab&amp;value=profile"><em class="S_txt1">您好 : {{ $res->nickName }}</em></a></li>
                                           <li><a href="{{ url('home/logout') }}" nm="tv" class="S_txt1" suda-uatrack="key=topnav_tab&amp;value=video"><em class="S_txt1">退出</em></a></li>
                 </ul>
             </div>
@@ -382,7 +382,11 @@
 
     <div id="v6_pl_rightmod_recominfo"><!-- notice -->
 <div id="v6_pl_rightmod_ads35">
-    <div ucardconf="type=1" ad-data="id=ads_35&amp;url=//biz.weibo.com/adfront/deliver&amp;psid=PDPS000000037694&amp;wbVersion=v6&amp;uid=5210522488"><div class="WB_cardwrap S_bg2" pbc-refresh="true"><div class="WB_right_module M_sc_right"><div class="WB_innerwrap"><div class="m_wrap"><div class="scr_iframe_wrap"><iframe id="sc_37694" src="/home/fatie/images/index_3.html" scrolling="no" width="186" height="250" frameborder="0"></iframe></div></div></div></div></div></div>
+
+    @foreach($data as $k=>$v)@if($v->active == 0)<div ucardconf="type=1" ad-data="id=ads_35&amp;url=//biz.weibo.com/adfront/deliver&amp;psid=PDPS000000037694&amp;wbVersion=v6&amp;uid=5210522488"><div class="WB_cardwrap S_bg2" pbc-refresh="true"><div class="WB_right_module M_sc_right"><div class="WB_innerwrap"><div class="m_wrap"><div class="scr_iframe_wrap"><a href="https://{{ $v->link }}"><img src="/guanggao/{{ $v->img }}"  scrolling="no" width="186" height="250" frameborder="0"></img></a></div></div></div></div></div></div>@else
+
+    @endif
+    @endforeach
 </div>
 <div style="visibility: hidden;"></div>
 <div style="z-index: 10; transform: translateZ(0px); position: relative; transition: margin-top 0.3s ease 0s; will-change: margin-top, top; width: 230px;">
@@ -419,13 +423,15 @@
         <div class="WB_cardtitle_b S_line2">
           <h4 class="obj_name"><span class="main_title W_fb W_f14">公告栏</span></h4>
         </div>
+          @foreach($notice as $k=>$v)
 
-        <div class="WB_innerwrap">
-          <ul class="opinion_type_list">
-            <li><a href="http://service.account.weibo.com/derumor?rightmod=1&amp;wvr=6&amp;mod=noticeboard" target="_blank">《​全国辟谣平台》</a></li>
-            <li><a href="http://news.sina.com.cn/c/2013-08-14/154027948112.shtml?rightmod=1&amp;wvr=6" suda-uatrack="key=tblog_home_new&amp;value=rightmod_news" target="_blank">《首都互联网协会发布坚守七条底线倡议书》</a></li>
-          </ul>
-        </div>
+              <div class="WB_innerwrap">
+                  <ul class="opinion_type_list">
+                      <li><a href="https://{{ $v->content }}" target="_blank">{{ $v->name }}</a></li>
+                  </ul>
+              </div>
+          @endforeach
+
       </div>
     </div>
 </div>
@@ -438,20 +444,32 @@
 </div>
 </div>
 <div class="WB_frame WB_frame_bottom">
-            <div id="pl_common_base"></div>
+            <div id="pl_common_base"></div> 
             <div id="v6_pl_guide_homeguide">    <div node-type="no-guide"></div>
 </div>
             <div id="v6_pl_ad_bottomtip"><div ucardconf="type=1" ad-data="id=ads_bottom&amp;url=//biz.weibo.com/adfront/deliver&amp;psid=PDPS000000037700&amp;wbVersion=v6&amp;uid="></div></div>
     </div></div>
 
 <div id="plc_bot"><!--footer-->
-      <div class="WB_footer S_bg2">
+    <div class="WB_footer S_bg2">
 
         <div class="other_link S_bg1 clearfix T_add_ser">
-            <p class="copy"><a target="_blank" href="http://help.weibo.com/?refer=didao&amp;bottomnav=1&amp;wvr=6" class="S_txt2"><i class="W_icon icon_weibo"></i>微博客服</a><span class="S_txt2">客服热线4000-960-960</span><a class="S_txt2" target="_blank" href="http://help.weibo.com/newtopic/suggest?bottomnav=1&amp;wvr=6">意见反馈</a><a class="S_txt2" target="_blank" href="https://weibo.com/aj/static/report.html?_wv=6">舞弊举报</a><a class="S_txt2" target="_blank" href="http://ir.weibo.com/">About Weibo</a><a class="S_txt2" target="_blank" href="http://open.weibo.com/?bottomnav=1&amp;wvr=6">开放平台</a><a class="S_txt2" target="_blank" href="http://hr.weibo.com/?bottomnav=1&amp;wvr=6">微博招聘</a><a class="S_txt2" target="_blank" href="http://news.sina.com.cn/guide/?bottomnav=1&amp;wvr=6">新浪网导航</a><a class="S_txt2" target="_blank" href="http://service.account.weibo.com/?bottomnav=1&amp;wvr=6">举报处理大厅</a>
-                </p>
+
+            <p class="copy">
+                @foreach ($date as $k=>$v)
+                    @if($v->active == 0)
+                        <a target="_blank" href="http://{{ $v->link }}" class="S_txt2"><i class="W_icon icon_weibo"></i>{{ $v->name }}</a>
+                    @else
+
+                    @endif
+                @endforeach
+            </p>
+            <p class="company"><span class="copy S_txt2">Copyright © 2009-2018 WEIBO PHP196版权所有</span></p>
 
         </div>
+    </div>
+
+
       </div>
 
 

@@ -116,7 +116,7 @@
 						</div>
 				<div class="pf_username">
 				
-					<h1 class="username">{{ $res->nickName }}</h1>
+					<h1 class="username">aa{{ $res->nickName }}</h1>
 					<span class="icon_bed"><a><i class="W_icon icon_pf_male"></i></a></span>				
 				</div>
 				
@@ -491,7 +491,7 @@
                        &nbsp;&nbsp;&nbsp;&nbsp;{{ $v->content }}                       
               </div>
               <div class="tpl-form-file-img">
-                 <p><img src="/lunbotu/{{ $v->pic }}" id="img1" alt="上传后显示图片"  style="max-width:350px;max-height:100px;" /></p>
+                 <p><img src="/lunbotu/{{ $v->pic }}" id="img1" alt=""  style="max-width:350px;max-height:100px;" /></p>
             </div>
                     <div class="WB_tag  clearfix S_txt2" style="display: none">
                 <span class="WB_tag_s" node-type="feed_list_tagList">

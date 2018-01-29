@@ -1,6 +1,5 @@
 <?php return array (
-  '鍐呭?' => '鍚嶅瓧',
+  '内容' => '名字',
   34234 => '4234',
-  'www.weibo.com' => '寰?崥',
-  'qwwqwq' => 'qwqewqew',
+  'www.weibo.com' => '微博',
 );

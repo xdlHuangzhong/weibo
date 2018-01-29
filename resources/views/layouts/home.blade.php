@@ -43,10 +43,12 @@
             
         </div>
         <div class=" gn_search_v2">
+
           <span class=" placeholder">搜索精彩微博</span>
           <input node-type="searchInput" autocomplete="off" value="" class="W_input" name="15154665682382" type="text">
           <a href="javascript:" title="搜索" node-type="searchSubmit" class="W_ficon ficon_search S_ficon" suda-uatrack="key=topnav_tab&amp;value=search" target="_top">S</a> 
           
+
         </div>       
 
         <div class="gn_position">
