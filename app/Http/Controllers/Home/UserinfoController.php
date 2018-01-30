@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\User_info;
+use App\Model\Content;
 use  App\Model\Cate;
 use DB;
 use Session;
@@ -30,10 +31,11 @@ class UserinfoController extends Controller
         $res = User_info::where('uid','=',$id)->first();
 
 //         dd($cate);
-        $rev = DB::table('contents')->where('uid','=',$id)->orderBy('time','desc')->paginate(2);
+        $rev = DB::table('contents')->where('uid','=',$id)->orderBy('time','desc')->paginate(5);
         $friends = DB::table('friends')->get();
+        $count = Content::where('uid',$res->uid)->count(); 
         // dd($data);
-        return view('home.userinfo.userinfo',['res'=>$res,'rev'=>$rev,'friends'=>$friends]);
+        return view('home.userinfo.userinfo',['res'=>$res,'rev'=>$rev,'friends'=>$friends,'count'=>$count]);
 
     }
 

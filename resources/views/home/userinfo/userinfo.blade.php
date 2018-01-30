@@ -116,7 +116,7 @@
 						</div>
 				<div class="pf_username">
 				
-					<h1 class="username">aa{{ $res->nickName }}</h1>
+					<h1 class="username">{{ $res->nickName }}</h1>
 					<span class="icon_bed"><a><i class="W_icon icon_pf_male"></i></a></span>				
 				</div>
 				
@@ -151,7 +151,7 @@
 				<a bpfilter="page_frame" class="t_link S_txt1" href="https://weibo.com/p/1005055210522488/follow?relate=fans&amp;from=100505&amp;wvr=6&amp;mod=headfans&amp;current=fans#place"><strong class="W_f18">5</strong><span class="S_txt2">粉丝</span>
 				</a></td>
 				<td class="S_line1">
-					<a bpfilter="page_frame" class="t_link S_txt1" href="https://weibo.com/p/1005055210522488/home?from=page_100505_profile&amp;wvr=6&amp;mod=data#place"><strong class="W_f18">0</strong><span class="S_txt2">发帖量</span>
+					<a bpfilter="page_frame" class="t_link S_txt1" href="https://weibo.com/p/1005055210522488/home?from=page_100505_profile&amp;wvr=6&amp;mod=data#place"><strong class="W_f18">{{$count}}</strong><span class="S_txt2">发帖量</span>
 					</a>
 				</td>
 				</tr>
@@ -300,9 +300,7 @@
 					</div>
 					</div>
 					</div>
-						<a class="WB_cardmore S_txt1 S_line1 clearfix" href="{{ url('/home/user/create') }}" action-type="login">
-						<span class="more_txt">编辑个人资料&nbsp;<em class="W_ficon ficon_arrow_right S_ficon">a</em></span>
-						</a>
+						
 						
 				</div>
 				</div>
@@ -316,131 +314,10 @@
 					<div id="Pl_Official_LikeMerge__16" anchor="-50"></div>
 					<div id="Pl_Guide_Bigday__17" anchor="-50"></div>
 					<div id="Pl_Official_SeoInfo__18" anchor="-50"></div>
-					<div id="Pl_Core_RecommendFeed__19" anchor="-50">        <!--模块-->
-
-<div style="visibility: hidden;"></div><div style="z-index: 10; transform: translateZ(0px); position: relative; transition: margin-top 0.3s ease 0s; will-change: margin-top, top; width: 300px;"><div class="WB_cardwrap S_bg2" fixed-inbox="true" fixed-mutex="true" fixed-id="2">
-    <div class="PCD_feed">
-        <div class="WB_cardtitle_b S_line2">
-            <h4 class="obj_name"><span class="main_title W_fb W_f14"><a target="_blank" href="https://weibo.com/" suda-data="key=embedded_weibo&amp;value=recommend_title" class="S_txt1">相关推荐</a></span></h4>
-            
-        </div>
-        <!--滚动条组件-->
-        <div class="WB_innerwrap UI_scrollView" node-type="scrollView" style="height: 544px;"><div class="UI_scrollContainer">
-  <div class="UI_scrollContent" style="width: 317px;">
-                <div node-type="infoHiddenFeed" style="width: 100%">
-                                 <div class="Tf_feed_type S_line1" node-type="infoFeed" action-type="fl_jumpurl" action-data="url=%2F%2Fweibo.com%2F1676910563%2FFFsvR4uhO%3Ffrom%3Dembedded_weibo&amp;target=_blank" mid="4198810551069736">
-                                <!--主内容-->
-                                <div class="Tf_feed_detail clearfix">
-                                    
-                                    <div class="Tf_face">
-                                        <div class="face" suda-uatrack="key=feed_headnick&amp;value=pubuser_head:embedded_weibo"><a target="_blank" href="https://weibo.com/1676910563"><img src="/xiangqing/images/63f39fe3gw1elhkkbfomtj205u060glr.jpg" alt="" class="W_face_radius"></a></div>
-                                    </div>
-                                    <div class="Tf_detail clearfix">
-                                        <div class="Tf_info" suda-uatrack="key=noload_singlepage&amp;value=user_name:embedded_weibo"><a target="_blank" href="https://weibo.com/1676910563" class="S_txt1">博露齿一笑</a></div>
-                                        <div class="Tf_from" suda-uatrack="key=tblog_home_new&amp;value=feed_time:embedded_weibo"><a target="_blank" href="https://weibo.com/1676910563/FFsvR4uhO" class="S_txt2">01月22日 02:05</a></div>
-                                        <div class="Tf_text" node-type="feed_list_reason">岩袋鼠妈妈因为车祸，倒在地上身亡，当路过的人发现它时，看到了令人心碎的一幕，小岩袋鼠很努力地想重新回到妈妈的口袋里…… ​​​​</div> <!--多媒体-->
-                                        <div class="Tf_text" node-type="feed_list_reason_full" style="display: none"></div>
-                                                     <div class="Tf_media_wrap clearfix" action-type="infoSmallImg">
-                                                <div class="media_box" action-type="infoChangeMouse" suda-uatrack="key=tblog_newimage_feed&amp;value=image_feed_unfold:embedded_weibo">
-                                                    <ul action-type="infoSmallPic" class="Tf_media_a Tf_media_a_mn clearfix" node-type="infoCountWidth" style="width: 276px;"><!--li和img和i标签中间不能有空格-->
-                                                        <!--图片宽高比>=130:98增加样式名W_piccut_h，否则增加样式名W_piccut_v-->
-                                                     <li action-data="pid=b8b73ba1jw1eum0897pylj20c819zwnl" class="Tf_pic li_1  W_piccut_v  "><img src="/xiangqing/images/b8b73ba1jw1eum0897pylj20c819zwnl.jpg" alt=""><i class="W_loading" style="display:none;"></i></li>
-                                                     <li action-data="pid=b8b73ba1jw1eum08c0rqcg209v05ke81" class="Tf_pic li_1  W_piccut_v  "><img src="/xiangqing/images/b8b73ba1jw1eum08c0rqcg209v05ke81.jpg" alt=""><i class="W_loading" style="display:none;"></i></li>
-                                                                                                            </ul>
-                                                </div>
-                                            </div>
-                                        
-                                        <!--//多媒体-->
-                                        <!--图片展开-->
-                                        <!--图片展开-->
-                                        <div class="Tf_expand_media_box" action-type="infoBigImg" style="display: none">
-                                            <!--根据鼠标所在区域范围选择，向左的鼠标手型类名leftcursor，向右鼠标手型类名rightcursor,图片变小smallcursor-->
-                                            <div class="smallcursor" action-type="infoCursor"></div>
-                                        </div>
-                                        <!--/图片展开-->
-
-                                        <!--/图片展开-->
-                                    </div>
-                                </div>
-                                <!--/主内容-->
-                                <!--操作区-->
-                                <div class="Tf_func clearfix">
-                                    <div class="Tf_handle">
-                                        <ul action-type="infoOtherFunction" class="clearfix">
-                                            <li><span class="line S_line1"><a suda-data="key=embedded_weibo&amp;value=forward" action-type="fl_forward" href="https://weibo.com/1676910563/FFsvR4uhO?from=embedded_weibo" target="_blank" class="S_txt2"><span><em class="W_ficon ficon_forward S_ficon"></em><em node-type="forward_btn_text">237</em></span></a></span>
-                                                <span class="arrow"><span class="W_arrow_bor W_arrow_bor_t"><i class="S_line1"></i><em class="S_bg1_br"></em></span></span></li>
-                                            <li><span class="line S_line1"><a suda-data="key=embedded_weibo&amp;value=comment" action-type="fl_comment" href="https://weibo.com/1676910563/FFsvR4uhO?from=embedded_weibo" target="_blank" class="S_txt2"><span><em class="W_ficon ficon_repeat S_ficon"></em><em node-type="comment_btn_text">329</em></span></a></span>
-                                                <span class="arrow"><span class="W_arrow_bor W_arrow_bor_t"><i class="S_line1"></i><em class="S_bg1_br"></em></span></span></li>
-                                            <li><span class="line S_line1"><a suda-data="key=embedded_weibo&amp;value=like" action-type="fl_like" href="javascript:" class="S_txt2"><span class=""><em class="W_ficon ficon_praised S_txt2">ñ</em><em node-type="like_status">8302</em></span></a></span></li><!-- 常态 -->
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!--//操作区-->
-                                <!--主评论-->
-                                <div class="Tf_feed_repeat S_bg1 S_line1" style="display: none" node-type="comment_detail">
-                                    <!--评论-发表-->
-                                    <div class="Tf_feed_publish clearfix">
-
-                                        <div class="Tf_publish">
-                                            <div class="p_input"><textarea class="W_input" node-type="infoTextElComment" style="overflow: hidden; height: 23px;"></textarea></div>
-                                            <div class="p_opt clearfix">
-                                                <div class="btn W_fr"><a suda-data="key=embedded_weibo&amp;value=comment_button" href="javascript:" class="W_btn_a W_btn_a_disable" action-type="info_comment">评论</a><!-- <a href="" class="W_btn_a"><i class="W_loading"></i>评论</a><a href="" class="W_btn_a W_btn_a_disable">评论</a> --></div>
-                                                <div class="opt clearfix">
-                                                    <ul class="ipt">
-                                                        <li><label for="ipt1120" class="W_label"><input node-type="info-forward" name="forward" value="" class="W_checkbox" id="ipt1120" type="checkbox"><span>同时转发到我的微博</span></label></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/评论-发表-->
-                                </div>
-                                <!--/主评论-->
-                    <!--主评论-->
-                    <div class="Tf_feed_repeat S_bg1 S_line1" style="display: none" node-type="forward_detail">
-                        <!--评论-发表-->
-                        <div class="Tf_feed_publish clearfix">
-
-                            <div class="Tf_publish">
-                                <div class="p_input"><textarea class="W_input" node-type="infoTextElForward" style="overflow: hidden; height: 23px;"></textarea></div>
-                                <div class="p_opt clearfix">
-                                    <div class="btn W_fr"><a suda-data="key=embedded_weibo&amp;value=forward_button" href="javascript:" class="W_btn_a" action-type="info_forward">转发</a><!-- <a href="" class="W_btn_a"><i class="W_loading"></i>评论</a><a href="" class="W_btn_a W_btn_a_disable">评论</a> --></div>
-                                    <div class="opt clearfix">
-                                        <ul class="ipt">
-                                            <li><label for="ipt1130" class="W_label"><input node-type="info-input" name="comment" value="" class="W_checkbox" id="ipt1130" type="checkbox"><span>同时评论给博露齿一笑</span></label></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/评论-发表-->
-                    </div>
-                    <!--/主评论-->
-                            </div>
-                                                        
-                                                 
-                                                     
-                                        <div class="WB_empty" node-type="info-loading">
-                        <div class="WB_innerwrap">
-                            <div class="empty_con clearfix">
-                                <p class="text"><i class="W_loading"></i>正在加载中</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-        <!--/滚动条组件-->
-    </div>
-</div><div class="UI_scrollBar W_scroll_y S_bg1"><div class="bar S_txt2_bg" style="top: 0%; height: 39.7022%;"></div></div></div>
-</div>
-
-    <!--//模块-->
-    </div><div style="height:1px;margin-top:-1px;visibility:hidden;"></div></div>
 
 
-</div>
 			</div>
+
 	<div class="WB_frame_c" fixed-box="true">
 					<div id="Pl_Official_ProfileFeedNav__20" anchor="-50">        
 </div>

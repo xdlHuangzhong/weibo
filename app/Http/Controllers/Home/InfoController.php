@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Content;
 
 use App\Model\Replay;
-
+use App\Model\Cate;
 use App\Model\User_info;
 use Illuminate\Support\Facades\Validator;
 use DB;
@@ -23,24 +23,26 @@ class InfoController extends Controller
     {
         $id = Session('user')->id;
 //        $user = DB::table('user')->get();
-        // dd($id);
+//         dd($id);
         //查看微博内容
         $res = User_info::where('uid','=',$id)->first();
 
-        // dd($res);
-
-        $rev = DB::table('contents')->orderBy('time','desc')->paginate(1);
-
+//         dd($res);
+//        $rec = Content::where('uid','=',$id)->first();
+        $rev = Content::with('user_info')->orderBy('time','desc')->paginate(5);
+//        dd($rev);
         //获取帖子归属人
         $replay = Replay::where('cid','=',$id)->get();
+        $count = Content::where('uid',$res->uid)->count();
+//         dd($count);
 
         $data = DB::table('poster')->get();
         $date = DB::table('friends')->get();
         $notice = DB::table('notice')->get();
-
+        $info = DB::table('friends')->get();
 
 //         dd($rev);
-        return view('home.userinfo.index',['res'=>$res,'rev'=>$rev,'data'=>$data,'date'=>$date,'notice'=>$notice,'replay'=>$replay]);
+        return view('home.userinfo.index',['res'=>$res,'rev'=>$rev,'data'=>$data,'date'=>$date,'notice'=>$notice,'replay'=>$replay,'count'=>$count,'info'=>$info]);
 
 
     }
@@ -89,8 +91,9 @@ class InfoController extends Controller
         }
 
     }
+
     //添加评论
-    public function pinglun(Request $request)
+    public function rpinglun(Request $request)
     {
 //        return 111;
         $input = $request->except('_token','pic');
@@ -101,16 +104,20 @@ class InfoController extends Controller
         // dd($pic);
         $input['time'] = $time;
 
+
+        $res = Replay::create($input);
+
+        //帖子表评论数+1
 //        dd($input);
+        $rplay = Replay::where('cid','=',$input['cid'])->count();
+        $req = Content::find($input['cid']);
+        $req->rnum = $rplay;
+        $req = $req->save();
 
-
-
-        // dd($input);
-            $res = Replay::create($input);
         // 判断是否添加成功
         if($res){
             //如果添加成功，跳转到列表页
-            return redirect('home/user')->with('msg','添加成功');
+            return redirect('home/user/'.$input['cid'])->with('msg','添加成功');
 
         }else{
             //如果添加失败，返回到添加页
@@ -118,29 +125,9 @@ class InfoController extends Controller
         }
 
     }
-    //显示评论
-    public function showpinglun(Request $request)
-    {
-
-
-        $input = $request->only('cid');
-        //获取帖子下所有评论
-        $replay = Replay::where('cid',$input)->get();
-
-//        dd($replay);
 
 
 
-
-
-        return ($replay);
-
-
-
-    }
-   
-
-    
 
     /**
      * Display the specified resource.
@@ -148,10 +135,44 @@ class InfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //显示评论
     public function show($id)
     {
-        //
+
+//      //获取评论
+//         dd($id);
+        $pinglun = Replay::where('cid','=',$id)->orderBy('rid','desc')->paginate(5);
+//        dd($pinglun);
+
+
+
+        $uid = Session('user')->id;
+//        $user = DB::table('user')->get();
+        // dd($id);
+        //查看微博内容
+        $res = User_info::where('uid','=',$uid)->first();
+
+        // dd($res);
+
+        $rev = Content::with('user_info')->where('cid','=',$id )->get();
+//        dd($rev);
+
+        //获取帖子归属人
+        $replay = Replay::where('cid','=',$uid)->get();
+        $count = Content::where('uid',$res->uid)->count();
+        // dd($count);
+
+        $data = DB::table('poster')->get();
+        $date = DB::table('friends')->get();
+        $notice = DB::table('notice')->get();
+
+
+//         dd($rev);
+        return view('home.userinfo.showpinglun',['res'=>$res,'rev'=>$rev,'data'=>$data,'date'=>$date,'notice'=>$notice,'replay'=>$replay,'count'=>$count,'pinglun'=>$pinglun]);
+
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -184,7 +205,9 @@ class InfoController extends Controller
      */
     public function destroy($id)
     {
-         $res = Content::find($id)->delete();
+
+            $res = Content::find($id)->delete();
+
          // dd($res);
         //如果删除成功
         if($res){
@@ -230,8 +253,8 @@ class InfoController extends Controller
      //补充个人信息
     public function add()
     {
-        
-        return view('home.userinfo.add');
+        $cate = Cate::get();
+        return view('home.userinfo.add',['cate'=>$cate]);
     }
     //接收传过来的信息值
     public function update(Request $request)

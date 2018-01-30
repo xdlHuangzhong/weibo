@@ -10,7 +10,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="data:text/html;scrapbook-resource=9,">
         <link rel="stylesheet" href="data:text/css;scrapbook-resource=0,">
         <link rel="stylesheet" href="data:text/css;scrapbook-resource=2,">
-        <script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript"></script>
         <script type="text/javascript"></script>
         
@@ -127,7 +127,8 @@
                                          </div>
                                       </div> 
                                       <script type="text/javascript">
-                                                $(function () {
+                                                $(function(){
+                                                    // alert($);
                                                     $("#file_upload").change(function () {
                                                         uploadImage();
                                                     })

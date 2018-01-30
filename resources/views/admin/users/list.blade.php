@@ -64,7 +64,7 @@
                                                 <th>性别</th>
                                                 <th>年龄</th>
                                                 <th>邮箱</th>
-                                                <th>手机号</th>
+
                                                 <th>状态</th>
                                                 <th>操作</th>
                                             </tr>
@@ -74,13 +74,13 @@
                                             <tr class="even gradeC">
                                             <td class="am-text-middle">{{ $v->nickName }}</td>
                                              <td >
-                                                    <img src="/uploads/{{ $v->pic }}" class="tpl-table-line-img" alt="" style="width:50px;">
+                                                    <img src="/lunbotu/{{ $v->pic }}" class="tpl-table-line-img" alt="" style="width:50px;">
                                                 </td>
                                                 <td class="am-text-middle">{{ $v->sex }}</td>
                                                 <td class="am-text-middle">{{ $v->age }}</td>
                                                 <td class="am-text-middle">{{ $v->email }}</td>
-                                                <td class="am-text-middle">{{ $v->phone }}</td>
-                                                <td class="am-text-middle" id="status{{$v->uid}}">{{$v->active == 0 ? '正常' : '冻结'}}</td>
+
+                                                <td class="am-text-middle" id="status{{$v->uid}}">{{$v->active == 0 ? '冻结' : '正常'}}</td>
                                                 <td class="am-text-middle">
                                                     <div class="tpl-table-black-operation">
                                                     
@@ -96,7 +96,7 @@
                                                              系统消息
                                                         </a>
                                                        
-                                                        <a class="btn btn-default" onclick="user_edit({{$v->uid}})" id="user{{$v->uid}}">{{$v->active == 1 ? '恢复' : '冻结'}}</a>
+                                                        <a class="btn btn-default" onclick="user_edit({{$v->uid}})" id="user{{$v->uid}}">{{$v->active == 1 ? '冻结' : '恢复'}}</a>
 
 
                                                         
@@ -160,13 +160,13 @@
 
                         //改变用户状态
                         if(data==1){
-                            layer.msg('用户已冻结！', {icon: 1})
-                            document.getElementById('status'+id).innerHTML = '冻结';
-                            document.getElementById('user'+id).innerHTML = '恢复';
-                        }else{
-                            layer.msg('用户已恢复！', {icon: 1});
-                           document.getElementById('status'+id).innerHTML = '正常';
+                            layer.msg('用户已恢复！', {icon: 1})
+                            document.getElementById('status'+id).innerHTML = '正常';
                             document.getElementById('user'+id).innerHTML = '冻结';
+                        }else{
+                            layer.msg('用户已冻结！', {icon: 1});
+                           document.getElementById('status'+id).innerHTML = '冻结';
+                            document.getElementById('user'+id).innerHTML = '恢复';
                         }
 
                         

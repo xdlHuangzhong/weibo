@@ -114,7 +114,7 @@
       <h3 class="tag_title">工作</h3>
       <ul class="clearfix">
           @foreach($cate as $k=>$v)
-                                  <li><a class="S_txt1"  href="{{ url('home/usercate/'.$v->name) }}"><i class="item_icon"><img src="/home/shouye/img/1087030002_892_1003_0.png" class="pic"></i><span class="text width_fix W_autocut">{{ $v->name }}</span></a></li>
+                                  <li><a class="S_txt1"  href="{{ url('/home/usercate/'.$v->name) }}"><i class="item_icon"><img src="/home/shouye/img/1087030002_892_1003_0.png" class="pic"></i><span class="text width_fix W_autocut">{{ $v->name }}</span></a></li>
 
           @endforeach
                 </ul>
