@@ -19,4 +19,9 @@ class Content extends Model
     {
     	return $this->hasOne('App\Model\user_info','uid','uid');	
     }
+
+    public function replay()
+    {
+        return $this->hasOne('App\Model\Replay','cid','cid');
+    }
 }

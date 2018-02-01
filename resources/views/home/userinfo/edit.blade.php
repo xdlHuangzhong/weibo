@@ -10,7 +10,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="data:text/html;scrapbook-resource=9,">
         <link rel="stylesheet" href="data:text/css;scrapbook-resource=0,">
         <link rel="stylesheet" href="data:text/css;scrapbook-resource=2,">
-        <script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript"></script>
         <script type="text/javascript"></script>
         
@@ -79,11 +79,11 @@
                                    
                                         						<label class="radio-inline" style="margin-left:15px">
                                     
-									       <input name="sex" id="inlineRadio1" value="{{ $res->sex }}" checked="checked" type="radio"> 男
+									       <input name="sex" id="inlineRadio1" value="m" checked="checked" type="radio"> 男
 									</label>
                                    
     									<label class="radio-inline">
-    									  <input name="sex" id="inlineRadio2" value="{{ $res->sex }}" type="radio"> 女
+    									  <input name="sex" id="inlineRadio2" value="w" type="radio"> 女
     									</label>
                                    
 								  </div>
@@ -127,7 +127,8 @@
                                          </div>
                                       </div> 
                                       <script type="text/javascript">
-                                                $(function () {
+                                                $(function(){
+                                                    // alert($);
                                                     $("#file_upload").change(function () {
                                                         uploadImage();
                                                     })

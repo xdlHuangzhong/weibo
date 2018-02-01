@@ -15,4 +15,8 @@ class Replay extends Model
     public $guarded = [];
     public $timestamps = false;
 
+    public function content()
+    {
+        return $this->hasOne('App\Model\Content','cid','cid');
+    }
 }

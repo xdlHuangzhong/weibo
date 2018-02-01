@@ -110,7 +110,7 @@
 
 
                     <div class="am-form-group">
-                        <label for="user-intro" class="am-u-sm-3 am-form-label">文章内容</label>
+                        <label for="user-intro" class="am-u-sm-3 am-form-label">外部链接</label>
                         <div class="am-u-sm-9">
                              <input name="content" type="text" class="tpl-form-input" id="user-name" value="{{ $notice->content }}">
                         </div>

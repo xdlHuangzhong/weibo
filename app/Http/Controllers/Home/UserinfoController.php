@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\User_info;
+use App\Model\Content;
 use  App\Model\Cate;
 use DB;
 use Session;
@@ -18,22 +19,31 @@ class UserinfoController extends Controller
     public function index(Request $request)
     {
 
-    	// $data = DB::table('user_info')->get();
-
-    	// dd($data);
-
-
-        //
         $id = Session('user')->id;
-        // dd($id);
         //查看微博内容
         $res = User_info::where('uid','=',$id)->first();
 
-//         dd($cate);
-        $rev = DB::table('contents')->where('uid','=',$id)->orderBy('time','desc')->paginate(2);
+       //dd($cate);
+        $rev = DB::table('contents')->where('uid','=',$id)->orderBy('time','desc')
+       
+            ->where(function($query) use($request){
+                //检测关键字
+                $content = $request->input('keywords1');
+              
+                //如果用户名不为空
+                if(!empty($content)){
+                    $query->where('content','like','%'.$content.'%');
+                }
+                
+            })
+            ->paginate($request->input('num', 3));
+            // dd($rev);
         $friends = DB::table('friends')->get();
-        // dd($data);
-        return view('home.userinfo.userinfo',['res'=>$res,'rev'=>$rev,'friends'=>$friends]);
+        $count = Content::where('uid',$res->uid)->count();
+         $data = DB::table('message')->where('uid',$res->uid)->orderBy('time','desc')->get();
+        // dd(empty($data[0]->content));
+         // dd($data->first());
+        return view('home.userinfo.userinfo',['res'=>$res,'rev'=>$rev,'friends'=>$friends,'count'=>$count ,'request'=> $request,'data'=>$data]);
 
     }
 
@@ -45,6 +55,7 @@ class UserinfoController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**
@@ -169,5 +180,30 @@ class UserinfoController extends Controller
                 return  $filepath;
                     }
             }
+    }
+
+
+
+    public function xiaoxi($id)
+    {
+         $id = Session('user')->id;
+   
+        $res = User_info::where('uid','=',$id)->first();
+
+        $friends = DB::table('friends')->get();
+
+        $count = Content::where('uid',$res->uid)->count();
+
+        $data = DB::table('message')->where('uid',$id)->orderBy('time','desc')->get();
+        foreach ($data as $k => $v) {
+            $a = $v->aid;
+        }
+        $date = DB::table('admin')->where('id',$a)->first();
+        // dd($date->pic);
+        
+        return view('home.userinfo.xiaoxi',['res'=>$res,'friends'=>$friends,'count'=>$count,'data'=>$data,'date'=>$date]);
+       
+           
+        
     }
 }

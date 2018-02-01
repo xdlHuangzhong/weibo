@@ -12,6 +12,8 @@ use Session;
 use DB;
 use App\Model\User;
 use App\Model\User_info;
+use App\Model\Replay;
+use App\Model\Content;
 class LoginController extends Controller
 {
     /**
@@ -113,9 +115,6 @@ class LoginController extends Controller
             return redirect('home/userinfo/add');
          }
 
-
-
-         
     }
 
     /**
@@ -126,8 +125,117 @@ class LoginController extends Controller
      */
     public function show($id)
     {
-        //
+        $res = $id;
+//        dd($res);
+        return view('home.login.pinglunlogin',['res' => $res]);
+//
+
     }
+
+    public function pinglun(Request $request)
+    {
+        //在此写处理登录的方法
+        $input = $request->except('_token');
+//         dd($input);
+        // 2.验证数据的有效性
+        $rule = [
+            'name'=>'required|between:2,18',
+            'password'=>'required|between:5,18|alpha_dash',
+            'code' =>'required',
+        ];
+
+        //提示信息
+        $mess = [
+            'name.required'=>'用户名不能为空',
+            'name.between'=>'用户名的长度必须在5-18位',
+            'password.required'=>'密码不能为空',
+            'password.between'=>'密码的长度必须在5-18位',
+            'password.alpha_dash'=>'密码必须是数字字母下划线',
+            'code.required' =>'验证码不能为空',
+        ];
+
+        $validator = Validator::make($input, $rule,$mess);
+        //dd($validator);
+        // 如果验证失败
+        if ($validator->fails()) {
+            return redirect('home/login')
+                ->withErrors($validator)
+                ->withInput();
+        }
+        //          验证码
+        if(strtolower($input['code']) != strtolower(session('code')) ){
+            return back()->with('errors','验证码错误');
+        }
+
+//        3. 判断用户名、密码、验证码的有效性
+//        $input['username']
+
+        $user = User::where('name',$input['name'])->first();
+        //如果没有此用户，返回没有此用户的错误提示
+        if (! $user) {
+            return back()->with('errors','无此用户');
+        }
+
+//            密码不正确
+        if(Crypt::decrypt($user->password) != $input['password']){
+            return back()->with('errors','密码错误');
+        }
+
+
+        if($user->active != 1){
+            return back()->with('errors','此账号没有激活，请先激活');
+        }
+
+//        4. 如果有效就登录到后台，验证失败就返回到添加页面
+//        将用户的登录状态保存到session
+
+        Session::put('user',$user);
+        // dd($user->id);
+        //查询user_info表进行判断
+        $re = User_info::where('uid','=',$user->id)->first();
+
+
+
+        $pinglun = Replay::where('cid','=',$input['cid'])->orderBy('rid','desc')->paginate(5);
+//        dd($pinglun);
+
+
+
+        $uid = Session('user')->id;
+//        $user = DB::table('user')->get();
+        // dd($id);
+        //查看微博内容
+        $res = User_info::where('uid','=',$uid)->first();
+
+        // dd($res);
+
+        $rev = Content::with('user_info')->where('cid','=',$input['cid'] )->get();
+//        dd($rev);
+
+        //获取帖子归属人
+        $replay = Replay::where('cid','=',$uid)->get();
+        $count = Content::where('uid',$res->uid)->count();
+        // dd($count);
+
+        $data = DB::table('poster')->get();
+        $date = DB::table('friends')->get();
+        $notice = DB::table('notice')->get();
+
+
+//         dd($rev);
+
+
+
+
+        if($re){
+            return view('home.userinfo.showpinglun',['res'=>$res,'rev'=>$rev,'data'=>$data,'date'=>$date,'notice'=>$notice,'replay'=>$replay,'count'=>$count,'pinglun'=>$pinglun]);
+
+        }else{
+            //加载补充用户个人信息页
+            return redirect('home/userinfo/add');
+        }
+    }
+
 
     /**
      * Show the form for editing the specified resource.

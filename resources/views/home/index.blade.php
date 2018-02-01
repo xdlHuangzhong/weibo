@@ -57,30 +57,30 @@
                     @endif
                         <div class="list_des">
                             <h3 class="list_title_s">
-                                <div>{{$v->content}}​​​​</div>
+                                <a href="{{ url('/home/login/'.$v->cid) }}" style="color:black"><div>{{$v->content}}</div></a>
                             </h3>
                             <div class="subinfo_box clearfix">
                             
                                 <a href="https://weibo.com/huxinger?from=feed&amp;loc=nickname" target="_blank">
                                     <span class="subinfo_face ">
-                                        <img src="/lunbotu/{{$v->user_info->pic}}" alt="" width="20" height="20">
+                                        <img src="/lunbotu/{{ $v->user_info->pic}}" alt="" width="20" height="20">
                                     </span>
                                 </a>
                            
 
                             
 
-                                <a href="https://weibo.com/huxinger?from=feed&amp;loc=nickname" target="_blank">
+                                <a href="#" >
                                     <span class="subinfo S_txt2">{{$v->user_info->nickName}}</span>
                                 </a>
 
                                 <span class="subinfo S_txt2">{{$v->time}}</span>
 
-                                <span class="subinfo_rgt S_txt2"><em class="W_ficon ficon_praised S_ficon W_f16">ñ</em><em>204967</em></span>
+                                <span class="subinfo_rgt S_txt2"><em class="W_ficon ficon_praised S_ficon W_f16">ñ</em><em>{{ $v->pnum }}</em></span>
                                 <span class="rgt_line W_fr"></span>
-                                <span class="subinfo_rgt S_txt2"><em class="W_ficon ficon_repeat S_ficon W_f16"></em><em>12375</em></span>
+                                <span class="subinfo_rgt S_txt2"><em class="W_ficon ficon_repeat S_ficon W_f16"></em><em>{{ $v->rnum }}</em></span>
                                 <span class="rgt_line W_fr"></span>
-                                <span class="subinfo_rgt S_txt2"><em class="W_ficon ficon_forward S_ficon W_f16"></em><em>3266</em></span>
+
                             </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                 <div class="UG_list_c" action-type="feed_list_item" href="/a/hot/e554a6e1eca5d7bd_0.html?type=grab" suda-uatrack="key=www_unlogin_home&amp;value=hot05">
             @foreach ($date as $not)
             <div class="pic W_piccut_v">
-                <a href="javascript:;" target="_blank"><img src="/noticepic/{{ $not->logo }}" alt=""></a>
+                <img src="/noticepic/{{ $not->logo }}" alt="">
             </div>
             <div class="list_des">
                 <h2 class="list_title_s"><a href="https://{{ $not->content }}" class="S_txt1" target="_blank">{{ $not->name }}</a></h2>
@@ -124,7 +124,7 @@
 
       <ul class="clearfix">
           @foreach($cate as $k=>$v)
-                                  <li><a class="S_txt1"  href="{{ url('home/usercate/'.$v->name) }}"><i class="item_icon"><img src="/home/shouye/img/1087030002_892_1003_0.png" class="pic"></i><span class="text width_fix W_autocut">{{ $v->name }}</span></a></li>
+                                  <li><a class="S_txt1"  href="{{ url('/home/usercate/'.$v->name) }}"><i class="item_icon"><img src="/home/shouye/img/1087030002_892_1003_0.png" class="pic"></i><span class="text width_fix W_autocut">{{ $v->name }}</span></a></li>
 
           @endforeach
                                 
@@ -135,10 +135,14 @@
 </div></div>
 </div>
 </div>
+                      <div id="qfy">
+                          {!! $index->appends($request->all())->render() !!}
+                      </div>
 		          </div>
 				</div>
 
       <a class="W_gotop S_ficon_bg" id="base_scrollToTop" href="javascript:" style="visibility: visible; transform: translateZ(0px); position: fixed; bottom: 40px; top: auto;"><em class="W_ficon ficon_backtop S_bg2_c">Ú</em></a>
             <a class="W_gotop S_ficon_bg  U_reload" id="base_reload" href="javascript:" style="visibility: visible; transform: translateZ(0px); position: fixed; bottom: 90px; top: auto;"><em class="W_ficon ficon_reload S_bg2_c">ù</em></a>
       		</div>
+
 @stop

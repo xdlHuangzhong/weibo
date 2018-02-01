@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="data:text/css;scrapbook-resource=2,">
         <script type="text/javascript"></script>
         <script type="text/javascript"></script>
-        <script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}"> 
         <script type="text/javascript"></script>
         <script type="text/javascript"></script><link rel="stylesheet" href="data:text/css;scrapbook-resource=8," id="layui_layer_skinlayercss" style="">
@@ -87,20 +87,19 @@
 								  <div class="form-group">
 								    <label for="inputPassword3" class="col-sm-2 control-label"><span style="color:red;margin-right: 5px;">*</span>年龄:</label>
 								    <div class="col-sm-4" style="width: 600px;height:40px">
-								      <input class="form-control" id="age" maxlength="3" style="width: 345px;float: left" name="age" value="23" required="" type="text">
+								      <input class="form-control" id="age" maxlength="3" style="width: 345px;float: left" name="age"  required="请输入年龄" type="text">
 								    </div>
 								  </div>
 								  <div class="form-group">
-								    <label for="inputcode3" class="col-sm-2 control-label" style="margin-right:15px"><span style="color:red;margin-right: 5px;">*</span>工作:</label> 
-									
-									<select class="form-control" style="width:345px;font-size: 18px" name="work">
-    									                                        <option value="嫖" selected="selected">嫖</option>
-                                                                                <option value="IT">IT</option>
-                                                                                <option value="吃">吃</option>
-                                                                                <option value="喝">喝</option>
-                                                                                <option value="嫖">嫖</option>
-                                                                                <option value="赌">赌</option>
-                                        									</select>
+								    <label for="inputcode3" class="col-sm-2 control-label" style="margin-right:15px"><span style="color:red;margin-right: 5px;">*</span>工作:</label>
+
+									  <select class="form-control" style="width:345px;font-size: 18px" name="work">
+
+										  <option value="" selected="selected">请选择职业</option>
+										  @foreach($cate as $k=>$v)
+											  <option value="{{ $v->name }}">{{ $v->name }}</option>
+										  @endforeach
+									  </select>
 
 								  </div>
 								  <div class="form-group">

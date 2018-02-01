@@ -10,12 +10,29 @@
 <meta name="_token" content="{{ csrf_token() }}"/>
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <script type="text/javascript"></script>
-<title>微博-随时随地发现新鲜事</title>
+<title>{{ config('webconfig.微博') }}</title>
 <link href="/home/shouye/css/frame.css" type="text/css" rel="stylesheet" charset="utf-8">
 <link href="/home/shouye/css/login_v5.css" type="text/css" rel="stylesheet" charset="utf-8">
 <link href="/home/shouye/css/skin.css" type="text/css" rel="stylesheet" id="skin_style">
+    <link rel="stylesheet" href="/admin/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/admin/assets/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="/admin/assets/css/app.css">
 <script type="text/javascript"></script>
-<style>#js_style_css_module_global_WB_outframe{height:42px;}</style>
+<style>#js_style_css_module_global_WB_outframe{height:42px;}
+
+    #qfy ul li{
+
+        float: left;
+
+        border: 1px solid #B0E2FF;
+        background-color:93C513;
+        width:30px;
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 5px;
+
+    }
+</style>
 <style></style><div style="position: absolute; top: -9999px;"><div id="js_style_css_module_global_WB_outframe"></div></div><script charset="gb2312" id="ssoLoginScript" type="text/javascript"></script><style></style>
 
 
@@ -44,9 +61,19 @@
         </div>
         <div class=" gn_search_v2">
 
-          <span class=" placeholder">搜索精彩微博</span>
-          <input node-type="searchInput" autocomplete="off" value="" class="W_input" name="15154665682382" type="text">
-          <a href="javascript:" title="搜索" node-type="searchSubmit" class="W_ficon ficon_search S_ficon" suda-uatrack="key=topnav_tab&amp;value=search" target="_top">S</a> 
+
+            <form  action="{{ url('home/index') }}" method="get">
+
+
+
+
+                <input node-type="searchInput" autocomplete="off" value="{{ $request->keywords1 }}" class="W_input" name="keywords1" type="text" placeholder="搜索精彩微博">
+
+
+
+
+                <button type="submit" title="搜索" node-type="searchSubmit" suda-uatrack="key=topnav_tab&amp;value=search" target="_top" style="margin-left:100%;width:50px;height:28px;margin-top:-4px">搜索</button>
+            </form>
           
 
         </div>       

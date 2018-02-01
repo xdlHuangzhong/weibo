@@ -16,15 +16,13 @@ class ConfigController extends Controller
      */
     public function putContent()
     {
-      $conf=Config::pluck('names','content')->all();
+      $conf=Config::pluck('content','names')->all();
       $v="<?php return ".var_export($conf,true).';';
       file_put_contents(config_path().'/webconfig.php',$v);
-
     }
+    
     public function index(Request $request)
     {
-
-      // dd(\Illuminate\Support\Facades\Config::get(['webconfig']));
       $data=Config::orderBy('order','asc')->get();
       foreach($data as $k=>$v){
         switch($v->type){
@@ -60,6 +58,7 @@ class ConfigController extends Controller
      */
     public function create()
     {
+	  $this->putContent();
       return view('admin.config.interface');
     }
 
@@ -90,7 +89,6 @@ class ConfigController extends Controller
               ->withErrors($validator)
               ->withInput();
       }
-
       $res=Config::create($input);
       if($res)
       {
@@ -130,32 +128,34 @@ class ConfigController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
-    {
-      $data=$request->all();
-      // \DB::transaction(function()use($data){
-      //   foreach ($data['id'] as $k=>$v)
-      //   {
-      //     $res=Config::find($v);
-      //     $res->update(['content'=>$data['content'][$k]]);
-      //   }
-      // });
-      DB::beginTransaction();
-      try{
-        foreach($data['id'] as $k=>$v)
-        {
-          $res=Config::find($v);
-          $res->update(['content'=>$data['content'][$k]]);
-        }
-      }catch(Exception $e){
-        DB::rollBack();
-        return $e->getMessage();
-      }
-      DB::commit();
-      $this->putContent();
-      return redirect('admin/config');
-
-    }
+     public function update(Request $request)
+     {
+       $data=$request->all();
+       if(!empty($data['id'])){
+         // \DB::transaction(function()use($data){
+         //   foreach ($data['id'] as $k=>$v)
+         //   {
+         //     $res=Config::find($v);
+         //     $res->update(['content'=>$data['content'][$k]]);
+         //   }
+         // });
+         DB::beginTransaction();
+         try{
+           foreach($data['id'] as $k=>$v)
+           {
+             $res=Config::find($v);
+             // dd($res);
+             $res->update(['content'=>$data['content'][$k]]);
+           }
+         }catch(Exception $e){
+           DB::rollBack();
+           return $e->getMessage();
+         }
+         DB::commit();
+       }
+       $this->putContent();
+       return redirect('admin/config');
+     }
 
     /**
      * Remove the specified resource from storage.

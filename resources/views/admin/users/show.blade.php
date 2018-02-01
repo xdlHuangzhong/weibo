@@ -30,7 +30,7 @@
                                                 
                                                 <th>用户昵称</th>
                                                 <th>微博内容</th>
-                                                <th>转发数量</th>
+
                                                 <th>评论数量</th>
                                                 <th>点赞数量</th>
                                                 <th>热门</th>
@@ -43,7 +43,7 @@
                                             <tr class="even gradeC">
                                                 <td class="am-text-middle">{{$nickName}}</td>
                                                 <td class="am-text-middle">{{$v->content}}</td>
-                                                <td class="am-text-middle">{{$v->fnum}}</td>
+
                                                 <td class="am-text-middle">{{$v->rnum}}</td>
                                                 <td class="am-text-middle">{{$v->pnum}}</td>
                                                 <td class="am-text-middle">{{$v->hot == 0 ? '否' : '是'}}</td>

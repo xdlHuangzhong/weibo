@@ -103,6 +103,8 @@ Route::post('home/register/send','Home\RegisterController@send');
 Route::get('home/active','Home\RegisterController@active');
 //前台首页
 Route::get('home/index','Home\IndexController@index');
+//带帖子ID登录跳转评论页
+Route::post('home/login/pinglun','Home\LoginController@pinglun');
 //加载登录的方法
 Route::resource('home/login','Home\LoginController');
 
@@ -117,8 +119,7 @@ Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>'hislogin'],fun
 Route::get('logout/','LoginController@logout');
 
 
-// 点赞
-    Route::resource('Handle','HandleController');
+
 
 //忘记密码
 Route::get('forget','RegisterController@forget');
@@ -131,23 +132,33 @@ Route::post('doreset','RegisterController@doReset');
 
 Route::post('user/upload','InfoController@upload');
 Route::post('user/pinglun','InfoController@pinglun');
-Route::post('user/showpinglun','InfoController@showpinglun');
+Route::post('user/rpinglun','InfoController@rpinglun');
+//回帖路由
+Route::get('user/addpinglun','InfoController@addpinglun');
+
+//加载个人中心发帖页
+Route::resource('user','InfoController');
 
 
-
-
+// 点赞
+Route::resource('Handle','HandleController');
+// 举报
+Route::post('handle/report','HandleController@report');
+Route::get('handle/report/as','HandleController@index');
 
 
 //加载个人详情
 Route::get('userinfo/index','UserinfoController@index');
 Route::get('userinfo/share','UserinfoController@share');
-//处理图片
+//个人详情的系统消息
+Route::get('userinfo/xiaoxi/{uid}','UserinfoController@xiaoxi');
+
+
 
 
 
 Route::post('user/upload','InfoController@upload');
-//加载个人中心发帖页
-Route::resource('user','InfoController');
+
 //加载补充个人信息页面
 Route::get('userinfo/add','InfoController@add');
 //加载个人页面修改方法
@@ -159,8 +170,7 @@ Route::get('userinfo/show','UserinfoController@show');
 Route::post('userinfo/upload','UserinfoController@upload');
 //修改个人信息页
 Route::resource('userinfo','UserinfoController');
-// 举报
-Route::post('handle/report','HandleController@report');
+
 });
 
 Route::get('home/usercate/{name}','Home\IndexController@usercate');
